@@ -216,11 +216,113 @@ a:hover {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
-@media (max-width: 768px) {
-  pre { font-size: 0.8rem; }
-  table { font-size: 0.8rem; }
-  .home-hero h1 { font-size: 1.75rem; }
-  .home-hero { padding: 2rem 1rem; }
+/* ─── Responsive — Desktop (>1024px) ─── */
+@media (min-width: 1025px) {
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+/* ─── Responsive — Tablet (768px–1024px) ─── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sidebar {
+    padding: 1rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+  .nav__list .nav__items a {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.4rem;
+  }
+  .nav__list .nav__sub-title {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.4rem 0.2rem;
+  }
+  .home-hero h1 { font-size: 2rem; }
+  .home-hero p { font-size: 1rem; }
+  .home-hero { padding: 2.5rem 1rem; }
+  pre { font-size: 0.82rem; padding: 1rem; }
+  table { font-size: 0.85rem; }
+  th, td { padding: 0.6rem 0.75rem; }
+  h2 { margin-top: 1.5rem; }
+  .page__content { font-size: 0.95rem; }
+}
+
+/* ─── Responsive — Mobile (<768px) ─── */
+@media (max-width: 767px) {
+  body { font-size: 0.95rem; line-height: 1.6; }
+
+  /* Sidebar — full width, collapsible, at top */
+  .sidebar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-right: none;
+    font-size: 0.85rem;
+  }
+  .sidebar .nav__list { margin-bottom: 0; }
+
+  /* Masthead */
+  .masthead__inner-wrap { padding: 0.5rem 0.75rem; }
+  .site-title { font-size: 1rem; }
+  .greedy-nav .visible-links a { padding: 0.4rem 0.5rem; font-size: 0.85rem; }
+
+  /* Content */
+  .page { padding: 0 0.75rem; }
+  .page__inner-wrap { padding: 0; }
+  .page__content { padding: 0; font-size: 0.9rem; }
+
+  /* Headings */
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; margin-top: 1.25rem; padding-bottom: 0.35rem; }
+  h3 { font-size: 1.1rem; }
+  h4 { font-size: 1rem; }
+
+  /* Hero */
+  .home-hero { padding: 1.5rem 0.75rem; border-radius: 8px; }
+  .home-hero h1 { font-size: 1.5rem; }
+  .home-hero p { font-size: 0.9rem; margin-bottom: 1rem; }
+  .home-hero .btn { display: block; width: 100%; margin: 0.35rem 0; text-align: center; }
+
+  /* Code */
+  pre { font-size: 0.78rem; padding: 0.85rem; border-radius: 6px; margin: 0.75rem -0.75rem; border-left: none; border-right: none; }
+  code:not(pre code) { font-size: 0.82em; }
+
+  /* Tables — horizontal scroll */
+  table { font-size: 0.8rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  th, td { padding: 0.5rem 0.6rem; }
+
+  /* Lists */
+  ol, ul { padding-left: 1.25rem; }
+  li { margin-bottom: 0.25rem; }
+
+  /* Breadcrumbs */
+  .breadcrumbs { font-size: 0.75rem; padding: 0.5rem 0; }
+
+  /* TOC */
+  .toc { font-size: 0.85rem; }
+  .toc .nav__title { font-size: 0.7rem; }
+
+  /* Buttons */
+  .btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
+
+  /* Footer */
+  .page__footer { padding: 0.75rem; font-size: 0.8rem; }
+
+  /* Pagination */
+  .pagination { font-size: 0.85rem; }
+
+  /* Search */
+  .search-content .search-input { font-size: 1rem; }
+
+  /* Copy button positioning */
+  .copy-btn { top: 0.35rem; right: 0.35rem; font-size: 0.7rem; padding: 0.2rem 0.5rem; }
 }
 
 .copy-btn {
