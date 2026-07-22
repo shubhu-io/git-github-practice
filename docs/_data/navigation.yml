@@ -5,6 +5,21 @@ main:
     url: /BEGINNERS-GUIDE.html
   - title: "Learning Path"
     url: /Learning-Path.html
+    children:
+      - title: Week 1 — Git Basics
+        url: /Learning-Path.html#week-1-git-basics
+      - title: Week 2 — Branching & Merging
+        url: /Learning-Path.html#week-2-branching--merging
+      - title: Week 3 — Collaboration
+        url: /Learning-Path.html#week-3-collaboration
+      - title: Week 4 — Advanced Topics
+        url: /Learning-Path.html#week-4-advanced-topics
+      - title: Beyond Week 4
+        url: /Learning-Path.html#beyond-week-4
+      - title: Daily Practice Routine
+        url: /Learning-Path.html#daily-practice-routine
+      - title: Success Checklist
+        url: /Learning-Path.html#success-checklist
   - title: "Cheatsheet"
     url: /git-cheatsheet.html
   - title: "Master Index"
@@ -31,6 +46,21 @@ docs:
 
   - title: Learning Path
     url: /Learning-Path.html
+    children:
+      - title: Week 1 — Git Basics
+        url: /Learning-Path.html#week-1-git-basics
+      - title: Week 2 — Branching & Merging
+        url: /Learning-Path.html#week-2-branching--merging
+      - title: Week 3 — Collaboration
+        url: /Learning-Path.html#week-3-collaboration
+      - title: Week 4 — Advanced Topics
+        url: /Learning-Path.html#week-4-advanced-topics
+      - title: Beyond Week 4
+        url: /Learning-Path.html#beyond-week-4
+      - title: Daily Practice Routine
+        url: /Learning-Path.html#daily-practice-routine
+      - title: Success Checklist
+        url: /Learning-Path.html#success-checklist
 
   - title: Guides
     children:
