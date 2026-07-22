@@ -51,7 +51,7 @@ docs:
       - title: Git Hooks
         url: /GIT-HOOKS-GUIDE.html
       - title: Git Internals
-        url: /GIT-INTernals.html
+        url: /GIT-INTERNALS.html
       - title: Git Performance
         url: /GIT-PERFORMANCE-GUIDE.html
       - title: Git Security

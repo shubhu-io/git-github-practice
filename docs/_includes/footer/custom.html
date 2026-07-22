@@ -61,3 +61,28 @@
   });
 })();
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge, div.language-console, pre').forEach(function(wrapper) {
+    var pre = wrapper.tagName === 'PRE' ? wrapper : wrapper.querySelector('pre');
+    if (!pre) return;
+    wrapper.style.position = 'relative';
+    var btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.className = 'copy-btn';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.onclick = function() {
+      var text = pre.innerText;
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      }).catch(function() {
+        btn.textContent = 'Failed';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    };
+    wrapper.appendChild(btn);
+  });
+});
+</script>

@@ -135,7 +135,7 @@ Git&Github/
 |------|-------|-------------|
 | `GIT-ALIASES-GUIDE.md` | - | Custom aliases |
 | `GIT-HOOKS-GUIDE.md` | - | Git hooks |
-| `GIT-INTernals.md` | - | How Git works internally |
+| `GIT-INTERNALS.md` | - | How Git works internally |
 | `GIT-PERFORMANCE-GUIDE.md` | - | Performance optimization |
 | `GIT-SECURITY-GUIDE.md` | - | Security best practices |
 | `GIT-TIPS-TRICKS.md` | - | Tips and tricks |

@@ -8,7 +8,7 @@ baseurl: "/git-github-practice"
 
 repository: shubhu-io/git-github-practice
 
-minimal_mistakes_skin: default
+minimal_mistakes_skin: "dark"
 
 search: true
 search_full_content: true
