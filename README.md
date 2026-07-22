@@ -2,6 +2,8 @@
 
 A learning and practice repository for Git and GitHub workflows.
 
+> **[View the full documentation site →](https://shubhu-io.github.io/git-github-practice/)**
+
 ## Project Structure
 
 ```
