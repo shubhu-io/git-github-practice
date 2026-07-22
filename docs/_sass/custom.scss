@@ -33,6 +33,7 @@ body {
   border-right: 1px solid var(--border);
   padding: 1.5rem 1rem;
   border-radius: 8px;
+  opacity: 1;
 }
 
 .nav__title {
@@ -51,10 +52,21 @@ body {
   transition: color 0.15s, background 0.15s;
 }
 
-.nav__items a:hover,
-.nav__items a.active {
+.nav__items a:hover {
   color: var(--accent);
   background: rgba(46, 160, 67, 0.1);
+}
+
+.nav__items .active,
+.nav__items .active a {
+  color: var(--accent) !important;
+  background: rgba(46, 160, 67, 0.1);
+}
+
+.nav__list .nav__sub-title {
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  font-size: 0.85rem;
 }
 
 h1, h2, h3 {

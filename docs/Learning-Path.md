@@ -1,5 +1,8 @@
 ---
 title: Learning Path
+layout: single
+sidebar:
+  nav: "docs"
 ---
 
 # Learning Path for Git & GitHub
