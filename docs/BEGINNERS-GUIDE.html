@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner's Guide to Git & GitHub — Git & GitHub Learning Hub</title>
+  <meta name="description" content="A step-by-step guide for absolute beginners. Install Git, make your first commit, and push to GitHub.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/BEGINNERS-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link active">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" style="position:fixed;bottom:1rem;right:1rem;z-index:999;">
+      <div id="theme-panel" class="glass" style="display:none;padding:0.75rem;border-radius:var(--radius-lg);margin-bottom:0.5rem;min-width:180px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:var(--clr-overlay);padding:2rem;">
+      <div style="max-width:640px;margin:2rem auto;background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
+        <div style="display:flex;align-items:center;padding:1rem;border-bottom:1px solid var(--clr-border-light);">
+          <svg style="width:20px;height:20px;color:var(--clr-text-tertiary);margin-right:0.75rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" placeholder="Search guides..." style="flex:1;border:none;background:transparent;font-size:1.125rem;color:var(--clr-text);outline:none;" autofocus>
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem;"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Getting Started</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Beginner's Guide</span>
+      </nav>
+
+      <h1>Complete Beginner's Guide to Git & GitHub</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          15 min read
+        </span>
+        <span class="badge badge-beginner">Beginner</span>
+        <span class="badge badge-info">Updated July 2026</span>
+        <div class="difficulty-bar beginner"><span></span><span></span><span></span><span></span></div>
+      </div>
+
+      <div id="article-content" class="article-content">
+        <!-- ===== WHAT IS VERSION CONTROL? ===== -->
+        <h2 id="what-is-version-control">What is Version Control?</h2>
+        <p><strong>Version control</strong> tracks changes to files over time. It lets you:</p>
+        <ul>
+          <li>Save different versions of your work</li>
+          <li>Undo mistakes</li>
+          <li>Collaborate with others</li>
+          <li>Work on features without affecting the main code</li>
+        </ul>
+
+        <div class="box box-info">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="box-content">
+            <div class="box-title">Think of it like a save point in a video game</div>
+            <p>Just like you save your game before a boss fight, you save snapshots of your code before making risky changes. If something breaks, you can always go back to your last save point.</p>
+          </div>
+        </div>
+
+        <!-- ===== WHAT IS GIT? ===== -->
+        <h2 id="what-is-git">What is Git?</h2>
+        <p><strong>Git</strong> is a version control system that runs on your computer. It tracks changes in your files and lets you create snapshots (called <strong>commits</strong>) at any point.</p>
+
+        <div class="box box-tip">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          <div class="box-content">
+            <div class="box-title">Git is local</div>
+            <p>Git runs entirely on your computer. You don't need an internet connection to use it. GitHub is where you store your Git projects online.</p>
+          </div>
+        </div>
+
+        <!-- ===== WHAT IS GITHUB? ===== -->
+        <h2 id="what-is-github">What is GitHub?</h2>
+        <p><strong>GitHub</strong> is a website where you store your Git projects online. It adds collaboration features like pull requests, issues, and team management.</p>
+
+        <!-- ===== GIT WORKFLOW DIAGRAM ===== -->
+        <h2 id="git-workflow">The Git Workflow (Simple Version)</h2>
+
+        <div class="code-block terminal" style="margin:var(--space-4) 0;">
+          <div class="code-block-header">
+            <span class="code-block-lang">Git Workflow</span>
+          </div>
+          <pre><code>1. Edit files on your computer
+2. Tell Git which files to track (stage)
+3. Save a snapshot (commit)
+4. Upload to GitHub (push)</code></pre>
+        </div>
+
+        <div class="img-container" style="padding:var(--space-4);background:var(--clr-card-bg);">
+          <svg viewBox="0 0 600 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <rect x="10" y="10" width="100" height="50" rx="8" fill="var(--clr-primary-subtle)" stroke="var(--clr-primary)" stroke-width="2"/>
+            <text x="60" y="42" text-anchor="middle" fill="var(--clr-text)" font-family="Inter,sans-serif" font-size="13" font-weight="600">Edit</text>
+            <line x1="110" y1="35" x2="145" y2="35" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <polyline points="140,29 150,35 140,41" fill="var(--clr-text-tertiary)"/>
+            <text x="128" y="25" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="JetBrains Mono,monospace" font-size="9">git add</text>
+
+            <rect x="150" y="10" width="100" height="50" rx="8" fill="var(--clr-warning-bg)" stroke="var(--clr-warning)" stroke-width="2"/>
+            <text x="200" y="42" text-anchor="middle" fill="var(--clr-warning)" font-family="Inter,sans-serif" font-size="13" font-weight="600">Stage</text>
+            <line x1="250" y1="35" x2="285" y2="35" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <polyline points="280,29 290,35 280,41" fill="var(--clr-text-tertiary)"/>
+            <text x="268" y="25" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="JetBrains Mono,monospace" font-size="9">git commit</text>
+
+            <rect x="290" y="10" width="100" height="50" rx="8" fill="var(--clr-success-bg)" stroke="var(--clr-success)" stroke-width="2"/>
+            <text x="340" y="42" text-anchor="middle" fill="var(--clr-success)" font-family="Inter,sans-serif" font-size="13" font-weight="600">Commit</text>
+            <line x1="390" y1="35" x2="425" y2="35" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <polyline points="420,29 430,35 420,41" fill="var(--clr-text-tertiary)"/>
+            <text x="408" y="25" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="JetBrains Mono,monospace" font-size="9">git push</text>
+
+            <rect x="430" y="10" width="120" height="50" rx="8" fill="var(--clr-info-bg)" stroke="var(--clr-info)" stroke-width="2" stroke-dasharray="4"/>
+            <text x="490" y="42" text-anchor="middle" fill="var(--clr-info)" font-family="Inter,sans-serif" font-size="13" font-weight="600">GitHub</text>
+          </svg>
+        </div>
+
+        <!-- ===== INSTALL GIT ===== -->
+        <h2 id="install-git">Step 1: Install Git</h2>
+
+        <div class="tabs">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="tab-windows">Windows</button>
+            <button class="tab-btn" data-tab="tab-macos">macOS</button>
+            <button class="tab-btn" data-tab="tab-linux">Linux</button>
+          </div>
+          <div class="tab-panel active" id="tab-windows">
+            <ol>
+              <li>Download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a></li>
+              <li>Run the installer with default settings</li>
+              <li>Open <strong>Git Bash</strong> from the Start menu</li>
+            </ol>
+          </div>
+          <div class="tab-panel" id="tab-macos">
+            <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">brew install git</code></pre></div>
+            <p>Or download from <a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">git-scm.com</a></p>
+          </div>
+          <div class="tab-panel" id="tab-linux">
+            <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">sudo apt-get install git   # Ubuntu/Debian
+sudo dnf install git        # Fedora</code></pre></div>
+          </div>
+        </div>
+
+        <div class="box box-warning">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="box-content">
+            <div class="box-title">Verify your installation</div>
+            <p>Open a terminal and run <code>git --version</code>. You should see something like <code>git version 2.40.0</code>.</p>
+          </div>
+        </div>
+
+        <!-- ===== FIRST-TIME SETUP ===== -->
+        <h2 id="first-time-setup">Step 2: First-Time Setup</h2>
+        <p>Tell Git who you are. This information is attached to every commit you make.</p>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Bash</span><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.nextElementSibling.textContent.trim());this.classList.add('copied');this.innerHTML='Copied!';setTimeout(()=>{this.classList.remove('copied');this.innerHTML='Copy';},2000);">Copy</button></div>
+          <pre><code class="language-bash">git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --list</code></pre>
+        </div>
+
+        <div class="box box-tip">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          <div class="box-content">
+            <div class="box-title">Use your GitHub email</div>
+            <p>Use the same email you registered with on GitHub so your commits are linked to your account.</p>
+          </div>
+        </div>
+
+        <!-- ===== CREATE FIRST REPO ===== -->
+        <h2 id="create-first-repository">Step 3: Create Your First Repository</h2>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Bash</span></div>
+          <pre><code class="language-bash">mkdir my-first-repo
+cd my-first-repo
+git init</code></pre>
+        </div>
+
+        <p>You should see:</p>
+        <div class="code-block terminal">
+          <div class="code-block-header"><span class="code-block-lang">Output</span></div>
+          <pre><code>Initialized empty Git repository in /path/to/my-first-repo/.git/</code></pre>
+        </div>
+
+        <p>The <code>.git</code> folder is where Git stores all its tracking data. Think of it as Git's database for your project.</p>
+
+        <!-- ===== STAGE AND COMMIT ===== -->
+        <h2 id="stage-and-commit">Steps 4-6: Create, Stage, and Commit a File</h2>
+
+        <div class="code-group">
+          <div class="code-block">
+            <div class="code-block-header"><span class="code-block-lang">Bash</span></div>
+            <pre><code class="language-bash">echo "# My First Repository" > README.md
+git add README.md
+git commit -m "My first commit"</code></pre>
+          </div>
+          <div class="code-block terminal">
+            <div class="code-block-header"><span class="code-block-lang">Output</span></div>
+            <pre><code>[main (root-commit) a1b2c3d] My first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md</code></pre>
+          </div>
+        </div>
+
+        <div class="box box-info">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="box-content">
+            <div class="box-title">Staging explained</div>
+            <p>Think of staging as putting items in a box before shipping. <code>git add</code> puts files in the box, and <code>git commit</code> ships it. You can add multiple files before committing.</p>
+          </div>
+        </div>
+
+        <!-- ===== CHECK STATUS AND HISTORY ===== -->
+        <h2 id="status-and-history">Steps 7-8: Check Status &amp; View History</h2>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Bash</span></div>
+          <pre><code class="language-bash">git status
+git log</code></pre>
+        </div>
+
+        <ul>
+          <li><code>git status</code> — Shows what files have changed and what's staged</li>
+          <li><code>git log</code> — Shows all commits with their messages, authors, and dates</li>
+        </ul>
+
+        <!-- ===== CONNECT TO GITHUB ===== -->
+        <h2 id="connect-to-github">Steps 9-10: Connect to GitHub &amp; Push</h2>
+
+        <p>Create a repository on GitHub, then run:</p>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Bash</span></div>
+          <pre><code class="language-bash">git remote add origin https://github.com/yourusername/my-first-repo.git
+git push -u origin main</code></pre>
+        </div>
+
+        <div class="box box-success">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="box-content">
+            <div class="box-title">Your code is now on GitHub!</div>
+            <p>Refresh your GitHub repository page — you should see your README.md file with the commit message.</p>
+          </div>
+        </div>
+
+        <!-- ===== DAILY WORKFLOW ===== -->
+        <h2 id="daily-workflow">Daily Workflow</h2>
+
+        <div class="code-block terminal">
+          <div class="code-block-header"><span class="code-block-lang">Git Workflow</span></div>
+          <pre><code>1. Pull latest changes
+   git pull
+
+2. Make changes to files
+
+3. See what changed
+   git status
+
+4. Stage changes
+   git add .
+
+5. Commit changes
+   git commit -m "Describe your changes"
+
+6. Push to GitHub
+   git push</code></pre>
+        </div>
+
+        <!-- ===== CHEAT SHEET ===== -->
+        <h2 id="cheat-sheet">Essential Commands Cheat Sheet</h2>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>What It Does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>git init</code></td><td>Create new repository</td></tr>
+              <tr><td><code>git clone &lt;url&gt;</code></td><td>Copy a repository</td></tr>
+              <tr><td><code>git status</code></td><td>See what's changed</td></tr>
+              <tr><td><code>git add .</code></td><td>Stage all changes</td></tr>
+              <tr><td><code>git commit -m "msg"</code></td><td>Save changes</td></tr>
+              <tr><td><code>git push</code></td><td>Upload to GitHub</td></tr>
+              <tr><td><code>git pull</code></td><td>Download from GitHub</td></tr>
+              <tr><td><code>git log</code></td><td>See history</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ===== COMMON MISTAKES ===== -->
+        <h2 id="common-mistakes">Common Mistakes (And How to Fix Them)</h2>
+
+        <div class="box box-warning">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="box-content">
+            <div class="box-title">Committed to wrong branch</div>
+          </div>
+        </div>
+        <div class="code-block"><pre><code class="language-bash">git reset HEAD~1
+git checkout correct-branch
+git cherry-pick HEAD@{1}</code></pre></div>
+
+        <div class="box box-warning">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="box-content">
+            <div class="box-title">Wrong commit message</div>
+          </div>
+        </div>
+        <div class="code-block"><pre><code class="language-bash">git commit --amend -m "New message"</code></pre></div>
+
+        <div class="box box-warning">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="box-content">
+            <div class="box-title">Added the wrong file</div>
+          </div>
+        </div>
+        <div class="code-block"><pre><code class="language-bash">git restore --staged filename</code></pre></div>
+
+        <!-- ===== BEST PRACTICES ===== -->
+        <h2 id="best-practices">Best Practices</h2>
+        <ul>
+          <li><strong>Commit often</strong> — Small, frequent commits are easier to understand and revert</li>
+          <li><strong>Write good commit messages</strong> — Start with a capital letter, use imperative mood (e.g., "Add login feature" not "Added login feature")</li>
+          <li><strong>Pull before you push</strong> — Always <code>git pull</code> first to avoid conflicts</li>
+          <li><strong>Don't commit sensitive data</strong> — Never commit passwords, API keys, or personal information</li>
+          <li><strong>Use .gitignore</strong> — Tell Git which files to ignore (build files, dependencies, OS files)</li>
+        </ul>
+
+        <!-- ===== QUIZ ===== -->
+        <h2 id="quiz">Check Your Understanding</h2>
+        <div class="quiz">
+          <div class="quiz-question">1. What command creates a new Git repository?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="true"><span class="quiz-radio"></span> <code>git init</code></div>
+            <div class="quiz-option"><span class="quiz-radio"></span> <code>git start</code></div>
+            <div class="quiz-option"><span class="quiz-radio"></span> <code>git new</code></div>
+            <div class="quiz-option"><span class="quiz-radio"></span> <code>git create</code></div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz">
+          <div class="quiz-question">2. What does <code>git add .</code> do?</div>
+          <div class="quiz-options">
+            <div class="quiz-option"><span class="quiz-radio"></span> Saves all changes permanently</div>
+            <div class="quiz-option" data-correct="true"><span class="quiz-radio"></span> Stages all changes for commit</div>
+            <div class="quiz-option"><span class="quiz-radio"></span> Deletes all changes</div>
+            <div class="quiz-option"><span class="quiz-radio"></span> Uploads everything to GitHub</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- ===== SUMMARY ===== -->
+        <h2 id="summary">Summary</h2>
+        <p>Congratulations! You've learned the Git fundamentals:</p>
+        <ul>
+          <li>What version control is and why it's essential</li>
+          <li>How to install and configure Git</li>
+          <li>The basic workflow: edit → stage → commit → push</li>
+          <li>How to check status and view history</li>
+          <li>How to connect a local repo to GitHub</li>
+          <li>Common mistakes and how to fix them</li>
+        </ul>
+
+        <div class="box box-success">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="box-content">
+            <div class="box-title">You've made your first commit!</div>
+            <p>This is the foundation for everything else. Up next: branching, merging, and collaborating with teams.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== NEXT / PREV NAVIGATION ===== -->
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./git-cheatsheet.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Git Cheatsheet →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout(() => document.getElementById('search-input-overlay')?.focus(), 100);
+      }
+    });
+    document.getElementById('search-input-overlay')?.addEventListener('input', function() {
+      var evt = new Event('input');
+      document.getElementById('search-input').value = this.value;
+      document.getElementById('search-input').dispatchEvent(evt);
+    });
+  </script>
+</body>
+</html>

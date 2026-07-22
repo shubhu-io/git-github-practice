@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Learning Path — Git & GitHub Learning Hub</title>
+  <meta name="description" content="A complete 4-week structured guide to mastering Git and GitHub from first commit to advanced automation.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/Learning-Path.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Git & GitHub Hub</a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link active">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+    <div id="theme-picker" style="position:fixed;bottom:1rem;right:1rem;z-index:999;"><div id="theme-panel" class="glass" style="display:none;padding:0.75rem;border-radius:var(--radius-lg);margin-bottom:0.5rem;min-width:180px;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;"></div></div></div>
+    <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:var(--clr-overlay);padding:2rem;"><div style="max-width:640px;margin:2rem auto;background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);"><div style="display:flex;align-items:center;padding:1rem;border-bottom:1px solid var(--clr-border-light);"><svg style="width:20px;height:20px;color:var(--clr-text-tertiary);margin-right:0.75rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="search" id="search-input-overlay" placeholder="Search guides..." style="flex:1;border:none;background:transparent;font-size:1.125rem;color:var(--clr-text);outline:none;" autofocus><kbd>ESC</kbd></div><div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem;"></div></div></div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span class="breadcrumbs-sep"></span><a href="./">Learning Path</a><span class="breadcrumbs-sep"></span><span class="breadcrumbs-current">Learning Path</span></nav>
+      <h1>Learning Path for Git & GitHub</h1>
+      <div class="article-meta">
+        <span class="article-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min read</span>
+        <span class="badge badge-beginner">Beginner</span>
+        <div class="difficulty-bar beginner"><span></span><span></span><span></span><span></span></div>
+      </div>
+
+      <div id="article-content" class="article-content">
+        <p>A complete 4-week structured guide to mastering Git and GitHub — from your first commit to advanced automation.</p>
+
+        <div class="box box-info">
+          <svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="box-content"><div class="box-title">Prerequisites</div><p>No prior Git knowledge needed. You just need a computer with internet access and basic terminal/command-line familiarity.</p></div>
+        </div>
+
+        <h2 id="overview">Learning Path Overview</h2>
+        <div class="code-block terminal">
+          <div class="code-block-header"><span class="code-block-lang">Curriculum</span></div>
+          <pre><code>Week 1: Git Basics
+  Day 1-2: Installation & Setup
+  Day 3-4: Basic Commands (add, commit, status, log)
+  Day 5-7: First Repository & Push to GitHub
+
+Week 2: Branching & Merging
+  Day 1-2: Creating & Switching Branches
+  Day 3-4: Merging Branches
+  Day 5-7: Merge Conflicts & Resolution
+
+Week 3: Collaboration
+  Day 1-2: Remote Repositories
+  Day 3-4: Pull Requests
+  Day 5-7: Fork Workflow
+
+Week 4: Advanced Topics
+  Day 1-2: Stashing & Rebase
+  Day 3-4: Cherry-pick & Tags
+  Day 5-7: GitHub Actions & Automation</code></pre>
+        </div>
+
+        <h2 id="week-1-git-basics">Week 1: Git Basics</h2>
+        <h3 id="day-1-2">Day 1-2: Installation & Setup</h3>
+        <p><strong>Learning Objectives:</strong></p>
+        <ul>
+          <li>Understand what version control is and why Git dominates the industry</li>
+          <li>Install Git on your operating system</li>
+          <li>Configure your Git identity and preferences</li>
+        </ul>
+
+        <p><strong>What is Git?</strong> Git is a distributed version control system that tracks changes in files. It allows multiple developers to work on the same project simultaneously without overwriting each other's work.</p>
+
+        <div class="table-wrapper"><table>
+          <thead><tr><th>OS</th><th>Instructions</th></tr></thead>
+          <tbody>
+            <tr><td>Windows</td><td>Download from <a href="https://git-scm.com">git-scm.com</a> or run <code>winget install Git.Git</code></td></tr>
+            <tr><td>macOS</td><td>Run <code>brew install git</code> or download from <a href="https://git-scm.com">git-scm.com</a></td></tr>
+            <tr><td>Linux</td><td>Run <code>sudo apt install git</code> (Ubuntu/Debian) or <code>sudo dnf install git</code> (Fedora)</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+git config --global init.defaultBranch main
+git config --global color.ui auto</code></pre></div>
+
+        <h3 id="day-3-4">Day 3-4: Basic Commands</h3>
+        <p>Learn the core Git commands you'll use daily. Start with the <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a> for a step-by-step walkthrough.</p>
+
+        <div class="code-group">
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">mkdir my-project && cd my-project
+git init
+echo "# Hello Git" > README.md
+git add README.md
+git commit -m "Initial commit"</code></pre></div>
+          <div class="code-block terminal"><div class="code-block-header"><span class="code-block-lang">Output</span></div><pre><code>Initialized empty Git repository in my-project/.git/
+[main (root-commit) abc1234] Initial commit
+ 1 file changed, 1 insertion(+)</code></pre></div>
+        </div>
+
+        <div class="box box-tip"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg><div class="box-content"><div class="box-title">Pro Tip</div><p>Use <code>git status</code> frequently. It's the most useful command for understanding what's happening in your repository.</p></div></div>
+
+        <h3 id="day-5-7">Day 5-7: First Repository & Push to GitHub</h3>
+        <p>Create a GitHub account, create your first remote repository, and push your local code.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git remote add origin https://github.com/yourusername/my-project.git
+git branch -M main
+git push -u origin main</code></pre></div>
+
+        <hr>
+
+        <h2 id="week-2-branching--merging">Week 2: Branching & Merging</h2>
+        <h3 id="day-1-2-branching">Day 1-2: Creating & Switching Branches</h3>
+        <p>Branches let you work on features without affecting the main codebase. Think of them as parallel universes for your code.</p>
+
+        <div class="img-container" style="padding:var(--space-4);background:var(--clr-card-bg);">
+          <svg viewBox="0 0 600 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <circle cx="50" cy="80" r="8" fill="var(--clr-primary)"/>
+            <line x1="58" y1="80" x2="120" y2="80" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <circle cx="120" cy="80" r="8" fill="var(--clr-text-tertiary)"/>
+            <line x1="128" y1="80" x2="190" y2="80" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <circle cx="190" cy="80" r="8" fill="var(--clr-text-tertiary)"/>
+            <line x1="198" y1="80" x2="260" y2="40" stroke="var(--clr-success)" stroke-width="2"/>
+            <circle cx="260" cy="40" r="8" fill="var(--clr-success)"/>
+            <text x="260" y="28" text-anchor="middle" fill="var(--clr-success)" font-family="Inter,sans-serif" font-size="10" font-weight="600">feature/login</text>
+            <line x1="198" y1="80" x2="260" y2="120" stroke="var(--clr-warning)" stroke-width="2"/>
+            <circle cx="260" cy="120" r="8" fill="var(--clr-warning)"/>
+            <text x="260" y="140" text-anchor="middle" fill="var(--clr-warning)" font-family="Inter,sans-serif" font-size="10" font-weight="600">feature/api</text>
+            <line x1="260" y1="40" x2="330" y2="40" stroke="var(--clr-success)" stroke-width="2"/>
+            <circle cx="330" cy="40" r="8" fill="var(--clr-success)"/>
+            <line x1="260" y1="120" x2="330" y2="120" stroke="var(--clr-warning)" stroke-width="2"/>
+            <circle cx="330" cy="120" r="8" fill="var(--clr-warning)"/>
+            <line x1="330" y1="40" x2="400" y2="80" stroke="var(--clr-success)" stroke-width="2" stroke-dasharray="4"/>
+            <line x1="330" y1="120" x2="400" y2="80" stroke="var(--clr-warning)" stroke-width="2" stroke-dasharray="4"/>
+            <circle cx="400" cy="80" r="10" fill="var(--clr-primary)"/>
+            <line x1="410" y1="80" x2="480" y2="80" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <circle cx="480" cy="80" r="8" fill="var(--clr-text-tertiary)"/>
+            <line x1="488" y1="80" x2="550" y2="80" stroke="var(--clr-text-tertiary)" stroke-width="2"/>
+            <circle cx="550" cy="80" r="8" fill="var(--clr-primary)"/>
+            <text x="50" y="112" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">main</text>
+          </svg>
+          <div class="img-caption">Branches allow parallel development. Each feature gets its own line of development.</div>
+        </div>
+
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git branch feature-login          # Create branch
+git checkout feature-login        # Switch to it
+git checkout -b feature-login     # Create & switch (shorthand)</code></pre></div>
+
+        <h3 id="day-3-4-merging">Day 3-4: Merging Branches</h3>
+        <p>When a feature is complete, merge it back into the main branch.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git checkout main
+git merge feature-login</code></pre></div>
+
+        <h3 id="day-5-7-conflicts">Day 5-7: Merge Conflicts & Resolution</h3>
+        <p>Conflicts happen when two branches modify the same file. Git marks the conflict and asks you to resolve it.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">File With Conflict</span></div><pre><code class="language-diff">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+console.log("Hello from main");
+=======
+console.log("Hello from feature");
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature</code></pre></div>
+        <p>Edit the file to keep the desired version, then <code>git add</code> and <code>git commit</code>.</p>
+
+        <div class="box box-warning"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div class="box-content"><div class="box-title">Common Mistake</div><p>Don't use <code>git push --force</code> on shared branches. It can erase other people's work. Use <code>git push --force-with-lease</code> instead — it's safer.</p></div></div>
+
+        <hr>
+
+        <h2 id="week-3-collaboration">Week 3: Collaboration</h2>
+        <h3 id="day-1-2-remotes">Day 1-2: Remote Repositories</h3>
+        <p>Learn how to sync your local repository with GitHub using push, pull, and fetch.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git clone https://github.com/user/repo.git  # Download a repo
+git pull                                      # Get latest changes
+git push                                      # Upload your changes
+git fetch                                     # Check for changes without merging</code></pre></div>
+
+        <h3 id="day-3-4-prs">Day 3-4: Pull Requests</h3>
+        <p>Pull requests (PRs) are the heart of GitHub collaboration. They let you propose changes, discuss them, and merge them.</p>
+        <ol>
+          <li>Push a feature branch to GitHub</li>
+          <li>Open a Pull Request on GitHub.com</li>
+          <li>Request reviews from team members</li>
+          <li>Address feedback with additional commits</li>
+          <li>Merge the PR when approved</li>
+        </ol>
+        <p>Learn more in the <a href="./GITHUB-PR-GUIDE.html">Pull Request Guide</a>.</p>
+
+        <h3 id="day-5-7-forks">Day 5-7: Fork Workflow</h3>
+        <p>Forking creates your own copy of someone else's repository. It's the standard workflow for open source contributions.</p>
+
+        <hr>
+
+        <h2 id="week-4-advanced-topics">Week 4: Advanced Topics</h2>
+        <h3 id="day-1-2-stash">Day 1-2: Stashing & Rebase</h3>
+        <p><strong>Stashing</strong> temporarily saves uncommitted changes so you can switch branches. <strong>Rebasing</strong> rewrites commit history for a cleaner project timeline.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git stash                 # Save changes temporarily
+git stash pop             # Restore saved changes
+git rebase main           # Reapply commits on top of main</code></pre></div>
+
+        <div class="box box-danger"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><div class="box-content"><div class="box-title">Never rebase shared branches</div><p>Rebasing rewrites history. Only rebase branches that you haven't shared with others. Use merge for shared branches.</p></div></div>
+
+        <h3 id="day-3-4-cherry-pick">Day 3-4: Cherry-pick & Tags</h3>
+        <p>Cherry-pick applies a specific commit from one branch to another. Tags mark specific points in history (usually releases).</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git cherry-pick abc1234    # Apply a specific commit
+git tag v1.0.0             # Tag the current commit
+git push --tags            # Push tags to GitHub</code></pre></div>
+
+        <h3 id="day-5-7-actions">Day 5-7: GitHub Actions & Automation</h3>
+        <p>GitHub Actions lets you automate workflows like running tests, deploying code, and releasing packages.</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">YAML</span></div><pre><code class="language-yaml">name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install && npm test</code></pre></div>
+
+        <hr>
+
+        <h2 id="beyond-week-4">Beyond Week 4</h2>
+        <p>Continue your learning with these advanced resources:</p>
+        <div class="card-grid card-grid-2" style="margin-top:var(--space-4);">
+          <a href="./GIT-INTERNALS.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="card-title">Git Internals</div>
+            <div class="card-text">How Git works under the hood — objects, refs, and the .git directory.</div>
+          </a>
+          <a href="./GITHUB-ACTIONS-ADVANCED.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="card-title">GitHub Actions Advanced</div>
+            <div class="card-text">Matrix builds, deployment pipelines, and custom actions.</div>
+          </a>
+        </div>
+
+        <hr>
+
+        <h2 id="success-checklist">Success Checklist</h2>
+        <p>Before moving on, ensure you can:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin:var(--space-4) 0;">
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Initialize a Git repository</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Stage and commit changes</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Create and switch branches</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Merge branches and resolve conflicts</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Push and pull from GitHub</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--clr-card-bg);border:1px solid var(--clr-border);border-radius:var(--radius-md);">
+            <span style="width:20px;height:20px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-size:12px;">✓</span>
+            <span style="font-size:var(--fs-sm);">Create and review Pull Requests</span>
+          </div>
+        </div>
+
+        <hr>
+
+        <h2 id="related-topics">Related Topics</h2>
+        <ul>
+          <li><a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a> — Start here if you're completely new</li>
+          <li><a href="./GIT-WORKFLOWS.html">Git Workflows</a> — Compare Git Flow, GitHub Flow, and trunk-based</li>
+          <li><a href="./GITHUB-ACTIONS-ADVANCED.html">GitHub Actions Advanced</a> — Take automation further</li>
+          <li><a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a> — Practice for technical interviews</li>
+        </ul>
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <a href="./BEGINNERS-GUIDE.html" class="page-nav-link prev">
+          <div class="page-nav-label">Previous</div>
+          <div class="page-nav-title">← Beginner's Guide</div>
+        </a>
+        <a href="./GIT-WORKFLOWS.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Git Workflows →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-brand">Git & GitHub Hub</div><div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div></div>
+      <div class="footer-col"><div class="footer-col-title">Learn</div><a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a><a href="./Learning-Path.html">Learning Path</a><a href="./GIT-WORKFLOWS.html">Git Workflows</a></div>
+      <div class="footer-col"><div class="footer-col-title">Resources</div><a href="./git-cheatsheet.html">Cheatsheet</a><a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a><a href="./Master-Index.html">Master Index</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a><a href="./FAQ.html">FAQ</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span><span>Built with ❤️ for the developer community</span></div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="./assets/js/theme.js"></script><script src="./assets/js/sidebar.js"></script><script src="./assets/js/toc.js"></script><script src="./assets/js/progress.js"></script><script src="./assets/js/search.js"></script><script src="./assets/js/components.js"></script><script src="./assets/js/router.js"></script><script src="./assets/js/animations.js"></script><script src="./assets/js/shortcuts.js"></script><script src="./assets/js/main.js"></script>
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus',function(){document.getElementById('search-overlay').style.display='block';document.getElementById('search-input-overlay')?.focus();});
+    document.getElementById('search-overlay')?.addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('search-overlay').style.display='none';if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-overlay').style.display='block';setTimeout(()=>document.getElementById('search-input-overlay')?.focus(),100);}});
+    document.getElementById('search-input-overlay')?.addEventListener('input',function(){var evt=new Event('input');document.getElementById('search-input').value=this.value;document.getElementById('search-input').dispatchEvent(evt);});
+  </script>
+</body>
+</html>

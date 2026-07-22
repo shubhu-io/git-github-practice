@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git & GitHub Learning Hub — Master Version Control</title>
+  <meta name="description" content="Master Git from Beginner to Advanced through interactive lessons, visual diagrams, quizzes, projects, interview questions, and hands-on exercises.">
+  <meta name="theme-color" content="#0D1117">
+
+  <meta property="og:title" content="Git & GitHub Learning Hub">
+  <meta property="og:description" content="Master Git from first commit to advanced workflows. Interactive lessons, quizzes, and projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shubhu-io.github.io/git-github-practice/">
+
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/">
+  <link rel="stylesheet" href="./assets/css/main.css">
+
+  <!-- Prism.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <!-- Marked.js for markdown rendering (used by router) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+
+  <script>
+    (function() {
+      var t = localStorage.getItem('gh-learning-theme');
+      var auto = localStorage.getItem('gh-learning-theme-auto');
+      if (auto === 'true') {
+        t = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      } else if (!t) {
+        t = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
+      </svg>
+      Git & GitHub Hub
+    </a>
+
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+
+    <div class="navbar-search" role="search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar-fill" id="progress-bar-fill"></div>
+  </div>
+
+  <!-- ===== SIDEBAR OVERLAY (mobile) ===== -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div class="app">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar">
+      <!-- Populated by sidebar.js -->
+    </aside>
+
+    <!-- ===== THEME PICKER ===== -->
+    <div id="theme-picker" style="position:fixed;bottom:1rem;right:1rem;z-index:999;">
+      <div id="theme-panel" class="glass" style="display:none;padding:0.75rem;border-radius:var(--radius-lg);margin-bottom:0.5rem;min-width:180px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;">
+          <!-- Populated by theme.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SEARCH OVERLAY ===== -->
+    <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:var(--clr-overlay);padding:2rem;">
+      <div style="max-width:640px;margin:2rem auto;background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
+        <div style="display:flex;align-items:center;padding:1rem;border-bottom:1px solid var(--clr-border-light);">
+          <svg style="width:20px;height:20px;color:var(--clr-text-tertiary);margin-right:0.75rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" placeholder="Search guides..." style="flex:1;border:none;background:transparent;font-size:1.125rem;color:var(--clr-text);outline:none;" autofocus>
+          <kbd style="margin-left:0.5rem;">ESC</kbd>
+        </div>
+        <div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem;"></div>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main" id="main-content" role="main">
+
+      <!-- ===== HERO SECTION ===== -->
+      <section class="hero fade-up">
+        <div class="hero-content">
+          <div class="hero-badge">v2.0 — Complete Redesign</div>
+          <h1 class="hero-title">
+            Master <span class="gradient-text">Git & GitHub</span>
+          </h1>
+          <p class="hero-subtitle">
+            Learn Git from Beginner to Advanced through interactive lessons, visual diagrams, quizzes, projects, interview questions, and hands-on exercises.
+          </p>
+          <div class="hero-ctas">
+            <a href="./BEGINNERS-GUIDE.html" class="btn btn-primary btn-lg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              Start Learning
+            </a>
+            <a href="https://github.com/shubhu-io/git-github-practice" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub Repository
+            </a>
+            <a href="./Learning-Path.html" class="btn btn-ghost btn-lg">
+              View Roadmap
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+
+          <div class="hero-terminal terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">terminal — git demo</span>
+            </div>
+            <div class="terminal-body">
+              <span class="terminal-prompt">$</span> <span class="terminal-command">git init my-project</span><br>
+              <span class="terminal-output">Initialized empty Git repository in my-project/.git/</span><br>
+              <span class="terminal-prompt">$</span> <span class="terminal-command">git add . && git commit -m "First commit"</span><br>
+              <span class="terminal-output">[main (root-commit) a1b2c3d] First commit</span><br>
+              <span class="terminal-prompt">$</span> <span class="terminal-command terminal-cursor">git push -u origin main</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STATS ROW ===== -->
+      <section class="stats fade-up" style="margin-top:var(--space-8);">
+        <div class="stat-card fade-up fade-up-delay-1">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div class="stat-value" data-count="25" data-suffix="+">0</div>
+          <div class="stat-label">Lessons</div>
+        </div>
+        <div class="stat-card fade-up fade-up-delay-2">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="stat-value" data-count="100" data-suffix="+">0</div>
+          <div class="stat-label">Commands</div>
+        </div>
+        <div class="stat-card fade-up fade-up-delay-3">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+          <div class="stat-value" data-count="20" data-suffix="+">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-card fade-up fade-up-delay-4">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="stat-value" data-count="50" data-suffix="+">0</div>
+          <div class="stat-label">Interview Q</div>
+        </div>
+        <div class="stat-card fade-up fade-up-delay-5">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="stat-value" data-count="20" data-suffix="+">0</div>
+          <div class="stat-label">Exercises</div>
+        </div>
+        <div class="stat-card fade-up fade-up-delay-5">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="stat-value">&#10003;</div>
+          <div class="stat-label">Certificates</div>
+        </div>
+      </section>
+
+      <!-- ===== LEARNING ROADMAP ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">Learning Roadmap</h2>
+        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Follow this structured path from absolute beginner to Git master.</p>
+
+        <div class="timeline fade-up">
+          <div class="timeline-item fade-up fade-up-delay-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Week 1</div>
+            <div class="timeline-title">Git Basics</div>
+            <div class="timeline-text">Installation, configuration, first commit, staging, viewing history. Understand what version control is and why it matters.</div>
+            <div class="timeline-tags">
+              <span class="badge badge-beginner">Beginner</span>
+              <span class="badge badge-info">7 days</span>
+            </div>
+          </div>
+          <div class="timeline-item fade-up fade-up-delay-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Week 2</div>
+            <div class="timeline-title">Branching & Merging</div>
+            <div class="timeline-text">Create and switch branches, merge changes, resolve conflicts. Master the branch-based workflow that makes Git powerful.</div>
+            <div class="timeline-tags">
+              <span class="badge badge-beginner">Beginner</span>
+              <span class="badge badge-info">7 days</span>
+            </div>
+          </div>
+          <div class="timeline-item fade-up fade-up-delay-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Week 3</div>
+            <div class="timeline-title">Collaboration</div>
+            <div class="timeline-text">Remote repositories, pull requests, fork workflow, code review. Learn how teams collaborate effectively using GitHub.</div>
+            <div class="timeline-tags">
+              <span class="badge badge-intermediate">Intermediate</span>
+              <span class="badge badge-info">7 days</span>
+            </div>
+          </div>
+          <div class="timeline-item fade-up fade-up-delay-4">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Week 4</div>
+            <div class="timeline-title">Advanced Topics</div>
+            <div class="timeline-text">Stashing, rebasing, cherry-pick, tags, GitHub Actions, CI/CD pipelines. Take your skills to production level.</div>
+            <div class="timeline-tags">
+              <span class="badge badge-advanced">Advanced</span>
+              <span class="badge badge-info">7 days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up" style="text-align:center;margin-top:var(--space-6);">
+          <a href="./Learning-Path.html" class="btn btn-primary btn-lg">
+            View Full Learning Path
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== FEATURED GUIDES ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">Featured Guides</h2>
+        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Dive into our most popular learning resources.</p>
+
+        <div class="card-grid card-grid-2 fade-up">
+          <a href="./BEGINNERS-GUIDE.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div class="card-title">Beginner's Guide</div>
+            <div class="card-text">Start here! Install Git, make your first commit, and push to GitHub. No prior experience needed.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-beginner">Beginner</span>
+              <span class="badge badge-info">15 min</span>
+            </div>
+          </a>
+
+          <a href="./GIT-WORKFLOWS.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
+            <div class="card-title">Git Workflows</div>
+            <div class="card-text">Understand Git Flow, GitHub Flow, trunk-based development, and choose the right workflow for your team.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-intermediate">Intermediate</span>
+              <span class="badge badge-info">25 min</span>
+            </div>
+          </a>
+
+          <a href="./github-actions-guide.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="card-title">GitHub Actions</div>
+            <div class="card-text">Automate your workflows with CI/CD pipelines. Build, test, and deploy directly from GitHub.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-intermediate">Intermediate</span>
+              <span class="badge badge-info">20 min</span>
+            </div>
+          </a>
+
+          <a href="./GIT-INTERVIEW-QUESTIONS.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="card-title">Interview Questions</div>
+            <div class="card-text">Ace your next technical interview with 50+ curated Git and GitHub questions and detailed answers.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-intermediate">Intermediate</span>
+              <span class="badge badge-info">30 min</span>
+            </div>
+          </a>
+
+          <a href="./GITHUB-PAGES.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="card-title">GitHub Pages</div>
+            <div class="card-text">Host static websites for free with GitHub Pages. Deploy documentation, portfolios, and project sites.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-beginner">Beginner</span>
+              <span class="badge badge-info">20 min</span>
+            </div>
+          </a>
+
+          <a href="./git-cheatsheet.html" class="card card-hover" style="text-decoration:none;">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+            <div class="card-title">Git Cheatsheet</div>
+            <div class="card-text">Quick reference for 100+ Git commands organized by task. Print it, bookmark it, master it.</div>
+            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+              <span class="badge badge-beginner">Beginner</span>
+              <span class="badge badge-info">10 min</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== VISUAL DIAGRAM ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">How Git Works</h2>
+        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Visualize the Git workflow from working directory to remote repository.</p>
+
+        <div class="img-container fade-up" style="padding:var(--space-6);background:var(--clr-card-bg);">
+          <svg viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <!-- Working Directory -->
+            <rect x="30" y="40" width="160" height="120" rx="12" stroke="var(--clr-primary)" stroke-width="2" fill="var(--clr-primary-subtle)"/>
+            <text x="110" y="88" text-anchor="middle" fill="var(--clr-text)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Working</text>
+            <text x="110" y="108" text-anchor="middle" fill="var(--clr-text)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Directory</text>
+            <text x="110" y="132" text-anchor="middle" fill="var(--clr-text-secondary)" font-family="var(--ff-mono)" font-size="11">~/project/</text>
+
+            <!-- Staging Area -->
+            <rect x="270" y="40" width="160" height="120" rx="12" stroke="var(--clr-warning)" stroke-width="2" fill="var(--clr-warning-bg)"/>
+            <text x="350" y="88" text-anchor="middle" fill="var(--clr-warning)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Staging</text>
+            <text x="350" y="108" text-anchor="middle" fill="var(--clr-warning)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Area</text>
+            <text x="350" y="132" text-anchor="middle" fill="var(--clr-text-secondary)" font-family="var(--ff-mono)" font-size="11">git add</text>
+
+            <!-- Local Repo -->
+            <rect x="510" y="40" width="160" height="120" rx="12" stroke="var(--clr-success)" stroke-width="2" fill="var(--clr-success-bg)"/>
+            <text x="590" y="88" text-anchor="middle" fill="var(--clr-success)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Local</text>
+            <text x="590" y="108" text-anchor="middle" fill="var(--clr-success)" font-family="var(--ff-sans)" font-size="14" font-weight="600">Repository</text>
+            <text x="590" y="132" text-anchor="middle" fill="var(--clr-text-secondary)" font-family="var(--ff-mono)" font-size="11">git commit</text>
+
+            <!-- Remote Repo (offset to show connection) -->
+            <rect x="680" y="40" width="100" height="120" rx="12" stroke="var(--clr-info)" stroke-width="2" fill="var(--clr-info-bg)" stroke-dasharray="4"/>
+            <text x="730" y="88" text-anchor="middle" fill="var(--clr-info)" font-family="var(--ff-sans)" font-size="13" font-weight="600">Remote</text>
+            <text x="730" y="108" text-anchor="middle" fill="var(--clr-info)" font-family="var(--ff-sans)" font-size="13" font-weight="600">GitHub</text>
+            <text x="730" y="132" text-anchor="middle" fill="var(--clr-text-secondary)" font-family="var(--ff-mono)" font-size="11">git push</text>
+
+            <!-- Arrows -->
+            <line x1="190" y1="100" x2="270" y2="100" stroke="var(--clr-text-tertiary)" stroke-width="2" stroke-dasharray="4"/>
+            <polyline points="260,94 270,100 260,106" fill="var(--clr-text-tertiary)"/>
+            <text x="230" y="90" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="10">git add</text>
+
+            <line x1="430" y1="100" x2="510" y2="100" stroke="var(--clr-text-tertiary)" stroke-width="2" stroke-dasharray="4"/>
+            <polyline points="500,94 510,100 500,106" fill="var(--clr-text-tertiary)"/>
+            <text x="470" y="90" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="10">git commit</text>
+
+            <line x1="670" y1="100" x2="680" y2="100" stroke="var(--clr-text-tertiary)" stroke-width="1.5" stroke-dasharray="3"/>
+            <polyline points="676,94 680,100 676,106" fill="var(--clr-text-tertiary)"/>
+            <text x="675" y="88" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">push</text>
+
+            <!-- Bidirectional arrow for pull -->
+            <line x1="680" y1="140" x2="670" y2="140" stroke="var(--clr-text-tertiary)" stroke-width="1.5" stroke-dasharray="3"/>
+            <polyline points="674,134 670,140 674,146" fill="var(--clr-text-tertiary)"/>
+            <text x="675" y="158" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">pull</text>
+
+            <!-- Tags -->
+            <text x="110" y="170" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-sans)" font-size="10">Edit files</text>
+            <text x="350" y="170" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-sans)" font-size="10">Stage changes</text>
+            <text x="590" y="170" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-sans)" font-size="10">Save snapshot</text>
+            <text x="730" y="170" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-sans)" font-size="10">Share online</text>
+          </svg>
+          <div class="img-caption">The four stages of Git: Working Directory → Staging → Local Repository → Remote Repository</div>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIALS ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">What Learners Say</h2>
+        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Join thousands of developers who've mastered Git with this guide.</p>
+
+        <div class="card-grid card-grid-2 fade-up" style="margin-top:var(--space-6);">
+          <div class="card glass">
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div style="width:44px;height:44px;border-radius:var(--radius-full);background:var(--clr-primary-subtle);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-weight:var(--fw-bold);font-family:var(--ff-display);">AK</div>
+              <div>
+                <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Alex K.</div>
+                <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);">Frontend Developer</div>
+              </div>
+            </div>
+            <p style="color:var(--clr-text-secondary);font-style:italic;margin-bottom:0;">"I went from 'git add' to deploying CI/CD pipelines in 4 weeks. The visual diagrams and exercises made everything click. This should be the official Git curriculum."</p>
+            <div style="margin-top:var(--space-3);display:flex;gap:2px;">
+              <span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span>
+            </div>
+          </div>
+          <div class="card glass">
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div style="width:44px;height:44px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-weight:var(--fw-bold);font-family:var(--ff-display);">SM</div>
+              <div>
+                <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Sarah M.</div>
+                <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);">Computer Science Student</div>
+              </div>
+            </div>
+            <p style="color:var(--clr-text-secondary);font-style:italic;margin-bottom:0;">"Our university course used Git but never explained WHY. This guide fills that gap perfectly. The branching diagram alone is worth the read."</p>
+            <div style="margin-top:var(--space-3);display:flex;gap:2px;">
+              <span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">Frequently Asked Questions</h2>
+
+        <div class="accordion fade-up">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Do I need prior programming experience to start?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-body"><p>Not at all! The Beginner's Guide assumes no prior knowledge. You'll learn everything from installation to advanced workflows step by step.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              How long does it take to complete the learning path?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-body"><p>The structured 4-week plan requires about 5-7 hours per week. However, you can go at your own pace — each lesson is self-contained.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Is this just for GitHub or does it cover Git too?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-body"><p>Both! The guide covers Git fundamentals (init, commit, branch, merge, rebase) AND GitHub-specific features (PRs, Actions, Pages, API).</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Are there practice exercises?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-body"><p>Yes! There are 20 progressive exercises (in the exercises/ folder), 50+ interview questions, and hands-on projects throughout the guide.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Is this guide free and open source?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-body"><p>Absolutely! This is an MIT-licensed open source project. Contributions, issues, and feedback are welcome on GitHub.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== LATEST UPDATES ===== -->
+      <section style="margin:var(--space-16) 0;">
+        <h2 class="fade-up">Latest Updates</h2>
+        <div class="card fade-up" style="display:flex;align-items:flex-start;gap:var(--space-4);">
+          <div style="width:12px;height:12px;border-radius:var(--radius-full);background:var(--clr-success);margin-top:6px;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);margin-bottom:var(--space-1);">July 2026</div>
+            <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Complete Platform Redesign</div>
+            <p style="font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:0;">New modern UI with dark/light themes, interactive search, collapsible sidebar, reading progress, quizzes, and visual diagrams.</p>
+          </div>
+        </div>
+        <div class="card fade-up" style="display:flex;align-items:flex-start;gap:var(--space-4);margin-top:var(--space-3);">
+          <div style="width:12px;height:12px;border-radius:var(--radius-full);background:var(--clr-primary);margin-top:6px;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);margin-bottom:var(--space-1);">June 2026</div>
+            <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">20 Practice Exercises Added</div>
+            <p style="font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:0;">New progressive exercise set covering everything from first commit to performance optimization.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== NEWSLETTER ===== -->
+      <section style="margin:var(--space-16) 0;text-align:center;" class="fade-up">
+        <div class="card glass" style="max-width:500px;margin:0 auto;padding:var(--space-8);">
+          <h3 style="margin-top:0;">Stay Updated</h3>
+          <p style="color:var(--clr-text-secondary);margin-bottom:var(--space-4);">Get notified when new lessons, exercises, and features are added.</p>
+          <form style="display:flex;gap:var(--space-2);" onsubmit="event.preventDefault();alert('Thanks for subscribing! (Demo)');">
+            <input type="email" placeholder="Enter your email" required
+                   style="flex:1;padding:var(--space-3) var(--space-4);background:var(--clr-bg-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);font-size:var(--fs-sm);outline:none;color:var(--clr-text);">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p style="font-size:var(--fs-xs);color:var(--clr-text-tertiary);margin-top:var(--space-3);margin-bottom:0;">No spam. Unsubscribe anytime.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub. From first commit to advanced CI/CD workflows.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/shubhu-io" target="_blank" rel="noopener" aria-label="Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="https://github.com/shubhu-io/git-github-practice/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+        <a href="https://github.com/shubhu-io/git-github-practice/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <!-- Sync search input -->
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout(() => document.getElementById('search-input-overlay')?.focus(), 100);
+      }
+    });
+    document.getElementById('search-input-overlay')?.addEventListener('input', function() {
+      const evt = new Event('input');
+      document.getElementById('search-input').value = this.value;
+      document.getElementById('search-input').dispatchEvent(evt);
+    });
+  </script>
+</body>
+</html>

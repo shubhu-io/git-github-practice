@@ -1,0 +1,250 @@
+/* ===== CODE BLOCKS =====================================================
+   Syntax highlighting, copy button, line numbers, language labels,
+   terminal theme. Uses Prism.js-compatible CSS variables.
+   ====================================================================== */
+
+/* --- Code Block Container --------------------------------------------- */
+.code-block {
+  position: relative;
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-lg);
+  background: var(--clr-code-bg);
+  border: 1px solid var(--clr-border);
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  background: var(--clr-bg-elevated);
+  border-bottom: 1px solid var(--clr-border-light);
+  font-size: var(--fs-xs);
+}
+
+.code-block-lang {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5, 6px);
+  color: var(--clr-text-tertiary);
+  font-family: var(--ff-sans);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+}
+
+.code-block-lang svg { width: 14px; height: 14px; }
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px var(--space-2);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-tertiary);
+  background: transparent;
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copy-btn:hover {
+  color: var(--clr-primary);
+  border-color: var(--clr-primary);
+  background: var(--clr-primary-subtle);
+}
+
+.copy-btn.copied {
+  color: var(--clr-success);
+  border-color: var(--clr-success);
+  background: var(--clr-success-bg);
+}
+
+.copy-btn svg { width: 14px; height: 14px; }
+
+.code-block pre {
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  -webkit-overflow-scrolling: touch;
+  tab-size: 2;
+}
+
+.code-block code {
+  font-family: var(--ff-mono);
+  color: var(--clr-code-text);
+  background: none !important;
+}
+
+/* --- Line Numbers ----------------------------------------------------- */
+.code-block.line-numbers pre {
+  counter-reset: line;
+}
+
+.code-block.line-numbers code {
+  display: block;
+}
+
+.code-block.line-numbers .line {
+  counter-increment: line;
+  padding-left: var(--space-8);
+  position: relative;
+}
+
+.code-block.line-numbers .line::before {
+  content: counter(line);
+  position: absolute;
+  left: 0;
+  width: var(--space-6);
+  text-align: right;
+  color: var(--clr-text-tertiary);
+  font-size: var(--fs-xs);
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* --- Inline Code ------------------------------------------------------ */
+code:not(.code-block code) {
+  background: var(--clr-code-bg);
+  color: var(--clr-primary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875em;
+  border: 1px solid var(--clr-border-light);
+}
+
+pre code:not(.code-block code) {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-secondary);
+  background: var(--clr-bg-elevated);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 var(--clr-border);
+}
+
+/* === PRISM.JS SYNTAX HIGHLIGHTING ===================================== */
+/* These classes match Prism.js output. Applied via JS. */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata { color: var(--clr-code-comment); font-style: italic; }
+
+.token.punctuation { color: var(--clr-code-punctuation); }
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted { color: var(--clr-code-number); }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted { color: var(--clr-code-string); }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string { color: var(--clr-code-operator); }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword { color: var(--clr-code-keyword); }
+
+.token.function,
+.token.class-name { color: var(--clr-code-function); }
+
+.token.regex,
+.token.important,
+.token.variable { color: var(--clr-code-variable); }
+
+.token.important,
+.token.bold { font-weight: var(--fw-bold); }
+.token.italic { font-style: italic; }
+
+/* --- Diff highlighting ------------------------------------------------- */
+.token.deleted:not(.punctuation) { background: rgba(248, 81, 73, 0.12); }
+.token.inserted:not(.punctuation) { background: rgba(63, 185, 80, 0.12); }
+
+/* --- Shell output styling --------------------------------------------- */
+.language-bash .token.prompt { color: var(--clr-success); }
+.language-bash .token.output { color: var(--clr-text-secondary); }
+
+/* --- Output block (for command results) -------------------------------- */
+.code-block.output pre {
+  background: var(--clr-bg-inset);
+}
+
+.code-block.output .code-block-header {
+  background: var(--clr-bg-inset);
+  border-bottom-color: var(--clr-border);
+}
+
+/* --- Terminal style code block ---------------------------------------- */
+.code-block.terminal {
+  background: #0A0E14;
+  border-color: #1C2128;
+}
+
+.code-block.terminal .code-block-header {
+  background: #1C2128;
+  border-bottom-color: #30363D;
+}
+
+.code-block.terminal .code-block-lang {
+  color: #8B949E;
+}
+
+.code-block.terminal pre {
+  color: #E6EDF3;
+}
+
+.code-block.terminal .token.prompt { color: #3FB950; }
+.code-block.terminal .token.command { color: #E6EDF3; }
+.code-block.terminal .token.output { color: #8B949E; }
+
+/* --- Command + Output group (no header on output) --------------------- */
+.code-group > .code-block:not(:first-child) .code-block-header {
+  display: none;
+}
+
+/* --- Highlighted lines ------------------------------------------------ */
+.line.highlighted {
+  background: var(--clr-code-line-hl);
+  border-left: 2px solid var(--clr-primary);
+}
+
+/* --- Responsive code blocks ------------------------------------------- */
+@media (max-width: 768px) {
+  .code-block pre {
+    padding: var(--space-3);
+    font-size: var(--fs-xs);
+  }
+  .code-block.line-numbers .line {
+    padding-left: var(--space-6);
+  }
+}

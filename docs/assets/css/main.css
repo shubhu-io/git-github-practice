@@ -1,0 +1,10 @@
+/* ===== MAIN.CSS =========================================================
+   Aggregator — imports all CSS partials in the correct cascade order.
+   Include this single file in HTML for the complete design system.
+   ====================================================================== */
+
+@import url('./design-tokens.css');
+@import url('./layout.css');
+@import url('./components.css');
+@import url('./code.css');
+@import url('./animations.css');

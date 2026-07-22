@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Git Cheatsheet — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Quick reference of the most commonly used Git commands, organized by task.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/git-cheatsheet.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <a href="./" class="navbar-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Git & GitHub Hub</a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link active">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search"><svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation"><span class="navbar-search-kbd">Ctrl+K</span></div>
+    <div class="navbar-actions"><button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div>
+  </header>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+    <div id="theme-picker" style="position:fixed;bottom:1rem;right:1rem;z-index:999;"><div id="theme-panel" class="glass" style="display:none;padding:0.75rem;border-radius:var(--radius-lg);margin-bottom:0.5rem;min-width:180px;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;"></div></div></div>
+    <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:var(--clr-overlay);padding:2rem;"><div style="max-width:640px;margin:2rem auto;background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);"><div style="display:flex;align-items:center;padding:1rem;border-bottom:1px solid var(--clr-border-light);"><svg style="width:20px;height:20px;color:var(--clr-text-tertiary);margin-right:0.75rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="search" id="search-input-overlay" placeholder="Search guides..." style="flex:1;border:none;background:transparent;font-size:1.125rem;color:var(--clr-text);outline:none;" autofocus><kbd>ESC</kbd></div><div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem;"></div></div></div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span class="breadcrumbs-sep"></span><a href="./">Getting Started</a><span class="breadcrumbs-sep"></span><span class="breadcrumbs-current">Git Cheatsheet</span></nav>
+      <h1>Git Cheatsheet</h1>
+      <div class="article-meta">
+        <span class="article-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10 min read</span>
+        <span class="badge badge-beginner">Beginner</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+        <p>Quick reference of the most commonly used Git commands, organized by task. Bookmark this page for daily use.</p>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git init</code></td><td>Create a new Git repository in the current directory</td></tr>
+            <tr><td><code>git clone &lt;url&gt;</code></td><td>Copy a remote repository to your local machine</td></tr>
+            <tr><td><code>git config --global user.name "Name"</code></td><td>Set your Git username</td></tr>
+            <tr><td><code>git config --global user.email "email"</code></td><td>Set your Git email</td></tr>
+            <tr><td><code>git config --global init.defaultBranch main</code></td><td>Set default branch name to main</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="basic-workflow">Basic Workflow</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git status</code></td><td>Show the working tree status</td></tr>
+            <tr><td><code>git add &lt;file&gt;</code></td><td>Stage a file (or directory) for commit</td></tr>
+            <tr><td><code>git add .</code></td><td>Stage all changes</td></tr>
+            <tr><td><code>git commit -m "message"</code></td><td>Commit staged changes with a message</td></tr>
+            <tr><td><code>git commit -am "message"</code></td><td>Stage all tracked files and commit (shorthand)</td></tr>
+            <tr><td><code>git log</code></td><td>Show commit history</td></tr>
+            <tr><td><code>git log --oneline</code></td><td>Show compact commit history</td></tr>
+            <tr><td><code>git log --graph</code></td><td>Show commit history as a graph</td></tr>
+            <tr><td><code>git diff</code></td><td>Show unstaged changes</td></tr>
+            <tr><td><code>git diff --staged</code></td><td>Show staged changes</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="branching-merging">Branching & Merging</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git branch</code></td><td>List local branches</td></tr>
+            <tr><td><code>git branch &lt;name&gt;</code></td><td>Create a new branch</td></tr>
+            <tr><td><code>git checkout &lt;branch&gt;</code></td><td>Switch to a branch</td></tr>
+            <tr><td><code>git checkout -b &lt;name&gt;</code></td><td>Create and switch to a new branch</td></tr>
+            <tr><td><code>git switch &lt;branch&gt;</code></td><td>Switch to a branch (modern alternative)</td></tr>
+            <tr><td><code>git switch -c &lt;name&gt;</code></td><td>Create and switch (modern alternative)</td></tr>
+            <tr><td><code>git merge &lt;branch&gt;</code></td><td>Merge a branch into the current branch</td></tr>
+            <tr><td><code>git merge --no-ff &lt;branch&gt;</code></td><td>Merge with a merge commit (no fast-forward)</td></tr>
+            <tr><td><code>git rebase &lt;branch&gt;</code></td><td>Reapply commits on top of another branch</td></tr>
+            <tr><td><code>git branch -d &lt;name&gt;</code></td><td>Delete a branch (safe)</td></tr>
+            <tr><td><code>git branch -D &lt;name&gt;</code></td><td>Delete a branch (force)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="remote">Remote Operations</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git remote add origin &lt;url&gt;</code></td><td>Connect local repo to a remote</td></tr>
+            <tr><td><code>git remote -v</code></td><td>List remote connections</td></tr>
+            <tr><td><code>git push &lt;remote&gt; &lt;branch&gt;</code></td><td>Upload commits to a remote</td></tr>
+            <tr><td><code>git push -u origin &lt;branch&gt;</code></td><td>Push and set upstream tracking</td></tr>
+            <tr><td><code>git push --force-with-lease</code></td><td>Force push safely (preferred over --force)</td></tr>
+            <tr><td><code>git pull</code></td><td>Fetch and merge changes from upstream</td></tr>
+            <tr><td><code>git fetch</code></td><td>Download changes without merging</td></tr>
+            <tr><td><code>git fetch --prune</code></td><td>Fetch and remove deleted remote branches</td></tr>
+            <tr><td><code>git remote remove &lt;name&gt;</code></td><td>Remove a remote connection</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="undoing">Undoing Changes</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git restore &lt;file&gt;</code></td><td>Discard unstaged changes in a file</td></tr>
+            <tr><td><code>git restore --staged &lt;file&gt;</code></td><td>Unstage a file (keep changes)</td></tr>
+            <tr><td><code>git reset HEAD~1</code></td><td>Undo last commit (keep changes)</td></tr>
+            <tr><td><code>git reset --hard HEAD~1</code></td><td>Undo last commit (discard changes)</td></tr>
+            <tr><td><code>git revert &lt;commit&gt;</code></td><td>Create a new commit that undoes a previous commit</td></tr>
+            <tr><td><code>git commit --amend -m "new msg"</code></td><td>Fix the last commit message</td></tr>
+            <tr><td><code>git commit --amend --no-edit</code></td><td>Add staged changes to last commit</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="stashing">Stashing</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git stash</code></td><td>Save uncommitted changes temporarily</td></tr>
+            <tr><td><code>git stash pop</code></td><td>Apply and remove the latest stash</td></tr>
+            <tr><td><code>git stash list</code></td><td>List all stashes</td></tr>
+            <tr><td><code>git stash apply stash@{0}</code></td><td>Apply a specific stash without removing it</td></tr>
+            <tr><td><code>git stash drop stash@{0}</code></td><td>Delete a specific stash</td></tr>
+            <tr><td><code>git stash clear</code></td><td>Delete all stashes</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="inspection">Inspection & Comparison</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git log --oneline --graph --all</code></td><td>Full visual history</td></tr>
+            <tr><td><code>git log --author="name"</code></td><td>Filter by author</td></tr>
+            <tr><td><code>git log --since="2 weeks ago"</code></td><td>Filter by time</td></tr>
+            <tr><td><code>git show &lt;commit&gt;</code></td><td>Show details of a commit</td></tr>
+            <tr><td><code>git blame &lt;file&gt;</code></td><td>Show who changed each line</td></tr>
+            <tr><td><code>git shortlog</code></td><td>Summary of commits by author</td></tr>
+            <tr><td><code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code></td><td>Compare two branches</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="tags">Tags & Releases</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Command</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>git tag</code></td><td>List tags</td></tr>
+            <tr><td><code>git tag &lt;name&gt;</code></td><td>Create a lightweight tag</td></tr>
+            <tr><td><code>git tag -a &lt;name&gt; -m "msg"</code></td><td>Create an annotated tag</td></tr>
+            <tr><td><code>git push --tags</code></td><td>Push tags to remote</td></tr>
+            <tr><td><code>git tag -d &lt;name&gt;</code></td><td>Delete a local tag</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="aliases">Useful Aliases</h2>
+        <p>Add these to your Git config for faster workflows:</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">Bash</span></div><pre><code class="language-bash">git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.lg "log --oneline --graph --all"
+git config --global alias.last "log -1 HEAD"
+git config --global alias.unstage "restore --staged ."</code></pre></div>
+
+        <div class="box box-tip"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg><div class="box-content"><div class="box-title">Pro Tip</div><p>Bookmark this page and run through the <a href="./Learning-Path.html">Learning Path</a> to practice each command in context.</p></div></div>
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <a href="./BEGINNERS-GUIDE.html" class="page-nav-link prev">
+          <div class="page-nav-label">Previous</div>
+          <div class="page-nav-title">← Beginner's Guide</div>
+        </a>
+        <a href="./Learning-Path.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Learning Path →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-brand">Git & GitHub Hub</div><div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div></div>
+      <div class="footer-col"><div class="footer-col-title">Learn</div><a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a><a href="./Learning-Path.html">Learning Path</a><a href="./GIT-WORKFLOWS.html">Git Workflows</a></div>
+      <div class="footer-col"><div class="footer-col-title">Resources</div><a href="./git-cheatsheet.html">Cheatsheet</a><a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a><a href="./Master-Index.html">Master Index</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a><a href="./FAQ.html">FAQ</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span><span>Built with ❤️ for the developer community</span></div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="./assets/js/theme.js"></script><script src="./assets/js/sidebar.js"></script><script src="./assets/js/toc.js"></script><script src="./assets/js/progress.js"></script><script src="./assets/js/search.js"></script><script src="./assets/js/components.js"></script><script src="./assets/js/router.js"></script><script src="./assets/js/animations.js"></script><script src="./assets/js/shortcuts.js"></script><script src="./assets/js/main.js"></script>
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus',function(){document.getElementById('search-overlay').style.display='block';document.getElementById('search-input-overlay')?.focus();});
+    document.getElementById('search-overlay')?.addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('search-overlay').style.display='none';if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-overlay').style.display='block';setTimeout(()=>document.getElementById('search-input-overlay')?.focus(),100);}});
+    document.getElementById('search-input-overlay')?.addEventListener('input',function(){var evt=new Event('input');document.getElementById('search-input').value=this.value;document.getElementById('search-input').dispatchEvent(evt);});
+  </script>
+</body>
+</html>

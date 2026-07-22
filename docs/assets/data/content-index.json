@@ -1,0 +1,103 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "icon": "rocket",
+      "pages": [
+        { "id": "beginners-guide", "title": "Beginner's Guide", "path": "/BEGINNERS-GUIDE.html", "difficulty": "beginner", "readingTime": 15, "description": "Step-by-step guide for absolute beginners — install Git, first commit, basic commands", "tags": ["setup", "basics", "first-steps"] },
+        { "id": "git-cheatsheet", "title": "Git Cheatsheet", "path": "/git-cheatsheet.html", "difficulty": "beginner", "readingTime": 10, "description": "Quick reference of the most commonly used Git commands", "tags": ["reference", "commands", "quick"] },
+        { "id": "quick-reference", "title": "Quick Reference", "path": "/QUICK-REFERENCE.html", "difficulty": "beginner", "readingTime": 8, "description": "At-a-glance reference for Git commands and workflows", "tags": ["reference", "commands"] },
+        { "id": "git-glossary", "title": "Git Glossary", "path": "/GIT-GLOSSARY.html", "difficulty": "beginner", "readingTime": 12, "description": "Definitions of common Git terminology", "tags": ["reference", "terms"] },
+        { "id": "faq", "title": "FAQ", "path": "/FAQ.html", "difficulty": "beginner", "readingTime": 10, "description": "Frequently asked questions about Git and GitHub", "tags": ["help", "common-questions"] }
+      ]
+    },
+    {
+      "title": "Learning Path",
+      "icon": "map",
+      "pages": [
+        { "id": "learning-path", "title": "Learning Path", "path": "/Learning-Path.html", "difficulty": "beginner", "readingTime": 20, "description": "Structured 4-week plan from zero to advanced Git mastery", "tags": ["curriculum", "plan", "structured"] }
+      ]
+    },
+    {
+      "title": "Guides",
+      "icon": "book",
+      "pages": [
+        { "id": "complete-guide", "title": "Complete Git & GitHub Guide", "path": "/COMPLETE-GIT-GITHUB-GUIDE.html", "difficulty": "intermediate", "readingTime": 45, "description": "Comprehensive deep-dive into all Git and GitHub topics", "tags": ["comprehensive", "all-topics"] },
+        { "id": "git-workflows", "title": "Git Workflows", "path": "/GIT-WORKFLOWS.html", "difficulty": "intermediate", "readingTime": 25, "description": "Git Flow, GitHub Flow, and other branching strategies explained", "tags": ["branching", "workflows", "team"] },
+        { "id": "conventional-commits", "title": "Conventional Commits", "path": "/CONVENTIONAL-COMMITS.html", "difficulty": "beginner", "readingTime": 12, "description": "Standardized commit message format for better collaboration", "tags": ["commits", "conventions", "team"] }
+      ]
+    },
+    {
+      "title": "GitHub",
+      "icon": "github",
+      "pages": [
+        { "id": "github-actions", "title": "GitHub Actions Guide", "path": "/github-actions-guide.html", "difficulty": "beginner", "readingTime": 20, "description": "Introduction to GitHub Actions for CI/CD automation", "tags": ["actions", "ci-cd", "automation"] },
+        { "id": "github-actions-advanced", "title": "GitHub Actions Advanced", "path": "/GITHUB-ACTIONS-ADVANCED.html", "difficulty": "advanced", "readingTime": 30, "description": "Advanced GitHub Actions patterns, matrix builds, and deployments", "tags": ["actions", "advanced", "ci-cd"] },
+        { "id": "github-pages", "title": "GitHub Pages", "path": "/GITHUB-PAGES.html", "difficulty": "beginner", "readingTime": 20, "description": "Host static websites for free with GitHub Pages", "tags": ["pages", "hosting", "static-site"] },
+        { "id": "pull-request-guide", "title": "Pull Request Guide", "path": "/GITHUB-PR-GUIDE.html", "difficulty": "beginner", "readingTime": 18, "description": "How to create, review, and merge pull requests on GitHub", "tags": ["pr", "collaboration", "review"] },
+        { "id": "profile-readme", "title": "GitHub Profile README", "path": "/GITHUB-PROFILE-README.html", "difficulty": "beginner", "readingTime": 12, "description": "Create a standout GitHub profile with a custom README", "tags": ["profile", "readme", "personal-brand"] },
+        { "id": "rest-api", "title": "GitHub REST API", "path": "/GITHUB-REST-API.html", "difficulty": "intermediate", "readingTime": 25, "description": "Interact with GitHub programmatically using the REST API", "tags": ["api", "automation", "integration"] },
+        { "id": "code-review", "title": "Code Review Guide", "path": "/CODE-REVIEW-GUIDE.html", "difficulty": "intermediate", "readingTime": 15, "description": "Best practices for reviewing code on GitHub", "tags": ["review", "team", "best-practices"] }
+      ]
+    },
+    {
+      "title": "Advanced Git",
+      "icon": "cpu",
+      "pages": [
+        { "id": "git-aliases", "title": "Git Aliases", "path": "/GIT-ALIASES-GUIDE.html", "difficulty": "beginner", "readingTime": 10, "description": "Speed up your workflow with custom Git aliases", "tags": ["aliases", "productivity"] },
+        { "id": "git-hooks", "title": "Git Hooks", "path": "/GIT-HOOKS-GUIDE.html", "difficulty": "intermediate", "readingTime": 18, "description": "Automate tasks with Git hooks for pre-commit, pre-push, and more", "tags": ["hooks", "automation"] },
+        { "id": "git-internals", "title": "Git Internals", "path": "/GIT-INTERNALS.html", "difficulty": "advanced", "readingTime": 30, "description": "Understand how Git works under the hood — objects, refs, and the .git directory", "tags": ["internals", "deep-dive"] },
+        { "id": "git-performance", "title": "Git Performance", "path": "/GIT-PERFORMANCE-GUIDE.html", "difficulty": "advanced", "readingTime": 20, "description": "Optimize Git performance for large repositories", "tags": ["performance", "optimization"] },
+        { "id": "git-security", "title": "Git Security", "path": "/GIT-SECURITY-GUIDE.html", "difficulty": "intermediate", "readingTime": 18, "description": "Secure your Git repositories and GitHub accounts", "tags": ["security", "best-practices"] },
+        { "id": "tips-tricks", "title": "Tips & Tricks", "path": "/GIT-TIPS-TRICKS.html", "difficulty": "intermediate", "readingTime": 15, "description": "Useful Git tips and tricks to boost productivity", "tags": ["tips", "productivity"] },
+        { "id": "visual-guide", "title": "Visual Guide", "path": "/GIT-VISUAL-GUIDE.html", "difficulty": "beginner", "readingTime": 20, "description": "Learn Git concepts through visual diagrams and examples", "tags": ["visual", "diagrams", "learning"] },
+        { "id": "troubleshooting", "title": "Troubleshooting", "path": "/TROUBLESHOOTING.html", "difficulty": "intermediate", "readingTime": 15, "description": "Common Git problems and their solutions", "tags": ["help", "errors", "fixes"] }
+      ]
+    },
+    {
+      "title": "Resources",
+      "icon": "list",
+      "pages": [
+        { "id": "practice-exercises", "title": "Practice Exercises", "path": "/Practice-Exercises.html", "difficulty": "beginner", "readingTime": 10, "description": "Hands-on exercises to practice Git commands", "tags": ["practice", "exercises", "hands-on"] },
+        { "id": "exercise-solutions", "title": "Exercise Solutions", "path": "/EXERCISES.html", "difficulty": "beginner", "readingTime": 15, "description": "Solutions to all practice exercises", "tags": ["solutions", "answers"] },
+        { "id": "git-scenarios", "title": "Git Scenarios", "path": "/GIT-SCENARIOS.html", "difficulty": "intermediate", "readingTime": 25, "description": "Real-world Git scenarios and how to handle them", "tags": ["scenarios", "real-world", "problem-solving"] },
+        { "id": "interview-questions", "title": "Interview Questions", "path": "/GIT-INTERVIEW-QUESTIONS.html", "difficulty": "intermediate", "readingTime": 30, "description": "Common Git and GitHub interview questions with answers", "tags": ["interview", "career", "preparation"] },
+        { "id": "commands-by-task", "title": "Commands by Task", "path": "/GIT-COMMANDS-BY-TASK.html", "difficulty": "beginner", "readingTime": 12, "description": "Git commands organized by what you want to accomplish", "tags": ["reference", "commands", "task-based"] },
+        { "id": "migration-guide", "title": "Migration Guide", "path": "/MIGRATION-GUIDE.html", "difficulty": "intermediate", "readingTime": 18, "description": "Migrate projects from other VCS to Git", "tags": ["migration", "svn", "mercurial"] },
+        { "id": "git-for-teams", "title": "Git for Teams", "path": "/GIT-FOR-TEAMS-GUIDE.html", "difficulty": "intermediate", "readingTime": 20, "description": "Collaborative Git workflows and team best practices", "tags": ["team", "collaboration", "workflow"] },
+        { "id": "master-index", "title": "Master Index", "path": "/Master-Index.html", "difficulty": "beginner", "readingTime": 5, "description": "Complete overview of every topic in this repository", "tags": ["index", "overview", "sitemap"] }
+      ]
+    },
+    {
+      "title": "Git Commands",
+      "icon": "terminal",
+      "pages": [
+        { "id": "git-overview", "title": "Overview", "path": "/git/", "difficulty": "beginner", "readingTime": 5, "description": "Overview of Git command reference" },
+        { "id": "core-commands", "title": "Core Commands", "path": "/git/core-commands.html", "difficulty": "beginner", "readingTime": 15, "description": "init, add, commit, status, log — the essential commands" },
+        { "id": "branching-merging", "title": "Branching & Merging", "path": "/git/branching-merging.html", "difficulty": "intermediate", "readingTime": 20, "description": "branch, checkout, merge, rebase — managing branches" },
+        { "id": "remote-operations", "title": "Remote Operations", "path": "/git/remote-operations.html", "difficulty": "intermediate", "readingTime": 18, "description": "clone, push, pull, fetch, remote — working with remotes" },
+        { "id": "undoing-changes", "title": "Undoing Changes", "path": "/git/undoing-changes.html", "difficulty": "intermediate", "readingTime": 15, "description": "reset, restore, revert — safely undo changes" },
+        { "id": "stashing", "title": "Stashing", "path": "/git/stashing.html", "difficulty": "intermediate", "readingTime": 12, "description": "stash — temporarily save changes" },
+        { "id": "collaboration", "title": "Collaboration", "path": "/git/collaboration.html", "difficulty": "intermediate", "readingTime": 20, "description": "cherry-pick, rebase, submodule — team workflows" },
+        { "id": "configuration", "title": "Configuration", "path": "/git/configuration.html", "difficulty": "beginner", "readingTime": 10, "description": "config, aliases, gitignore — configure Git" },
+        { "id": "advanced-commands", "title": "Advanced", "path": "/git/advanced.html", "difficulty": "advanced", "readingTime": 25, "description": "bisect, reflog, filter-branch — advanced operations" }
+      ]
+    },
+    {
+      "title": "GitHub Features",
+      "icon": "layers",
+      "pages": [
+        { "id": "gh-overview", "title": "Overview", "path": "/github/", "difficulty": "beginner", "readingTime": 5, "description": "Overview of GitHub features" },
+        { "id": "repositories", "title": "Repositories", "path": "/github/repositories.html", "difficulty": "beginner", "readingTime": 15, "description": "Managing repositories on GitHub" },
+        { "id": "issues-projects", "title": "Issues & Projects", "path": "/github/issues-projects.html", "difficulty": "beginner", "readingTime": 18, "description": "Track work with Issues and Projects" },
+        { "id": "pull-requests", "title": "Pull Requests", "path": "/github/pull-requests.html", "difficulty": "intermediate", "readingTime": 20, "description": "Pull request workflow and best practices" },
+        { "id": "actions-cicd", "title": "Actions & CI/CD", "path": "/github/actions.html", "difficulty": "intermediate", "readingTime": 25, "description": "Automate workflows with GitHub Actions" },
+        { "id": "github-pages-feature", "title": "GitHub Pages", "path": "/github/pages.html", "difficulty": "beginner", "readingTime": 15, "description": "Deploy static sites with GitHub Pages" },
+        { "id": "security", "title": "Security", "path": "/github/security.html", "difficulty": "intermediate", "readingTime": 20, "description": "GitHub security features and best practices" },
+        { "id": "api", "title": "API", "path": "/github/api.html", "difficulty": "intermediate", "readingTime": 20, "description": "GitHub API integration" },
+        { "id": "cli", "title": "CLI (gh)", "path": "/github/cli.html", "difficulty": "beginner", "readingTime": 15, "description": "GitHub CLI tool guide" },
+        { "id": "profiles-orgs", "title": "Profiles & Orgs", "path": "/github/profiles-orgs.html", "difficulty": "beginner", "readingTime": 12, "description": "Manage profiles and organizations" }
+      ]
+    }
+  ]
+}

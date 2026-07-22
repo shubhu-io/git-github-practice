@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Git Interview Questions — Git & GitHub Learning Hub</title>
+  <meta name="description" content="50+ curated Git and GitHub interview questions with detailed answers.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-INTERVIEW-QUESTIONS.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <a href="./" class="navbar-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Git & GitHub Hub</a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search"><svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation"><span class="navbar-search-kbd">Ctrl+K</span></div>
+    <div class="navbar-actions"><button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div>
+  </header>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span class="breadcrumbs-sep"></span><a href="./">Resources</a><span class="breadcrumbs-sep"></span><span class="breadcrumbs-current">Interview Questions</span></nav>
+      <h1>Git & GitHub Interview Questions</h1>
+      <div class="article-meta"><span class="article-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 min read</span><span class="badge badge-intermediate">Intermediate</span></div>
+
+      <div id="article-content" class="article-content">
+        <p>50+ curated Git and GitHub interview questions organized by difficulty. Each question includes a detailed answer and explanation.</p>
+
+        <div class="box box-info"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div class="box-content"><div class="box-title">How to Use This Guide</div><p>Read each question, try to answer it yourself, then expand to see the solution. Practice explaining concepts out loud — interviews test communication as much as knowledge.</p></div></div>
+
+        <h2 id="beginner-questions">Beginner Questions</h2>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q1: What is Git and why is it used?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><strong>Git</strong> is a distributed version control system that tracks changes in source code during software development. It allows multiple developers to work on the same project simultaneously, maintains a complete history of changes, and enables branching and merging. It's used because it's fast, distributed (every developer has a full copy), handles large projects well, and has become the industry standard.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q2: What's the difference between Git and GitHub?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><strong>Git</strong> is the version control system that runs locally on your computer. <strong>GitHub</strong> is a cloud platform that hosts Git repositories online, adding collaboration features like pull requests, issues, actions, and project management. You can use Git without GitHub, but GitHub extends Git's capabilities for team collaboration.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q3: What is a commit?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>A <strong>commit</strong> is a snapshot of your repository at a specific point in time. Each commit has a unique hash (e.g., <code>a1b2c3d</code>), an author, a timestamp, and a message describing the change. Commits form the building blocks of your project history and allow you to track exactly what changed and when.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q4: What is a branch and why use it?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>A <strong>branch</strong> is a parallel version of your repository. It allows you to work on features, bug fixes, or experiments independently without affecting the main codebase. Once the work is complete and tested, you merge it back into the main branch. This is the foundation of Git's collaboration model.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q5: What is the difference between <code>git pull</code> and <code>git fetch</code>?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><code>git fetch</code> downloads changes from the remote repository but <strong>does not merge</strong> them into your local branch. It lets you review changes before incorporating them. <code>git pull</code> is a shortcut that does <code>git fetch</code> followed by <code>git merge</code>, immediately integrating the remote changes into your local branch.</p></div>
+          </div>
+        </div>
+
+        <h2 id="intermediate-questions">Intermediate Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q1: How do you resolve a merge conflict?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>When Git cannot automatically merge changes, it marks the conflict in the affected file:</p>
+            <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+your current changes
+=======
+incoming changes
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch</code></pre>
+            <p>To resolve: 1) Edit the file to keep the desired code 2) Remove the conflict markers 3) Run <code>git add &lt;file&gt;</code> 4) Run <code>git commit</code> to complete the merge.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q2: What is rebasing and when should you use it?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><strong>Rebasing</strong> rewrites commit history by applying your branch's commits on top of another branch. Use it to maintain a linear history and avoid merge commits. Rule of thumb: rebase before sharing (local cleanup), merge after sharing (public history). Never rebase shared branches.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q3: What's the difference between <code>git reset</code>, <code>git revert</code>, and <code>git restore</code>?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><code>git reset</code> moves the HEAD pointer backward, optionally discarding commits (use with caution on shared branches). <code>git revert</code> creates a new commit that undoes a previous commit — safe for shared history. <code>git restore</code> is for discarding unstaged changes or unstaging files.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q4: What is the staging area (index)?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>The <strong>staging area</strong> (also called the index) is an intermediate space between your working directory and the repository. It lets you selectively choose which changes to include in your next commit. This allows you to split unrelated changes into separate commits for cleaner history.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q5: What is a Pull Request and how does it work?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>A <strong>Pull Request (PR)</strong> is a GitHub feature that lets you propose changes from one branch to another. Team members can review the code, leave comments, request changes, and approve the PR. Once approved, the PR is merged. PRs are the standard way to collaborate on GitHub.</p></div>
+          </div>
+        </div>
+
+        <h2 id="advanced-questions">Advanced Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q1: What is the difference between <code>HEAD</code>, <code>working tree</code>, and <code>index</code>?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><strong>HEAD</strong> is a pointer to the current commit/branch you're on. The <strong>working tree</strong> is your actual files on disk (what you edit). The <strong>index</strong> (staging area) is the proposed next commit. The flow is: Working Tree → <code>git add</code> → Index → <code>git commit</code> → Repository (HEAD).</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q2: How does Git store data internally?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Git stores data as <strong>objects</strong> in the <code>.git/objects</code> directory. There are four types: <strong>blob</strong> (file content), <strong>tree</strong> (directory listing), <strong>commit</strong> (snapshot with metadata), and <strong>tag</strong> (named reference). Each object is identified by a SHA-1 hash of its content. Files are stored as blobs, directories as trees, and commits point to trees with parent references.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q3: How would you recover a lost commit using reflog?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>The <strong>reflog</strong> (reference log) records every movement of HEAD. If you accidentally delete a branch or reset too far, you can recover with: <code>git reflog</code> to find the lost commit hash, then <code>git checkout &lt;hash&gt;</code> to recover it, or <code>git branch recovered &lt;hash&gt;</code> to create a new branch pointing to it.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q4: What is the difference between fast-forward and three-way merge?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p><strong>Fast-forward merge</strong> happens when the target branch hasn't diverged — Git simply moves the pointer forward. <strong>Three-way merge</strong> creates a new merge commit when branches have diverged, combining changes from both branches and their common ancestor. Using <code>--no-ff</code> forces a merge commit even when fast-forward is possible.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q5: How would you squash commits?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Use interactive rebase: <code>git rebase -i HEAD~n</code> (where n is the number of commits to look back). In the editor, change <code>pick</code> to <code>squash</code> for commits you want to combine. This is useful for cleaning up messy commit history before merging a feature branch.</p></div>
+          </div>
+        </div>
+
+        <h2 id="github-questions">GitHub-Specific Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q1: How does GitHub Actions work?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>GitHub Actions automates workflows directly in your repository. You define workflows in <code>.github/workflows/*.yml</code> files. Workflows are triggered by events (push, PR, schedule) and run on GitHub-hosted or self-hosted runners. Common uses: running tests, deploying code, publishing packages, and automating releases.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q2: What is the difference between a fork and a branch?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>A <strong>fork</strong> creates a copy of an entire repository under your GitHub account, allowing you to freely experiment without affecting the original. A <strong>branch</strong> is a parallel version within the same repository. Forks are used for external contributions (open source), while branches are used for internal team collaboration.</p></div>
+          </div>
+        </div>
+
+        <h2 id="scenario-questions">Scenario-Based Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q1: You accidentally committed to the wrong branch. How do you fix it?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>1) <code>git log</code> to note the commit hash 2) <code>git checkout correct-branch</code> 3) <code>git cherry-pick &lt;hash&gt;</code> 4) <code>git checkout wrong-branch</code> 5) <code>git reset HEAD~1</code> to remove the commit. This moves the commit to the correct branch and rewinds the wrong one.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header"><span>Q2: How do you handle a situation where you need to work on something urgent but have uncommitted changes?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Use <code>git stash</code> to save your work-in-progress temporarily. Then switch to the urgent branch, do the work, commit it, switch back, and use <code>git stash pop</code> to restore your previous changes. This is the standard workflow for handling interruptions.</p></div>
+          </div>
+        </div>
+
+        <div class="box box-success"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div class="box-content"><div class="box-title">Practice Tips</div><p>Try explaining each concept out loud as if teaching someone. If you can't explain it simply, you don't understand it well enough. Pair this with the <a href="./git-cheatsheet.html">Cheatsheet</a> for command reference.</p></div></div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-brand">Git & GitHub Hub</div><div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div></div>
+      <div class="footer-col"><div class="footer-col-title">Learn</div><a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a><a href="./Learning-Path.html">Learning Path</a><a href="./GIT-WORKFLOWS.html">Git Workflows</a></div>
+      <div class="footer-col"><div class="footer-col-title">Resources</div><a href="./git-cheatsheet.html">Cheatsheet</a><a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a><a href="./Master-Index.html">Master Index</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a><a href="./FAQ.html">FAQ</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span><span>Built with ❤️</span></div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="./assets/js/theme.js"></script><script src="./assets/js/sidebar.js"></script><script src="./assets/js/toc.js"></script><script src="./assets/js/progress.js"></script><script src="./assets/js/search.js"></script><script src="./assets/js/components.js"></script><script src="./assets/js/router.js"></script><script src="./assets/js/animations.js"></script><script src="./assets/js/shortcuts.js"></script><script src="./assets/js/main.js"></script>
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus',function(){document.getElementById('search-overlay').style.display='block';document.getElementById('search-input-overlay')?.focus();});
+    document.getElementById('search-overlay')?.addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('search-overlay').style.display='none';if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-overlay').style.display='block';setTimeout(()=>document.getElementById('search-input-overlay')?.focus(),100);}});
+    document.getElementById('search-input-overlay')?.addEventListener('input',function(){var evt=new Event('input');document.getElementById('search-input').value=this.value;document.getElementById('search-input').dispatchEvent(evt);});
+  </script>
+</body>
+</html>

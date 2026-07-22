@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Git Workflows — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Compare Git Flow, GitHub Flow, and trunk-based development.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-WORKFLOWS.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <a href="./" class="navbar-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Git & GitHub Hub</a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search"><svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation"><span class="navbar-search-kbd">Ctrl+K</span></div>
+    <div class="navbar-actions"><button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div>
+  </header>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span class="breadcrumbs-sep"></span><a href="./">Guides</a><span class="breadcrumbs-sep"></span><span class="breadcrumbs-current">Git Workflows</span></nav>
+      <h1>Git Workflows</h1>
+      <div class="article-meta"><span class="article-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 25 min read</span><span class="badge badge-intermediate">Intermediate</span></div>
+
+      <div id="article-content" class="article-content">
+        <p>Choosing the right Git workflow is critical for team productivity. This guide covers the three most popular workflows and helps you choose the right one for your team.</p>
+
+        <h2 id="github-flow">GitHub Flow</h2>
+        <p>The simplest workflow. Ideal for small teams and continuous deployment.</p>
+
+        <div class="img-container" style="padding:var(--space-5);background:var(--clr-card-bg);">
+          <svg viewBox="0 0 700 130" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <rect x="20" y="40" width="120" height="50" rx="8" fill="var(--clr-primary-subtle)" stroke="var(--clr-primary)" stroke-width="2"/>
+            <text x="80" y="70" text-anchor="middle" fill="var(--clr-primary)" font-family="Inter,sans-serif" font-size="13" font-weight="600">main</text>
+            <circle cx="80" cy="40" r="5" fill="var(--clr-primary)"/>
+            <circle cx="140" cy="40" r="5" fill="var(--clr-text-tertiary)"/>
+
+            <line x1="140" y1="40" x2="200" y2="15" stroke="var(--clr-success)" stroke-width="2"/>
+            <rect x="200" y="0" width="130" height="40" rx="8" fill="var(--clr-success-bg)" stroke="var(--clr-success)" stroke-width="1.5"/>
+            <text x="265" y="25" text-anchor="middle" fill="var(--clr-success)" font-family="Inter,sans-serif" font-size="12" font-weight="600">feature-branch</text>
+            <circle cx="265" cy="40" r="4" fill="var(--clr-success)"/>
+            <circle cx="330" cy="40" r="4" fill="var(--clr-success)"/>
+
+            <line x1="200" y1="15" x2="200" y2="15" stroke="var(--clr-text-tertiary)" stroke-width="1.5" stroke-dasharray="4"/>
+            <line x1="330" y1="40" x2="400" y2="90" stroke="var(--clr-success)" stroke-width="2"/>
+            <rect x="370" y="80" width="70" height="40" rx="12" fill="var(--clr-info-bg)" stroke="var(--clr-info)" stroke-width="2"/>
+            <text x="405" y="105" text-anchor="middle" fill="var(--clr-info)" font-family="Inter,sans-serif" font-size="11" font-weight="600">PR</text>
+
+            <line x1="440" y1="100" x2="500" y2="65" stroke="var(--clr-primary)" stroke-width="2"/>
+            <circle cx="500" cy="65" r="5" fill="var(--clr-primary)"/>
+            <circle cx="560" cy="65" r="5" fill="var(--clr-primary)"/>
+            <circle cx="620" cy="65" r="5" fill="var(--clr-primary)"/>
+            <circle cx="670" cy="65" r="5" fill="var(--clr-primary)"/>
+
+            <text x="80" y="110" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">production</text>
+            <text x="265" y="60" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">feature work</text>
+            <text x="405" y="128" text-anchor="middle" fill="var(--clr-text-tertiary)" font-family="var(--ff-mono)" font-size="9">review + merge</text>
+          </svg>
+          <div class="img-caption">GitHub Flow: Main branch is always deployable. Feature branches + PRs keep it simple.</div>
+        </div>
+
+        <h3>Rules</h3>
+        <ul>
+          <li>Main branch is always deployable</li>
+          <li>Create feature branches from main</li>
+          <li>Open a Pull Request for every change</li>
+          <li>Review, discuss, and approve before merging</li>
+          <li>Deploy immediately after merging</li>
+        </ul>
+
+        <div class="box box-success"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div class="box-content"><div class="box-title">When to use GitHub Flow</div><p>Best for: small teams, SaaS products, continuous deployment, simple release processes. It's the default workflow for most modern teams.</p></div></div>
+
+        <h2 id="git-flow">Git Flow</h2>
+        <p>A more structured workflow with dedicated branches for features, releases, and hotfixes.</p>
+
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Branch</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>main</code></td><td>Production-ready code. Only merged from release/hotfix branches.</td></tr>
+            <tr><td><code>develop</code></td><td>Integration branch for features. Contains latest delivered changes.</td></tr>
+            <tr><td><code>feature/*</code></td><td>Branched from develop. Merged back into develop when complete.</td></tr>
+            <tr><td><code>release/*</code></td><td>Branched from develop when preparing a release. Merged to main and develop.</td></tr>
+            <tr><td><code>hotfix/*</code></td><td>Branched from main for urgent production fixes. Merged to main and develop.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="box box-warning"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div class="box-content"><div class="box-title">When to use Git Flow</div><p>Best for: larger teams, scheduled releases, mobile apps (where you can't deploy continuously), projects requiring multiple release versions.</p></div></div>
+
+        <h2 id="trunk-based">Trunk-Based Development</h2>
+        <p>All developers work on short-lived branches (less than a day) and merge directly to main multiple times per day.</p>
+        <ul>
+          <li>Short-lived feature branches (hours, not days)</li>
+          <li>Frequent merges to main (multiple times daily)</li>
+          <li>Feature flags hide incomplete work</li>
+          <li>Automated testing on every commit</li>
+          <li>Enables continuous deployment</li>
+        </ul>
+
+        <div class="box box-tip"><svg class="box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg><div class="box-content"><div class="box-title">Pro Tip</div><p>Start with GitHub Flow. It's the simplest and works for 90% of teams. Only adopt Git Flow or trunk-based if you have a specific need that GitHub Flow doesn't address.</p></div></div>
+
+        <h2 id="comparison">Workflow Comparison</h2>
+        <div class="table-wrapper"><table>
+          <thead><tr><th>Factor</th><th>GitHub Flow</th><th>Git Flow</th><th>Trunk-Based</th></tr></thead>
+          <tbody>
+            <tr><td>Complexity</td><td>Low</td><td>High</td><td>Medium</td></tr>
+            <tr><td>Release Control</td><td>Low</td><td>High</td><td>Medium</td></tr>
+            <tr><td>CI/CD Fit</td><td>Excellent</td><td>Moderate</td><td>Excellent</td></tr>
+            <tr><td>Team Size</td><td>1-10</td><td>10+</td><td>5-50</td></tr>
+            <tr><td>Learning Curve</td><td>Easy</td><td>Steep</td><td>Moderate</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <a href="./Learning-Path.html" class="page-nav-link prev"><div class="page-nav-label">Previous</div><div class="page-nav-title">← Learning Path</div></a>
+        <a href="./github-actions-guide.html" class="page-nav-link next"><div class="page-nav-label">Next</div><div class="page-nav-title">GitHub Actions →</div></a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-brand">Git & GitHub Hub</div><div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div></div>
+      <div class="footer-col"><div class="footer-col-title">Learn</div><a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a><a href="./Learning-Path.html">Learning Path</a><a href="./GIT-WORKFLOWS.html">Git Workflows</a></div>
+      <div class="footer-col"><div class="footer-col-title">Resources</div><a href="./git-cheatsheet.html">Cheatsheet</a><a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a><a href="./Master-Index.html">Master Index</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a><a href="./FAQ.html">FAQ</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span><span>Built with ❤️</span></div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="./assets/js/theme.js"></script><script src="./assets/js/sidebar.js"></script><script src="./assets/js/toc.js"></script><script src="./assets/js/progress.js"></script><script src="./assets/js/search.js"></script><script src="./assets/js/components.js"></script><script src="./assets/js/router.js"></script><script src="./assets/js/animations.js"></script><script src="./assets/js/shortcuts.js"></script><script src="./assets/js/main.js"></script>
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus',function(){document.getElementById('search-overlay').style.display='block';document.getElementById('search-input-overlay')?.focus();});
+    document.getElementById('search-overlay')?.addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('search-overlay').style.display='none';if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-overlay').style.display='block';setTimeout(()=>document.getElementById('search-input-overlay')?.focus(),100);}});
+    document.getElementById('search-input-overlay')?.addEventListener('input',function(){var evt=new Event('input');document.getElementById('search-input').value=this.value;document.getElementById('search-input').dispatchEvent(evt);});
+  </script>
+</body>
+</html>
