@@ -1,0 +1,24 @@
+<button id="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" style="position:fixed;bottom:1rem;right:1rem;z-index:999;width:44px;height:44px;border-radius:50%;border:2px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .2s">🌙</button>
+
+<script>
+(function() {
+  var btn = document.getElementById('dark-mode-toggle');
+  var theme = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    btn.textContent = t === 'dark' ? '☀️' : '🌙';
+  }
+
+  if (theme === 'dark' || (!theme && prefersDark)) {
+    setTheme('dark');
+  }
+
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
