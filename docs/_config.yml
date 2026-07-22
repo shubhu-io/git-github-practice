@@ -1,0 +1,36 @@
+title: Git & GitHub Learning Hub
+description: A comprehensive guide to mastering Git and GitHub — from first commit to advanced workflows
+remote_theme: just-the-docs/just-the-docs
+
+url: "https://shubhu-io.github.io"
+baseurl: "/git-github-practice"
+
+aux_links:
+  "View on GitHub":
+    - "https://github.com/shubhu-io/git-github-practice"
+
+aux_links_new_tab: true
+
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+
+heading_anchors: true
+
+footer_content: "Copyright &copy; 2026. Distributed under the <a href=\"https://github.com/shubhu-io/git-github-practice/blob/master/LICENSE\">MIT License.</a>"
+
+color_scheme: light
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

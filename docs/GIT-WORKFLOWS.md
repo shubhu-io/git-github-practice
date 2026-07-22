@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git Workflows
+nav_order: 10
+---
 # Git Workflows Guide
 
 This document describes common Git workflows used in software development teams.

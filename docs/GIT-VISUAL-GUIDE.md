@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git Visual Guide
+nav_order: 25
+---
 # Git Visual Guide
 
 Visual representations of Git concepts.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub Profile README
+nav_order: 16
+---
 # GitHub Profile README Guide
 
 How to create a amazing GitHub profile README.

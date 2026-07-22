@@ -1,3 +1,8 @@
+---
+layout: default
+title: FAQ
+nav_order: 8
+---
 # Frequently Asked Questions
 
 Common Git and GitHub questions and answers.

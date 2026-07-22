@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git for Teams
+nav_order: 32
+---
 # Git for Teams Guide
 
 Best practices for teams using Git.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git Aliases
+nav_order: 19
+---
 # Git Aliases Guide
 
 A comprehensive guide to useful Git aliases.

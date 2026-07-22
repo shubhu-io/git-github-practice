@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub Actions Guide
+nav_order: 12
+---
 # GitHub Actions Quick Guide
 
 ## Workflow File Location

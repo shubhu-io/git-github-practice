@@ -1,3 +1,8 @@
+---
+layout: default
+title: Beginners Guide
+nav_order: 2
+---
 # Complete Beginner's Guide to Git & GitHub
 
 A step-by-step guide for absolute beginners.
@@ -203,7 +208,7 @@ git restore --staged filename
 
 ## Next Steps
 
-1. Read [docs/FAQ.md](docs/FAQ.md) for more questions
-2. Try [docs/EXERCISES.md](docs/EXERCISES.md) for practice
-3. Run the [examples/](examples/) scripts
-4. Read [docs/COMPLETE-GIT-GITHUB-GUIDE.md](docs/COMPLETE-GIT-GITHUB-GUIDE.md) for advanced topics
+1. Read [FAQ.md](FAQ.md) for more questions
+2. Try [Exercises.md](Exercises.md) for practice
+3. Run the examples in the `examples/` directory
+4. Read [Complete-Git-GitHub-Guide.md](Complete-Git-GitHub-Guide.md) for advanced topics

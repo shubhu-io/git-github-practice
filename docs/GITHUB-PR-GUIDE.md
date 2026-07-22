@@ -1,3 +1,8 @@
+---
+layout: default
+title: Pull Request Guide
+nav_order: 15
+---
 # GitHub Pull Request Guide
 
 A comprehensive guide to creating, managing, and reviewing Pull Requests on GitHub.

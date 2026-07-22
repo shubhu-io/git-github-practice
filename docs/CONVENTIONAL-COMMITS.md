@@ -1,3 +1,8 @@
+---
+layout: default
+title: Conventional Commits
+nav_order: 11
+---
 # Conventional Commits Guide
 
 A specification for adding human and machine readable meaning to commit messages.

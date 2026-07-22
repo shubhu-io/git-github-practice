@@ -1,3 +1,8 @@
+---
+layout: default
+title: Troubleshooting
+nav_order: 26
+---
 # Git Troubleshooting Guide
 
 Common Git problems and their solutions.

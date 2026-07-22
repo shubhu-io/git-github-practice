@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git Performance
+nav_order: 22
+---
 # Git Performance Guide
 
 Optimize Git for speed and efficiency.

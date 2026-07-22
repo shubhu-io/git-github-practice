@@ -1,3 +1,8 @@
+---
+layout: default
+title: Git Tips & Tricks
+nav_order: 24
+---
 # Git Tips & Tricks
 
 Pro tips to work faster and smarter.

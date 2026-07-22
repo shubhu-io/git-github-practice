@@ -1,3 +1,8 @@
+---
+layout: default
+title: Commands by Task
+nav_order: 30
+---
 # Git Commands by Task
 
 Find the right command for what you want to do.
@@ -152,4 +157,4 @@ STASH:    git stash / git stash pop
 
 - [Git Documentation](https://git-scm.com/docs)
 - [GitHub Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-- [Git Quick Reference](docs/QUICK-REFERENCE.md)
+- [Git Quick Reference](QUICK-REFERENCE.md)

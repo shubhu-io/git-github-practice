@@ -1,3 +1,8 @@
+---
+layout: default
+title: Migration Guide
+nav_order: 31
+---
 # Migration Guide
 
 Migrating from other version control systems to Git.

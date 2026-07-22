@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub Pages
+nav_order: 14
+---
 # GitHub Pages Guide
 
 A complete guide to setting up and using GitHub Pages.
