@@ -1,0 +1,25 @@
+# These owners will be automatically requested for review
+# when someone opens a pull request.
+#
+# Each line is a file pattern followed by one or more owners.
+#
+# These owners will be automatically requested for review
+# when someone opens a pull request.
+
+# Default owners for everything
+*       @username
+
+# Documentation
+docs/   @username
+
+# Source code
+src/    @username
+
+# Tests
+tests/  @username
+
+# GitHub Actions workflows
+.github/workflows/  @username
+
+# Scripts
+scripts/  @username

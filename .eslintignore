@@ -1,0 +1,56 @@
+# ESLint Ignore
+# Files and directories that ESLint should ignore
+
+# Dependencies
+node_modules/
+vendor/
+bower_components/
+
+# Build output
+dist/
+build/
+out/
+.cache/
+
+# Coverage
+coverage/
+htmlcov/
+
+# Generated files
+*.generated.*
+*.auto-generated.*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Configuration files
+*.config.js
+*.config.ts
+*.config.mjs
+*.config.cjs
+
+# Minified files
+*.min.js
+
+# Documentation
+docs/
+
+# Examples
+examples/
+
+# Tests (if using different test runner)
+tests/coverage/
+
+# Scripts
+scripts/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

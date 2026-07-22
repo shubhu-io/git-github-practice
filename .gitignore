@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Build output
+dist/
+build/
+*.egg-info/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+*.coverage
+
+# Misc
+*.bak
+*.tmp
+*.temp

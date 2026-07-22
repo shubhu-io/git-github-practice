@@ -1,0 +1,88 @@
+{
+  "name": "git-github-complete",
+  "version": "1.0.0",
+  "description": "A complete Git & GitHub learning repository with 110+ files",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "npm run lint && npm run test && npm run format:check",
+    "prepare": "husky",
+    "commit": "git-cz",
+    "release": "semantic-release",
+    "setup": "node scripts/setup.js",
+    "docs": "node scripts/generate-docs.js",
+    "validate-commit": "commitlint --edit",
+    "git:status": "bash examples/daily-workflow.sh status",
+    "git:log": "bash examples/daily-workflow.sh log",
+    "git:diff": "bash examples/daily-workflow.sh diff",
+    "git:clean": "bash examples/clean.sh",
+    "gh:create-issue": "bash examples/github-api.sh issue",
+    "gh:create-pr": "bash examples/github-api.sh pr",
+    "gh:list-prs": "bash examples/github-api.sh list-prs",
+    "gh:release": "bash examples/github-api.sh release",
+    "automation:auto-assign": "bash examples/git-bot.sh auto-assign",
+    "automation:auto-label": "bash examples/git-bot.sh auto-label",
+    "automation:close-stale": "bash examples/git-bot.sh auto-close"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint --edit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/Git-Github.git"
+  },
+  "keywords": [
+    "git",
+    "github",
+    "tutorial",
+    "learning",
+    "automation",
+    "ci-cd",
+    "devops"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/your-username/Git-Github/issues"
+  },
+  "homepage": "https://github.com/your-username/Git-Github#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "@commitlint/cz-conventional-changelog": "^19.0.0",
+    "commitizen": "^4.3.0",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "semantic-release": "^23.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.0"
+  }
+}

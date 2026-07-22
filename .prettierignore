@@ -1,0 +1,63 @@
+# Prettier Ignore
+# Files and directories that Prettier should ignore
+
+# Dependencies
+node_modules/
+vendor/
+bower_components/
+
+# Build output
+dist/
+build/
+out/
+.cache/
+
+# Coverage
+coverage/
+htmlcov/
+*.coverage
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Minified files
+*.min.js
+*.min.css
+*.min.html
+
+# Generated files
+*.generated.*
+*.auto-generated.*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Documentation (if generated)
+docs/api/
+docs/_build/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local

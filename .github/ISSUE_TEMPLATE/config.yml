@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/username/git-github-practice/tree/main/docs
+    about: Check the documentation first
+  - name: FAQ
+    url: https://github.com/username/git-github-practice/blob/main/docs/FAQ.md
+    about: Frequently asked questions
+  - name: External Documentation
+    url: https://git-scm.com/doc
+    about: Official Git documentation
