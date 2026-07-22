@@ -221,13 +221,13 @@ a:hover { color: var(--link-hover); }
 .greedy-nav .visible-links a::before { background: var(--link) !important; }
 .greedy-nav .navicon, .greedy-nav .navicon::before, .greedy-nav .navicon::after { background: var(--text) !important; }
 
-.sidebar { background-color: var(--sidebar-bg) !important; }
+.sidebar { background-color: var(--sidebar-bg); }
 .nav__list .nav__items { color: var(--text); }
-.nav__list .nav__items a { color: var(--text-dim) !important; }
-.nav__list .nav__items a:hover { color: var(--link) !important; }
-.nav__list .nav__items a.active { color: var(--link) !important; font-weight: 700; }
-.nav__list .nav__sub-title { color: var(--text) !important; font-weight: 700; }
-.nav__list .nav__items li { border-bottom-color: var(--border) !important; }
+.nav__list .nav__items a { color: var(--text-dim); }
+.nav__list .nav__items a:hover { color: var(--accent, var(--link)); }
+.nav__list .nav__items a.active { color: var(--accent, var(--link)) ; font-weight: 700; }
+.nav__list .nav__sub-title { color: var(--text); font-weight: 700; }
+.nav__list .nav__items li { border-bottom-color: var(--border); }
 .author__urls-wrapper button { color: var(--text); }
 
 .page__content p, .page__content li, .page__content dt { color: var(--text); }
@@ -303,4 +303,22 @@ kbd { background-color: var(--code-bg); color: var(--code-text); border-color: v
 .highlight .ge { font-style: italic; }
 
 .highlighter-rouge .highlight, .highlighter-rouge .highlight code, .highlighter-rouge .highlight pre { background: transparent !important; }
+
+[data-theme="dark"], [data-theme="night"], [data-theme="forest"], [data-theme="ocean"] {
+  --accent: #2ea043;
+  --accent-hover: #3fb950;
+  --bg-primary: #0d1117;
+  --bg-surface: #161b22;
+  --text-primary: #e6edf3;
+  --text-muted: #8b949e;
+}
+
+[data-theme="light"], [data-theme="sepia"] {
+  --accent: #1a7f37;
+  --accent-hover: #2ea043;
+  --bg-primary: #ffffff;
+  --bg-surface: #f6f8fa;
+  --text-primary: #24292f;
+  --text-muted: #57606a;
+}
 </style>
