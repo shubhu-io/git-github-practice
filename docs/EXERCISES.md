@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Exercise Solutions
-nav_order: 33
 ---
 # Git Exercises
 

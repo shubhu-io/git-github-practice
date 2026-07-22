@@ -1,7 +1,5 @@
 ---
-layout: default
 title: GitHub Actions Advanced
-nav_order: 13
 ---
 # Advanced GitHub Actions Guide
 

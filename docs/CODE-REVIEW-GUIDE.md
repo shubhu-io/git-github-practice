@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Code Review Guide
-nav_order: 18
 ---
 # Code Review Guide
 

@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Practice Exercises
-nav_order: 7
 ---
 # Practice Exercises
 

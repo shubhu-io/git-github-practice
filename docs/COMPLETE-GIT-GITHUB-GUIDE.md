@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Complete Git & GitHub Guide
-nav_order: 9
 ---
 # Git & GitHub Complete Learning Guide
 

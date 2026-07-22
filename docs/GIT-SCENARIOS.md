@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Scenarios
-nav_order: 28
 ---
 # Common Git Scenarios
 

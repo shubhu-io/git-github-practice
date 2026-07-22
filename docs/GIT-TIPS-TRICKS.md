@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Tips & Tricks
-nav_order: 24
 ---
 # Git Tips & Tricks
 

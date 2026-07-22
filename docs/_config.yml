@@ -1,33 +1,50 @@
 title: Git & GitHub Learning Hub
+subtitle: Master Git from first commit to advanced workflows
 description: A comprehensive guide to mastering Git and GitHub — from first commit to advanced workflows
-remote_theme: just-the-docs/just-the-docs
+remote_theme: mmistakes/minimal-mistakes
 
 url: "https://shubhu-io.github.io"
 baseurl: "/git-github-practice"
 
-aux_links:
-  "View on GitHub":
-    - "https://github.com/shubhu-io/git-github-practice"
+repository: shubhu-io/git-github-practice
 
-aux_links_new_tab: true
+minimal_mistakes_skin: default
 
-search_enabled: true
-search:
-  heading_level: 3
-  previews: 3
-  preview_words_before: 5
-  preview_words_after: 10
-  tokenizer_separator: /[\s/]+/
+search: true
+search_full_content: true
 
-heading_anchors: true
+teaser: /assets/images/500x300.png
 
-footer_content: "Copyright &copy; 2026. Distributed under the <a href=\"https://github.com/shubhu-io/git-github-practice/blob/master/LICENSE\">MIT License.</a>"
+include:
+  - _pages
 
-color_scheme: light
+breadcrumbs: true
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: false
+      sidebar:
+        nav: "docs"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/shubhu-io/git-github-practice"
 
 plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
+  - jekyll-include-cache
+  - jekyll-sitemap
 
 exclude:
   - Gemfile

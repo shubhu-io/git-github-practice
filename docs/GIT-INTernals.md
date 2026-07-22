@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Internals
-nav_order: 21
 ---
 # Git Internals
 

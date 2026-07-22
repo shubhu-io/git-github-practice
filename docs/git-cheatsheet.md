@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Cheatsheet
-nav_order: 4
 ---
 # Git & GitHub Cheat Sheet
 

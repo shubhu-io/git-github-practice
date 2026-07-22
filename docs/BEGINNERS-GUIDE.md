@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Beginners Guide
-nav_order: 2
 ---
 # Complete Beginner's Guide to Git & GitHub
 

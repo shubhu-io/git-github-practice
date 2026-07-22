@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Security
-nav_order: 23
 ---
 # Git Security Best Practices
 

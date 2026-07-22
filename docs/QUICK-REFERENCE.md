@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Quick Reference
-nav_order: 5
 ---
 # Git Quick Reference Card
 

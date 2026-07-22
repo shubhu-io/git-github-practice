@@ -1,7 +1,5 @@
 ---
-layout: default
 title: GitHub Pages
-nav_order: 14
 ---
 # GitHub Pages Guide
 

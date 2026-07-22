@@ -1,7 +1,5 @@
 ---
-layout: default
 title: GitHub Profile README
-nav_order: 16
 ---
 # GitHub Profile README Guide
 

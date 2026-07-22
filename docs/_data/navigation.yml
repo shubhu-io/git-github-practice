@@ -1,0 +1,83 @@
+docs:
+  - title: Home
+    url: /git-github-practice/
+
+  - title: Getting Started
+    children:
+      - title: Beginners Guide
+        url: /git-github-practice/BEGINNERS-GUIDE.html
+      - title: Git Cheatsheet
+        url: /git-github-practice/git-cheatsheet.html
+      - title: Quick Reference
+        url: /git-github-practice/QUICK-REFERENCE.html
+      - title: Git Glossary
+        url: /git-github-practice/GIT-GLOSSARY.html
+      - title: FAQ
+        url: /git-github-practice/FAQ.html
+
+  - title: Learning Path
+    url: /git-github-practice/Learning-Path.html
+
+  - title: Guides
+    children:
+      - title: Complete Git & GitHub Guide
+        url: /git-github-practice/COMPLETE-GIT-GITHUB-GUIDE.html
+      - title: Git Workflows
+        url: /git-github-practice/GIT-WORKFLOWS.html
+      - title: Conventional Commits
+        url: /git-github-practice/CONVENTIONAL-COMMITS.html
+
+  - title: GitHub
+    children:
+      - title: GitHub Actions Guide
+        url: /git-github-practice/github-actions-guide.html
+      - title: GitHub Actions Advanced
+        url: /git-github-practice/GITHUB-ACTIONS-ADVANCED.html
+      - title: GitHub Pages
+        url: /git-github-practice/GITHUB-PAGES.html
+      - title: Pull Request Guide
+        url: /git-github-practice/GITHUB-PR-GUIDE.html
+      - title: Profile README
+        url: /git-github-practice/GITHUB-PROFILE-README.html
+      - title: REST API
+        url: /git-github-practice/GITHUB-REST-API.html
+      - title: Code Review Guide
+        url: /git-github-practice/CODE-REVIEW-GUIDE.html
+
+  - title: Advanced
+    children:
+      - title: Git Aliases
+        url: /git-github-practice/GIT-ALIASES-GUIDE.html
+      - title: Git Hooks
+        url: /git-github-practice/GIT-HOOKS-GUIDE.html
+      - title: Git Internals
+        url: /git-github-practice/GIT-INTernals.html
+      - title: Git Performance
+        url: /git-github-practice/GIT-PERFORMANCE-GUIDE.html
+      - title: Git Security
+        url: /git-github-practice/GIT-SECURITY-GUIDE.html
+      - title: Tips & Tricks
+        url: /git-github-practice/GIT-TIPS-TRICKS.html
+      - title: Visual Guide
+        url: /git-github-practice/GIT-VISUAL-GUIDE.html
+      - title: Troubleshooting
+        url: /git-github-practice/TROUBLESHOOTING.html
+
+  - title: Resources
+    children:
+      - title: Practice Exercises
+        url: /git-github-practice/Practice-Exercises.html
+      - title: Exercise Solutions
+        url: /git-github-practice/EXERCISES.html
+      - title: Git Scenarios
+        url: /git-github-practice/GIT-SCENARIOS.html
+      - title: Interview Questions
+        url: /git-github-practice/GIT-INTERVIEW-QUESTIONS.html
+      - title: Commands by Task
+        url: /git-github-practice/GIT-COMMANDS-BY-TASK.html
+      - title: Migration Guide
+        url: /git-github-practice/MIGRATION-GUIDE.html
+      - title: Git for Teams
+        url: /git-github-practice/GIT-FOR-TEAMS-GUIDE.html
+      - title: Master Index
+        url: /git-github-practice/Master-Index.html

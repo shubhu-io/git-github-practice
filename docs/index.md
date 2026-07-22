@@ -1,7 +1,5 @@
 ---
-layout: home
 title: Home
-nav_order: 1
 ---
 
 # Git & GitHub Learning Hub

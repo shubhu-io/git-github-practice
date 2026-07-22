@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Master Index
-nav_order: 27
 ---
 # 📚 Git & GitHub Complete Repository
 

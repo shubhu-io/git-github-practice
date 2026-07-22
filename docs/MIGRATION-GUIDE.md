@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Migration Guide
-nav_order: 31
 ---
 # Migration Guide
 

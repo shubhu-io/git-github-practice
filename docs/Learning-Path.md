@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Learning Path
-nav_order: 3
 ---
 # Learning Path for Git & GitHub
 

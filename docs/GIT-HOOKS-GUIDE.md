@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Hooks Guide
-nav_order: 20
 ---
 # Git Hooks Guide
 

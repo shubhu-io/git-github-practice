@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Conventional Commits
-nav_order: 11
 ---
 # Conventional Commits Guide
 

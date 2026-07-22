@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Glossary
-nav_order: 6
 ---
 # Git Glossary
 

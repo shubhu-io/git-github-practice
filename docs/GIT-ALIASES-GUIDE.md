@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Aliases
-nav_order: 19
 ---
 # Git Aliases Guide
 

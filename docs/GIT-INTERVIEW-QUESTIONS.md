@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Interview Questions
-nav_order: 29
 ---
 # Git Interview Questions
 

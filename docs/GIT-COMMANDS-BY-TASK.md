@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Commands by Task
-nav_order: 30
 ---
 # Git Commands by Task
 

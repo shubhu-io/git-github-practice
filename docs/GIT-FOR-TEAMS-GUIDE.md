@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git for Teams
-nav_order: 32
 ---
 # Git for Teams Guide
 

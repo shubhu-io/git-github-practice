@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Git Workflows
-nav_order: 10
 ---
 # Git Workflows Guide
 

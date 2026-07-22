@@ -1,7 +1,5 @@
 ---
-layout: default
 title: GitHub REST API
-nav_order: 17
 ---
 # GitHub REST API Guide
 
