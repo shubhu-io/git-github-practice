@@ -433,6 +433,22 @@ tr:hover td { background: var(--clr-bg-hover); }
 
 img { border-radius: var(--radius-md); }
 
+.anchor-link {
+  position: absolute;
+  left: -1.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  color: var(--clr-primary);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em;
+}
+.anchor-link svg { width: 0.9em; height: 0.9em; }
+h2:hover .anchor-link, h3:hover .anchor-link,
+.anchor-link:focus { opacity: 1; }
+
 /* --- Reduced motion --------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

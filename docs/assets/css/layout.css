@@ -6,12 +6,10 @@
 /* --- App Shell Grid --------------------------------------------------- */
 .app {
   display: grid;
-  grid-template-areas:
-    "navbar navbar navbar"
-    "sidebar main toc";
+  grid-template-areas: "sidebar main toc";
   grid-template-columns: var(--sidebar-width) 1fr var(--toc-width);
-  grid-template-rows: var(--navbar-height) 1fr;
-  min-height: 100vh;
+  grid-template-rows: 1fr;
+  min-height: calc(100vh - var(--navbar-height));
 }
 
 .app.sidebar-collapsed {
@@ -27,16 +25,14 @@
 
 @media (max-width: 1200px) {
   .app { grid-template-columns: var(--sidebar-width) 1fr; }
-  .app.no-toc { grid-template-columns: var(--sidebar-width) 1fr; }
 }
 
 @media (max-width: 768px) {
-  .app { grid-template-areas: "navbar" "main"; grid-template-columns: 1fr; }
+  .app { grid-template-areas: "main"; grid-template-columns: 1fr; }
 }
 
 /* --- Navbar ----------------------------------------------------------- */
 .navbar {
-  grid-area: navbar;
   position: sticky;
   top: 0;
   z-index: var(--z-navbar);
@@ -218,9 +214,10 @@
 /* --- Sidebar ---------------------------------------------------------- */
 .sidebar {
   grid-area: sidebar;
+  align-self: start;
   position: sticky;
-  top: var(--navbar-height);
-  height: calc(100vh - var(--navbar-height));
+  top: 0;
+  max-height: calc(100vh - var(--navbar-height));
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--clr-sidebar-bg);
@@ -405,12 +402,28 @@
   min-width: 0;
 }
 
+.main-full {
+  max-width: none;
+  padding: 0;
+}
+
+.main-full .content-narrow {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-10);
+}
+
 @media (max-width: 1200px) {
   .main { padding: var(--space-6) var(--space-6); }
 }
 
 @media (max-width: 768px) {
   .main { padding: var(--space-4) var(--space-4); padding-top: var(--space-6); }
+  .main-full .content-narrow { padding: var(--space-4); }
+}
+
+@media (max-width: 1200px) {
+  .main-full .content-narrow { padding: var(--space-6); }
 }
 
 /* --- Breadcrumbs ------------------------------------------------------ */
@@ -461,9 +474,10 @@
 /* --- Table of Contents (right side) ----------------------------------- */
 .toc {
   grid-area: toc;
+  align-self: start;
   position: sticky;
-  top: var(--navbar-height);
-  height: calc(100vh - var(--navbar-height));
+  top: 0;
+  max-height: calc(100vh - var(--navbar-height));
   overflow-y: auto;
   padding: var(--space-6) var(--space-4) var(--space-4) var(--space-2);
   font-size: var(--fs-sm);
@@ -517,7 +531,6 @@
 
 /* --- Page Footer ------------------------------------------------------ */
 .footer {
-  grid-column: 1 / -1;
   background: var(--clr-bg-elevated);
   border-top: 1px solid var(--clr-border-light);
   padding: var(--space-12) var(--space-10) var(--space-8);
@@ -595,7 +608,6 @@
 .footer-col a:hover { color: var(--clr-primary); text-decoration: none; }
 
 .footer-bottom {
-  grid-column: 1 / -1;
   margin-top: var(--space-8);
   padding-top: var(--space-6);
   border-top: 1px solid var(--clr-border-light);
