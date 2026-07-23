@@ -1,3 +1,8 @@
+---
+layout: single
+title: "GitHub API"
+---
+
 # GitHub API
 
 ## REST API

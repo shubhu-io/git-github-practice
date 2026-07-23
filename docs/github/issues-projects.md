@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Issues, Projects & Discussions"
+---
+
 # Issues, Projects & Discussions
 
 ## Issues

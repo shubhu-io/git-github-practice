@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Profiles & Organizations"
+---
+
 # Profiles & Organizations
 
 ## GitHub Profile

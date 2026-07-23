@@ -1,3 +1,8 @@
+---
+layout: single
+title: "GitHub CLI (gh)"
+---
+
 # GitHub CLI (gh)
 
 Command-line interface for GitHub.

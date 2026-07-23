@@ -1,3 +1,9 @@
+---
+layout: single
+title: "GitHub Features Reference"
+permalink: /github/
+---
+
 # GitHub Features Reference
 
 Comprehensive reference of GitHub features, tools, and workflows.

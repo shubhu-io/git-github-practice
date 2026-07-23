@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Branching & Merging"
+---
+
 # Branching & Merging
 
 ## git branch

@@ -1,3 +1,8 @@
+---
+layout: single
+title: "GitHub Pages"
+---
+
 # GitHub Pages
 
 Host static websites directly from a GitHub repository.

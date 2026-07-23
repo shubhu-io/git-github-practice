@@ -1,3 +1,9 @@
+---
+layout: single
+title: "Git Commands Reference"
+permalink: /git/
+---
+
 # Git Commands Reference
 
 Comprehensive reference of Git commands organized by category.

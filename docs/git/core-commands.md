@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Core Git Commands"
+---
+
 # Core Git Commands
 
 ## git init

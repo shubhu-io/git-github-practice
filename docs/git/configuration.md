@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Configuration"
+---
+
 # Configuration
 
 ## git config

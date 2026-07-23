@@ -1,3 +1,8 @@
+---
+layout: single
+title: "GitHub Actions"
+---
+
 # GitHub Actions
 
 ## Workflow Basics

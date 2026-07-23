@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Repositories"
+---
+
 # Repositories
 
 ## Creating a Repository

@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Stashing"
+---
+
 # Stashing
 
 ## git stash

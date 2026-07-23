@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Undoing Changes"
+---
+
 # Undoing Changes
 
 ## git reset

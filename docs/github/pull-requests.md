@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Pull Requests"
+---
+
 # Pull Requests
 
 ## Creating Pull Requests

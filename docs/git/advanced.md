@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Advanced Git Commands"
+---
+
 # Advanced Git Commands
 
 ## git notes

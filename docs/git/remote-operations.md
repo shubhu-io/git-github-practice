@@ -1,3 +1,8 @@
+---
+layout: single
+title: "Remote Operations"
+---
+
 # Remote Operations
 
 ## git remote

@@ -1,3 +1,8 @@
+---
+layout: single
+title: "GitHub Security"
+---
+
 # GitHub Security
 
 ## Dependabot
