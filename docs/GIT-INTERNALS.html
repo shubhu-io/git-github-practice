@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Internals — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Internals — deep dive into Git's internal architecture, objects, and data structures.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-INTERNALS.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Internals</span>
+      </nav>
+
+      <h1>Git Internals</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Internals</h1>
+<p>How Git works under the hood.</p>
+<h2>The .git Directory</h2>
+<p>When you initialize a Git repository, Git creates a <code>.git</code> directory:</p>
+<pre><code>.git/
+├── HEAD              # Points to current branch/commit
+├── config            # Repository-specific configuration
+├── description       # Used by GitWeb
+├── hooks/            # Client/server-side hook scripts
+├── info/             # Excludes file for ignored patterns
+├── objects/          # All content (commits, trees, blobs)
+│   ├── pack/         # Packed objects
+│   └── info/         # Object statistics
+├── refs/             # Pointers to commits (branches, tags)
+│   ├── heads/        # Local branch references
+│   ├── tags/         # Tag references
+│   └── remotes/      # Remote branch references
+├── index             # Staging area (binary file)
+└── logs/             # Reference log (reflog)
+    ├── HEAD
+    └── refs/
+</code></pre>
+<h2>Git Object Types</h2>
+<p>Git stores everything as objects. There are four object types:</p>
+<h3>1. Blob (Binary Large Object)</h3>
+<p>Stores file contents. No metadata, just raw data.</p>
+<pre><code class="language-bash"># Create a blob
+echo &quot;Hello, Git!&quot; | git hash-object -w --stdin
+# Output: 8d0e41234567890abcdef1234567890abcdef12
+</code></pre>
+<h3>2. Tree</h3>
+<p>Represents a directory. Contains pointers to blobs and other trees.</p>
+<pre><code class="language-bash"># View tree contents
+git ls-tree HEAD
+# Output: 100644 blob abc123...  README.md
+#         040000 tree def456...  src/
+</code></pre>
+<h3>3. Commit</h3>
+<p>Stores a snapshot with metadata:</p>
+<ul>
+<li>Tree pointer (snapshot of files)</li>
+<li>Parent commit(s)</li>
+<li>Author info</li>
+<li>Committer info</li>
+<li>Commit message</li>
+<li>Timestamp</li>
+</ul>
+<pre><code class="language-bash"># View commit object
+git cat-file -p HEAD
+# Output: tree abc123...
+#         parent def456...
+#         author Name &lt;email&gt; timestamp
+#         committer Name &lt;email&gt; timestamp
+#         
+#         Commit message
+</code></pre>
+<h3>4. Tag (Annotated)</h3>
+<p>Stores tag metadata pointing to a commit.</p>
+<pre><code class="language-bash"># View tag object
+git cat-file -p v1.0.0
+# Output: object abc123...
+#         type commit
+#         tag v1.0.0
+#         tagger Name &lt;email&gt; timestamp
+#         
+#         Tag message
+</code></pre>
+<h2>Object Storage</h2>
+<h3>How Objects are Stored</h3>
+<pre><code class="language-bash"># Calculate SHA-1 hash
+echo &quot;Hello, Git!&quot; | git hash-object --stdin
+# Output: 8d0e41234567890abcdef1234567890abcdef12
+
+# Store object
+echo &quot;Hello, Git!&quot; | git hash-object -w --stdin
+# Creates .git/objects/8d/0e41234567890abcdef1234567890abcdef12
+</code></pre>
+<h3>Pack Files</h3>
+<p>Git compresses objects into pack files for efficiency:</p>
+<pre><code class="language-bash"># Pack objects
+git gc
+
+# View pack files
+ls .git/objects/pack/
+# Output: pack-abc123.idx  pack-abc123.pack
+</code></pre>
+<h2>References (Refs)</h2>
+<p>References are pointers to commits:</p>
+<pre><code class="language-bash"># View branch reference
+cat .git/refs/heads/main
+# Output: abc123def456...
+
+# View tag reference
+cat .git/refs/tags/v1.0.0
+# Output: abc123def456...
+</code></pre>
+<h3>HEAD</h3>
+<p>Special reference that points to:</p>
+<ul>
+<li>A branch name (attached HEAD)</li>
+<li>A commit hash (detached HEAD)</li>
+</ul>
+<pre><code class="language-bash"># View HEAD
+cat .git/HEAD
+# Output: ref: refs/heads/main
+
+# Detach HEAD
+git checkout abc123
+cat .git/HEAD
+# Output: abc123def456...
+</code></pre>
+<h2>The Index (Staging Area)</h2>
+<p>The index is a binary file that stores:</p>
+<ul>
+<li>List of files in the staging area</li>
+<li>File metadata (permissions, timestamps)</li>
+<li>SHA-1 hashes of file contents</li>
+</ul>
+<pre><code class="language-bash"># View index contents
+git ls-files --stage
+# Output: 100644 abc123 0  README.md
+#         100644 def456 0  src/index.js
+</code></pre>
+<h2>Git Commands Under the Hood</h2>
+<h3>git add</h3>
+<pre><code class="language-bash"># Creates blob and updates index
+git add file.txt
+# Equivalent to:
+git hash-object -w file.txt  # Create blob
+git update-index --add file.txt  # Update index
+</code></pre>
+<h3>git commit</h3>
+<pre><code class="language-bash"># Creates tree and commit objects
+git commit -m &quot;message&quot;
+# Equivalent to:
+git write-tree  # Create tree from index
+git commit-tree HEAD^{tree} -p HEAD -m &quot;message&quot;  # Create commit
+git update-ref refs/heads/main &lt;commit-hash&gt;  # Update branch
+</code></pre>
+<h3>git checkout</h3>
+<pre><code class="language-bash"># Updates working directory and HEAD
+git checkout main
+# Equivalent to:
+git symbolic-ref HEAD refs/heads/main  # Update HEAD
+git checkout-index -a -f  # Update working directory
+</code></pre>
+<h2>SHA-1 Hashing</h2>
+<p>Git uses SHA-1 for:</p>
+<ul>
+<li>Object identification</li>
+<li>Integrity checking</li>
+<li>Branch and tag references</li>
+</ul>
+<pre><code class="language-bash"># Calculate SHA-1
+echo &quot;Hello&quot; | sha1sum
+# Output: 334ffc15c4849454e32a8c8a330f01c6d5130121  -
+
+# Git&#39;s internal SHA-1
+echo -n &quot;Hello&quot; | git hash-object --stdin
+# Output: 334ffc15c4849454e32a8c8a330f01c6d5130121
+</code></pre>
+<h2>Reflog</h2>
+<p>The reference log tracks all changes to refs:</p>
+<pre><code class="language-bash"># View reflog
+git reflog
+# Output: abc123 HEAD@{0}: commit: Add feature
+#         def456 HEAD@{1}: checkout: moving from main to feature
+#         ghi789 HEAD@{2}: commit: Initial commit
+
+# View specific reflog
+git reflog show main
+</code></pre>
+<h3>Using Reflog to Recover</h3>
+<pre><code class="language-bash"># Find lost commit
+git reflog
+
+# Recover
+git checkout abc123
+
+# Or reset branch
+git reset --hard abc123
+</code></pre>
+<h2>Config Storage</h2>
+<p>Git configuration is stored in files:</p>
+<pre><code class="language-bash"># System config
+cat /etc/gitconfig
+
+# User config
+cat ~/.gitconfig
+
+# Repository config
+cat .git/config
+</code></pre>
+<h2>Example: Anatomy of a Commit</h2>
+<pre><code class="language-bash"># Create a commit
+echo &quot;Hello&quot; &gt; file.txt
+git add file.txt
+git commit -m &quot;Initial commit&quot;
+
+# Inspect the commit
+git cat-file -p HEAD
+# Output:
+# tree abc123def456...
+# author Name &lt;email&gt; 1234567890 +0000
+# committer Name &lt;email&gt; 1234567890 +0000
+#
+# Initial commit
+
+# Inspect the tree
+git cat-file -p HEAD^{tree}
+# Output:
+# 100644 blob 8901234567890123456789012345678901234567  file.txt
+
+# Inspect the blob
+git cat-file -p 8901234567890123456789012345678901234567
+# Output:
+# Hello
+</code></pre>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git Internals Book</a></li>
+<li><a href="https://github.com/git/git">Git Source Code</a></li>
+<li><a href="https://github.com/git/git/wiki">Git Wiki</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

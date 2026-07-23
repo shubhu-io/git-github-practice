@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Review Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Code Review Guide — learn best practices for reviewing code in Git and GitHub workflows.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/CODE-REVIEW-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Code Review Guide</span>
+      </nav>
+
+      <h1>Code Review Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Code Review Guide</h1>
+<p>Best practices for reviewing code on GitHub.</p>
+<h2>Why Code Review Matters</h2>
+<ul>
+<li><strong>Quality</strong>: Catch bugs before they reach production</li>
+<li><strong>Knowledge Sharing</strong>: Everyone learns from each other</li>
+<li><strong>Consistency</strong>: Maintain coding standards</li>
+<li><strong>Security</strong>: Identify potential vulnerabilities</li>
+<li><strong>Documentation</strong>: Create a record of decisions</li>
+</ul>
+<h2>Code Review Checklist</h2>
+<h3>Before Reviewing</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Understand the PR description and linked issues</li>
+<li><input disabled="" type="checkbox"> Check if CI/CD tests pass</li>
+<li><input disabled="" type="checkbox"> Review the diff (not the full file)</li>
+<li><input disabled="" type="checkbox"> Understand the context and requirements</li>
+</ul>
+<h3>During Review</h3>
+<h4>Functionality</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Does the code do what it&#39;s supposed to do?</li>
+<li><input disabled="" type="checkbox"> Are edge cases handled?</li>
+<li><input disabled="" type="checkbox"> Are error conditions handled properly?</li>
+<li><input disabled="" type="checkbox"> Is the logic correct?</li>
+</ul>
+<h4>Code Quality</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Is the code readable and understandable?</li>
+<li><input disabled="" type="checkbox"> Are functions/components appropriately sized?</li>
+<li><input disabled="" type="checkbox"> Is there code duplication that could be refactored?</li>
+<li><input disabled="" type="checkbox"> Are naming conventions consistent?</li>
+</ul>
+<h4>Security</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Are inputs validated and sanitized?</li>
+<li><input disabled="" type="checkbox"> Are there any SQL injection vulnerabilities?</li>
+<li><input disabled="" type="checkbox"> Are secrets/credentials properly handled?</li>
+<li><input disabled="" type="checkbox"> Are permissions checked appropriately?</li>
+</ul>
+<h4>Performance</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Are there unnecessary database queries?</li>
+<li><input disabled="" type="checkbox"> Are there memory leaks?</li>
+<li><input disabled="" type="checkbox"> Are there inefficient algorithms?</li>
+<li><input disabled="" type="checkbox"> Is caching used appropriately?</li>
+</ul>
+<h4>Testing</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Are there adequate tests?</li>
+<li><input disabled="" type="checkbox"> Do tests cover edge cases?</li>
+<li><input disabled="" type="checkbox"> Are tests readable and maintainable?</li>
+<li><input disabled="" type="checkbox"> Do tests actually test what they should?</li>
+</ul>
+<h4>Documentation</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Is the code well-commented?</li>
+<li><input disabled="" type="checkbox"> Are complex algorithms explained?</li>
+<li><input disabled="" type="checkbox"> Is the API documentation updated?</li>
+<li><input disabled="" type="checkbox"> Are there any README updates needed?</li>
+</ul>
+<h2>How to Give Good Feedback</h2>
+<h3>Be Specific</h3>
+<p><strong>Bad:</strong></p>
+<pre><code>This is wrong.
+</code></pre>
+<p><strong>Good:</strong></p>
+<pre><code>This function doesn&#39;t handle the case where `user` is null.
+Consider adding a null check before accessing `user.name`.
+</code></pre>
+<h3>Be Constructive</h3>
+<p><strong>Bad:</strong></p>
+<pre><code>This code is terrible.
+</code></pre>
+<p><strong>Good:</strong></p>
+<pre><code>Consider extracting this logic into a separate function
+for better readability and reusability.
+</code></pre>
+<h3>Ask Questions</h3>
+<p><strong>Bad:</strong></p>
+<pre><code>Why did you do it this way?
+</code></pre>
+<p><strong>Good:</strong></p>
+<pre><code>I&#39;m curious about the choice here. Was there a specific
+reason you chose this approach over [alternative]?
+</code></pre>
+<h3>Use Code Suggestions</h3>
+<pre><code class="language-suggestion">const result = data.filter(item =&gt; item.active);
+</code></pre>
+<h2>Types of Comments</h2>
+<h3>Required Changes (Must Fix)</h3>
+<pre><code>[Must Fix] This will cause a runtime error when user is undefined.
+</code></pre>
+<h3>Suggestions (Nice to Have)</h3>
+<pre><code>[Suggestion] Consider using const instead of let here
+since the variable is never reassigned.
+</code></pre>
+<h3>Questions (Need Clarification)</h3>
+<pre><code>[Question] What happens if the API returns a 500 error here?
+</code></pre>
+<h3>Praise (Positive Feedback)</h3>
+<pre><code>[Praise] Great use of the strategy pattern here!
+This makes the code very extensible.
+</code></pre>
+<h3>Nit (Minor Issues)</h3>
+<pre><code>[Nit] Missing semicolon at end of line.
+</code></pre>
+<h2>Review Workflow</h2>
+<h3>For Reviewers</h3>
+<ol>
+<li><strong>First Pass</strong>: Get an overview of the changes</li>
+<li><strong>Second Pass</strong>: Focus on details and logic</li>
+<li><strong>Third Pass</strong>: Check for edge cases and security</li>
+<li><strong>Leave Comments</strong>: Be specific and constructive</li>
+<li><strong>Approve or Request Changes</strong>: Be decisive</li>
+</ol>
+<h3>For Authors</h3>
+<ol>
+<li><strong>Self-Review</strong>: Review your own PR first</li>
+<li><strong>Write Good Description</strong>: Explain what and why</li>
+<li><strong>Keep PRs Small</strong>: Easier to review</li>
+<li><strong>Respond to Feedback</strong>: Be open to suggestions</li>
+<li><strong>Make Changes</strong>: Push fixes promptly</li>
+</ol>
+<h2>Common Review Scenarios</h2>
+<h3>Large PR</h3>
+<pre><code>This PR is quite large. Could you break it into smaller
+PRs that can be reviewed independently? Consider:
+1. PR for database changes
+2. PR for API changes
+3. PR for UI changes
+</code></pre>
+<h3>Missing Tests</h3>
+<pre><code>This change adds new functionality but doesn&#39;t include tests.
+Could you add unit tests for the new functions?
+</code></pre>
+<h3>Performance Concern</h3>
+<pre><code>This loop makes an API call for each item. For large datasets,
+this could be slow. Consider using Promise.all() or batching
+the requests.
+</code></pre>
+<h3>Security Issue</h3>
+<pre><code>[Must Fix] User input is being directly interpolated into
+a SQL query. This is a SQL injection vulnerability.
+Please use parameterized queries instead.
+</code></pre>
+<h2>GitHub Review Features</h2>
+<h3>Request Changes</h3>
+<pre><code class="language-bash">gh pr review 123 --request-changes --body &quot;Please fix...&quot;
+</code></pre>
+<h3>Approve</h3>
+<pre><code class="language-bash">gh pr review 123 --approve
+</code></pre>
+<h3>Comment</h3>
+<pre><code class="language-bash">gh pr review 123 --comment --body &quot;Looks good, just one question...&quot;
+</code></pre>
+<h2>Best Practices</h2>
+<h3>For Reviewers</h3>
+<ol>
+<li><strong>Be timely</strong> - Review within 24 hours</li>
+<li><strong>Be respectful</strong> - Assume good intent</li>
+<li><strong>Be specific</strong> - Provide actionable feedback</li>
+<li><strong>Be humble</strong> - You might learn something</li>
+<li><strong>Use suggestions</strong> - Makes it easy to apply fixes</li>
+</ol>
+<h3>For Authors</h3>
+<ol>
+<li><strong>Self-review first</strong> - Catch obvious issues</li>
+<li><strong>Write clear descriptions</strong> - Help reviewers understand</li>
+<li><strong>Keep PRs small</strong> - Under 400 lines is ideal</li>
+<li><strong>Respond promptly</strong> - Don&#39;t let PRs go stale</li>
+<li><strong>Thank reviewers</strong> - Appreciate their time</li>
+</ol>
+<h2>Code Review Tools</h2>
+<h3>GitHub Built-in</h3>
+<ul>
+<li>Request changes / Approve / Comment</li>
+<li>Suggestion blocks</li>
+<li>Code owners</li>
+<li>Branch protection rules</li>
+</ul>
+<h3>Browser Extensions</h3>
+<ul>
+<li><strong>Refined GitHub</strong> - Better GitHub UI</li>
+<li><strong>Octotree</strong> - File tree in PR view</li>
+<li><strong>GitLens</strong> - VS Code integration</li>
+</ul>
+<h2>Measuring Code Review</h2>
+<h3>Metrics to Track</h3>
+<ul>
+<li>Time to first review</li>
+<li>Time to merge</li>
+<li>Number of review cycles</li>
+<li>Defects caught in review</li>
+</ul>
+<h3>Goals</h3>
+<ul>
+<li>First review within 24 hours</li>
+<li>Merge within 3 days</li>
+<li>Average 1-2 review cycles</li>
+</ul>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://docs.github.com/en/pull-requests/reviewing-changes-in-pull-requests">GitHub Code Review Guide</a></li>
+<li><a href="https://google.github.io/eng-practices/review/">Google&#39;s Code Review Guidelines</a></li>
+<li><a href="https://www.freecodecamp.org/news/effective-code-reviews/">Effective Code Reviews</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

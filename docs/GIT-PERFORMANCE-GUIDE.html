@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Performance Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Performance Guide — learn how to optimize Git repositories for speed and efficiency.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-PERFORMANCE-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Performance Guide</span>
+      </nav>
+
+      <h1>Git Performance Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Performance Guide</h1>
+<p>Optimize Git for speed and efficiency.</p>
+<h2>Why Git Can Be Slow</h2>
+<ul>
+<li>Large repositories</li>
+<li>Too many files</li>
+<li>Binary files in history</li>
+<li>Deep directory structures</li>
+<li>Network issues</li>
+</ul>
+<h2>Speed Up Git Commands</h2>
+<h3>1. Use Shallow Clone</h3>
+<pre><code class="language-bash"># Clone with limited history
+git clone --depth 1 https://github.com/user/repo.git
+
+# Clone specific branch only
+git clone --branch main --single-branch https://github.com/user/repo.git
+
+# Later, get full history if needed
+git fetch --unshallow
+</code></pre>
+<h3>2. Enable Parallel Operations</h3>
+<pre><code class="language-bash"># Parallel fetch
+git config --global fetch.parallel 4
+
+# Parallel checkout
+git config --global checkout.parallel 4
+
+# Parallel index
+git config --global core.indexThreads 4
+</code></pre>
+<h3>3. Use Sparse Checkout</h3>
+<pre><code class="language-bash"># Enable sparse checkout
+git sparse-checkout init --cone
+
+# Only get specific directories
+git sparse-checkout set src/ docs/
+
+# Update sparse checkout
+git sparse-checkout disable
+</code></pre>
+<h3>4. Optimize Repository</h3>
+<pre><code class="language-bash"># Garbage collection
+git gc --aggressive --prune=now
+
+# Repack objects
+git repack -a -d --depth=250 --window=250
+
+# Remove unreachable objects
+git reflog expire --expire=now --all
+git gc --prune=now
+</code></pre>
+<h3>5. Use Local Cache</h3>
+<pre><code class="language-bash"># Keep fetched data local
+git config --global fetch.prune true
+git config --global fetch.pruneTags true
+
+# Reuse recorded resolution
+git config --global rerere.enabled true
+</code></pre>
+<h2>Speed Up Specific Commands</h2>
+<h3>git status</h3>
+<pre><code class="language-bash"># Use status in untracked mode
+git status --untracked-files=no
+
+# Or use short status
+git status -s
+</code></pre>
+<h3>git log</h3>
+<pre><code class="language-bash"># Limit output
+git log -10
+
+# Use oneline format
+git log --oneline
+
+# Skip file content
+git log --no-abbrev-commit
+</code></pre>
+<h3>git diff</h3>
+<pre><code class="language-bash"># Use stat only
+git diff --stat
+
+# Use name-only
+git diff --name-only
+
+# Use minimal context
+git diff -U0
+</code></pre>
+<h3>git add</h3>
+<pre><code class="language-bash"># Add specific files only
+git add src/file.js
+
+# Interactive mode (slow for large repos)
+git add -p
+</code></pre>
+<h2>Handle Large Repositories</h2>
+<h3>1. Git LFS (Large File Storage)</h3>
+<pre><code class="language-bash"># Install Git LFS
+git lfs install
+
+# Track large files
+git lfs track &quot;*.psd&quot;
+git lfs track &quot;*.zip&quot;
+git lfs track &quot;*.mp4&quot;
+
+# Check tracked files
+git lfs ls-files
+</code></pre>
+<h3>2. Filter History</h3>
+<pre><code class="language-bash"># Remove large files from history
+git filter-branch --force --index-filter \
+  &quot;git rm --cached --ignore-unmatch large-file.zip&quot; \
+  --prune-empty --tag-name-filter cat -- --all
+
+# Or use BFG (faster)
+bfg --strip-blobs-bigger-than 10M
+</code></pre>
+<h3>3. Split Repository</h3>
+<pre><code class="language-bash"># Convert to monorepo with submodules
+git submodule add https://github.com/user/lib.git libs/lib
+
+# Or use subtrees
+git subtree add --prefix=libs/lib https://github.com/user/lib.git main
+</code></pre>
+<h2>Optimize Git Configuration</h2>
+<h3>Add to ~/.gitconfig</h3>
+<pre><code class="language-ini">[core]
+    # Increase compression
+    compression = 9
+    
+    # Use fscache for faster stats
+    fscache = true
+
+[feature]
+    # Enable multi-pack index
+    manyFiles = true
+
+[index]
+    # Use multi-pack index
+    version = 4
+
+[gc]
+    # Auto-gc
+    auto = 256
+
+[fetch]
+    # Parallel fetch
+    parallel = 4
+
+[pull]
+    # Use rebase by default
+    rebase = true
+
+[rerere]
+    # Reuse recorded resolution
+    enabled = true
+
+[diff]
+    # Use histogram algorithm
+    algorithm = histogram
+
+[merge]
+    # Use histogram algorithm
+    algorithm = histogram
+</code></pre>
+<h2>Monitor Performance</h2>
+<h3>Enable Trace</h3>
+<pre><code class="language-bash"># Time git commands
+GIT_TRACE=1 git status
+
+# Enable performance statistics
+GIT_TRACE_PERFORMANCE=1 git status
+
+# Enable performance stats for specific commands
+git -c trace2.event=true -c trace2.perf=true status
+</code></pre>
+<h3>Check Repository Size</h3>
+<pre><code class="language-bash"># Check .git size
+du -sh .git
+
+# Check largest files
+git rev-list --objects --all | \
+  git cat-file --batch-check=&#39;%(objecttype) %(objectname) %(objectsize) %(rest)&#39; | \
+  sed -n &#39;s/^blob //p&#39; | sort -rnk2 | head -20
+
+# Check pack files
+ls -lh .git/objects/pack/
+</code></pre>
+<h2>Network Optimization</h2>
+<h3>Use SSH Instead of HTTPS</h3>
+<pre><code class="language-bash"># Change remote to SSH
+git remote set-url origin git@github.com:user/repo.git
+</code></pre>
+<h3>Enable HTTP/2</h3>
+<pre><code class="language-bash"># Use HTTP/2 for faster transfers
+git config --global http.version HTTP/2
+</code></pre>
+<h3>Use Compression</h3>
+<pre><code class="language-bash"># Enable compression
+git config --global core.compression 9
+
+# Set HTTP compression
+git config --global http.postBuffer 524288000
+</code></pre>
+<h2>Best Practices</h2>
+<ol>
+<li><strong>Keep commits small</strong> - Easier to process</li>
+<li><strong>Use .gitignore</strong> - Don&#39;t track unnecessary files</li>
+<li><strong>Regular cleanup</strong> - Run <code>git gc</code> periodically</li>
+<li><strong>Use Git LFS</strong> - For large binary files</li>
+<li><strong>Shallow clones</strong> - For CI/CD</li>
+<li><strong>Sparse checkout</strong> - For large monorepos</li>
+<li><strong>Parallel operations</strong> - Speed up fetch/push</li>
+<li><strong>Monitor performance</strong> - Find bottlenecks</li>
+</ol>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery">Git Performance</a></li>
+<li><a href="https://git-lfs.github.com/">Git LFS</a></li>
+<li><a href="https://git-scm.com/docs/git-sparse-checkout">Git Sparse Checkout</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

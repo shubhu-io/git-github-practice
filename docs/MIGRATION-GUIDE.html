@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migration Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Migration Guide — learn how to migrate repositories from other VCS to Git and GitHub.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/MIGRATION-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Migration Guide</span>
+      </nav>
+
+      <h1>Migration Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Migration Guide</h1>
+<p>Migrating from other version control systems to Git.</p>
+<h2>From SVN to Git</h2>
+<h3>Step 1: Install Tools</h3>
+<pre><code class="language-bash"># Install git-svn
+# On macOS
+brew install git-svn
+
+# On Linux
+sudo apt-get install git-svn
+</code></pre>
+<h3>Step 2: Clone SVN Repository</h3>
+<pre><code class="language-bash"># Basic migration
+git svn clone https://svn.example.com/repo
+
+# With authors file
+git svn clone https://svn.example.com/repo --authors-file=authors.txt
+
+# With specific trunk/branches structure
+git svn clone https://svn.example.com/repo \
+  --trunk=trunk \
+  --branches=branches \
+  --tags=tags
+</code></pre>
+<h3>Step 3: Create Authors File</h3>
+<pre><code class="language-bash"># authors.txt format:
+# svnusername = Git Name &lt;email@example.com&gt;
+admin = Admin User &lt;admin@example.com&gt;
+developer = Dev User &lt;dev@example.com&gt;
+</code></pre>
+<h3>Step 4: Fetch All History</h3>
+<pre><code class="language-bash">cd repo
+git svn fetch
+</code></pre>
+<h3>Step 5: Convert Branches and Tags</h3>
+<pre><code class="language-bash"># Convert branches
+for branch in $(git branch -r | grep -v tags | sed &#39;s/origin\///&#39;); do
+    git branch $branch refs/remotes/origin/$branch
+done
+
+# Convert tags
+for tag in $(git branch -r | grep tags | sed &#39;s/origin\/tags\///&#39;); do
+    git tag $tag refs/remotes/origin/tags/$tag
+done
+</code></pre>
+<h3>Step 6: Push to Git</h3>
+<pre><code class="language-bash"># Add remote
+git remote add origin https://github.com/user/repo.git
+
+# Push all branches
+git push origin --all
+
+# Push all tags
+git push origin --tags
+</code></pre>
+<h2>From Mercurial to Git</h2>
+<h3>Step 1: Install Tools</h3>
+<pre><code class="language-bash"># Install hg-git
+pip install hg-git
+</code></pre>
+<h3>Step 2: Configure Mercurial</h3>
+<pre><code class="language-ini"># .hgrc
+[extensions]
+hggit =
+
+[hggit]
+pushed = outgoing
+</code></pre>
+<h3>Step 3: Convert Repository</h3>
+<pre><code class="language-bash"># Clone and convert
+hg clone https://hg.example.com/repo
+cd repo
+
+# Push to Git
+hg bookmark -r default master
+hg push git+ssh://git@github.com/user/repo.git
+</code></pre>
+<h2>From CVS to Git</h2>
+<h3>Step 1: Install Tools</h3>
+<pre><code class="language-bash"># Install cvs-fast-export
+# On macOS
+brew install cvs-fast-export
+
+# On Linux
+sudo apt-get install cvs-fast-export
+</code></pre>
+<h3>Step 2: Export CVS</h3>
+<pre><code class="language-bash"># Export CVS repository
+cvsps -A authors.txt -x -d /path/to/cvs/repo &gt; /tmp/cvsps.log
+
+# Convert to Git
+cvsimport -v -d /path/to/cvs/repo
+</code></pre>
+<h2>From Perforce to Git</h2>
+<h3>Step 1: Install Tools</h3>
+<pre><code class="language-bash"># Install git-p4
+# Usually included with Git
+</code></pre>
+<h3>Step 2: Clone Perforce</h3>
+<pre><code class="language-bash"># Clone depot
+git p4 clone //depot/path@all
+
+# Or specific changelist
+git p4 clone //depot/path@12345
+</code></pre>
+<h3>Step 3: Sync Changes</h3>
+<pre><code class="language-bash"># Fetch new changes
+git p4 sync
+
+# Submit changes
+git p4 submit
+</code></pre>
+<h2>From TFS to Git</h2>
+<h3>Step 1: Install Tools</h3>
+<pre><code class="language-bash"># Install git-tfs
+# On Windows
+choco install gittfs
+
+# On macOS/Linux
+brew install git-tfs
+</code></pre>
+<h3>Step 2: Clone TFS</h3>
+<pre><code class="language-bash"># Clone entire history
+git tfs clone https://tfs.example.com/tfs/Collection $/Project
+
+# With specific branch
+git tfs quick-clone --branches https://tfs.example.com/tfs/Collection $/Project
+</code></pre>
+<h3>Step 3: Push to Git</h3>
+<pre><code class="language-bash"># Add remote
+git remote add origin https://github.com/user/repo.git
+
+# Push
+git push origin --all
+</code></pre>
+<h2>Tips for Migration</h2>
+<h3>Preserve History</h3>
+<ol>
+<li><strong>Use authors file</strong> - Map usernames correctly</li>
+<li><strong>Fetch all branches</strong> - Don&#39;t lose any work</li>
+<li><strong>Convert tags</strong> - Preserve milestones</li>
+<li><strong>Verify results</strong> - Check history looks right</li>
+</ol>
+<h3>Handle Large Repos</h3>
+<ol>
+<li><strong>Use shallow clone</strong> - Start with recent history</li>
+<li><strong>Filter large files</strong> - Use git-lfs</li>
+<li><strong>Split repository</strong> - Consider multiple repos</li>
+<li><strong>Test performance</strong> - Ensure Git works well</li>
+</ol>
+<h3>Coordinate with Team</h3>
+<ol>
+<li><strong>Announce migration</strong> - Give team notice</li>
+<li><strong>Provide training</strong> - Help team learn Git</li>
+<li><strong>Freeze old repo</strong> - Prevent old commits</li>
+<li><strong>Monitor issues</strong> - Help with problems</li>
+</ol>
+<h2>Common Issues</h2>
+<h3>Lost History</h3>
+<pre><code class="language-bash"># Check if history is complete
+git log --oneline | wc -l
+
+# Compare with SVN
+svn log https://svn.example.com/repo | wc -l
+</code></pre>
+<h3>Wrong Authors</h3>
+<pre><code class="language-bash"># Fix author names
+git filter-branch --env-filter &#39;
+    if [ &quot;$GIT_AUTHOR_NAME&quot; = &quot;oldname&quot; ]; then
+        export GIT_AUTHOR_NAME=&quot;New Name&quot;
+        export GIT_AUTHOR_EMAIL=&quot;new@email.com&quot;
+    fi
+&#39; -- --all
+</code></pre>
+<h3>Large Files</h3>
+<pre><code class="language-bash"># Find large files
+git rev-list --objects --all | \
+  git cat-file --batch-check=&#39;%(objecttype) %(objectname) %(objectsize) %(rest)&#39; | \
+  sed -n &#39;s/^blob //p&#39; | sort -rnk2 | head -20
+
+# Move to git-lfs
+git lfs migrate import --include=&quot;*.zip,*.psd&quot; --everything
+</code></pre>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://git-scm.com/docs/git-svn">git-svn Documentation</a></li>
+<li><a href="https://github.com/git-tfs/git-tfs">git-tfs Documentation</a></li>
+<li><a href="https://hg-git.readthedocs.io/">hg-git Documentation</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Index — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Complete index of every topic, guide, exercise, and resource in the Git & GitHub Learning Hub. 110+ files covering Git, GitHub, automation, and best practices.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/Master-Index.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link active">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+    <div id="theme-picker" class="theme-picker-container"><div id="theme-panel" class="theme-panel glass"><div class="theme-panel-grid"></div></div></div>
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Master Index</span>
+      </nav>
+      <h1>Master Index</h1>
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          15 min read
+        </span>
+        <span class="badge badge-beginner">Beginner</span>
+      </div>
+      <div id="article-content" class="article-content">
+<h1>Git &amp; GitHub Complete Repository</h1>
+<blockquote>
+<p>A comprehensive learning repository with 110+ files covering Git, GitHub, automation, and best practices.</p>
+</blockquote>
+<h2>📁 Repository Structure</h2>
+<pre><code>Git&amp;Github/
+├── 📄 Root Configuration (17 files)
+├── 🐳 Docker (2 files)
+├── 🐙 GitHub Config (12 files)
+├── 🪝 Husky (2 files)
+├── 🛠️ VS Code (2 files)
+├── 📚 Documentation (29 files)
+├── 📝 Examples (22 scripts)
+├── 🎯 Exercises (20 folders)
+├── ✅ Completed (1 file)
+├── 🔧 Scripts (6 files)
+├── 💻 Source (2 files)
+└── 🧪 Tests (2 files)
+</code></pre>
+<hr>
+<h2>📄 Root Configuration Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.editorconfig</code></td>
+<td>Editor formatting rules</td>
+</tr>
+<tr>
+<td><code>.env.example</code></td>
+<td>Environment variables template</td>
+</tr>
+<tr>
+<td><code>.eslintignore</code></td>
+<td>ESLint ignore patterns</td>
+</tr>
+<tr>
+<td><code>.eslintrc.json</code></td>
+<td>ESLint configuration</td>
+</tr>
+<tr>
+<td><code>.gitattributes</code></td>
+<td>Git attributes</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Git ignore patterns</td>
+</tr>
+<tr>
+<td><code>.npmrc</code></td>
+<td>npm configuration</td>
+</tr>
+<tr>
+<td><code>.nvmrc</code></td>
+<td>Node version manager config</td>
+</tr>
+<tr>
+<td><code>.prettierignore</code></td>
+<td>Prettier ignore patterns</td>
+</tr>
+<tr>
+<td><code>.prettierrc</code></td>
+<td>Prettier configuration</td>
+</tr>
+<tr>
+<td><code>CHANGELOG.md</code></td>
+<td>Version history</td>
+</tr>
+<tr>
+<td><code>CODE_OF_CONDUCT.md</code></td>
+<td>Community guidelines</td>
+</tr>
+<tr>
+<td><code>CONTRIBUTING.md</code></td>
+<td>Contribution guidelines</td>
+</tr>
+<tr>
+<td><code>LICENSE</code></td>
+<td>MIT License</td>
+</tr>
+<tr>
+<td><code>Makefile</code></td>
+<td>Build automation</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>Project configuration</td>
+</tr>
+<tr>
+<td><code>package-lock.json</code></td>
+<td>Dependency lock file</td>
+</tr>
+<tr>
+<td><code>README.md</code></td>
+<td>Main documentation</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🐳 Docker Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Dockerfile</code></td>
+<td>Container build instructions</td>
+</tr>
+<tr>
+<td><code>docker-compose.yml</code></td>
+<td>Multi-container setup</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🐙 GitHub Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.github/CODEOWNERS</code></td>
+<td>Code ownership rules</td>
+</tr>
+<tr>
+<td><code>.github/dependabot.yml</code></td>
+<td>Dependency automation</td>
+</tr>
+<tr>
+<td><code>.github/FUNDING.yml</code></td>
+<td>Sponsorship links</td>
+</tr>
+<tr>
+<td><code>.github/SECURITY.md</code></td>
+<td>Security policy</td>
+</tr>
+<tr>
+<td><code>.github/SUPPORT.md</code></td>
+<td>Support information</td>
+</tr>
+<tr>
+<td><code>.github/pull_request_template.md</code></td>
+<td>PR template</td>
+</tr>
+<tr>
+<td><code>.github/ISSUE_TEMPLATE/bug_report.md</code></td>
+<td>Bug report template</td>
+</tr>
+<tr>
+<td><code>.github/ISSUE_TEMPLATE/feature_request.md</code></td>
+<td>Feature request template</td>
+</tr>
+<tr>
+<td><code>.github/ISSUE_TEMPLATE/config.yml</code></td>
+<td>Issue template config</td>
+</tr>
+<tr>
+<td><code>.github/PULL_REQUEST_TEMPLATE/bug_fix.md</code></td>
+<td>Bug fix PR template</td>
+</tr>
+<tr>
+<td><code>.github/PULL_REQUEST_TEMPLATE/feature.md</code></td>
+<td>Feature PR template</td>
+</tr>
+<tr>
+<td><code>.github/workflows/ci.yml</code></td>
+<td>CI workflow</td>
+</tr>
+<tr>
+<td><code>.github/workflows/codeql.yml</code></td>
+<td>Security analysis</td>
+</tr>
+<tr>
+<td><code>.github/workflows/deploy.yml</code></td>
+<td>Deployment workflow</td>
+</tr>
+<tr>
+<td><code>.github/workflows/release.yml</code></td>
+<td>Release workflow</td>
+</tr>
+<tr>
+<td><code>.github/workflows/release-please.yml</code></td>
+<td>Automated releases</td>
+</tr>
+<tr>
+<td><code>.github/workflows/stale.yml</code></td>
+<td>Stale issue management</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🪝 Husky Hooks</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.husky/pre-commit</code></td>
+<td>Pre-commit hook</td>
+</tr>
+<tr>
+<td><code>.husky/commit-msg</code></td>
+<td>Commit message hook</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🛠️ VS Code Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.vscode/settings.json</code></td>
+<td>Editor settings</td>
+</tr>
+<tr>
+<td><code>.vscode/extensions.json</code></td>
+<td>Recommended extensions</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📚 Documentation (29 files)</h2>
+<h3>Beginner Guides</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>BEGINNERS-GUIDE.md</code></td>
+<td>-</td>
+<td>Starting point for absolute beginners</td>
+</tr>
+<tr>
+<td><code>git-cheatsheet.md</code></td>
+<td>-</td>
+<td>Quick reference cheatsheet</td>
+</tr>
+<tr>
+<td><code>QUICK-REFERENCE.md</code></td>
+<td>-</td>
+<td>Fast command lookup</td>
+</tr>
+<tr>
+<td><code>GIT-GLOSSARY.md</code></td>
+<td>-</td>
+<td>Git terminology</td>
+</tr>
+<tr>
+<td><code>FAQ.md</code></td>
+<td>-</td>
+<td>Frequently asked questions</td>
+</tr>
+</tbody></table>
+<h3>Complete Guides</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>COMPLETE-GIT-GITHUB-GUIDE.md</code></td>
+<td>-</td>
+<td>Full Git &amp; GitHub guide</td>
+</tr>
+<tr>
+<td><code>GIT-WORKFLOWS.md</code></td>
+<td>-</td>
+<td>Branching strategies</td>
+</tr>
+<tr>
+<td><code>CONVENTIONAL-COMMITS.md</code></td>
+<td>-</td>
+<td>Commit message standards</td>
+</tr>
+</tbody></table>
+<h3>GitHub Specific</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>github-actions-guide.md</code></td>
+<td>-</td>
+<td>GitHub Actions basics</td>
+</tr>
+<tr>
+<td><code>GITHUB-ACTIONS-ADVANCED.md</code></td>
+<td>-</td>
+<td>Advanced Actions</td>
+</tr>
+<tr>
+<td><code>GITHUB-PAGES.md</code></td>
+<td>-</td>
+<td>GitHub Pages setup</td>
+</tr>
+<tr>
+<td><code>GITHUB-PR-GUIDE.md</code></td>
+<td>-</td>
+<td>Pull request workflow</td>
+</tr>
+<tr>
+<td><code>GITHUB-PROFILE-README.md</code></td>
+<td>-</td>
+<td>Profile README guide</td>
+</tr>
+<tr>
+<td><code>GITHUB-REST-API.md</code></td>
+<td>-</td>
+<td>REST API usage</td>
+</tr>
+<tr>
+<td><code>CODE-REVIEW-GUIDE.md</code></td>
+<td>-</td>
+<td>Code review best practices</td>
+</tr>
+</tbody></table>
+<h3>Advanced Topics</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GIT-ALIASES-GUIDE.md</code></td>
+<td>-</td>
+<td>Custom aliases</td>
+</tr>
+<tr>
+<td><code>GIT-HOOKS-GUIDE.md</code></td>
+<td>-</td>
+<td>Git hooks</td>
+</tr>
+<tr>
+<td><code>GIT-INTERNALS.md</code></td>
+<td>-</td>
+<td>How Git works internally</td>
+</tr>
+<tr>
+<td><code>GIT-PERFORMANCE-GUIDE.md</code></td>
+<td>-</td>
+<td>Performance optimization</td>
+</tr>
+<tr>
+<td><code>GIT-SECURITY-GUIDE.md</code></td>
+<td>-</td>
+<td>Security best practices</td>
+</tr>
+<tr>
+<td><code>GIT-TIPS-TRICKS.md</code></td>
+<td>-</td>
+<td>Tips and tricks</td>
+</tr>
+<tr>
+<td><code>GIT-VISUAL-GUIDE.md</code></td>
+<td>-</td>
+<td>ASCII diagrams</td>
+</tr>
+<tr>
+<td><code>TROUBLESHOOTING.md</code></td>
+<td>-</td>
+<td>Common issues</td>
+</tr>
+</tbody></table>
+<h3>Learning Materials</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GIT-SCENARIOS.md</code></td>
+<td>-</td>
+<td>Real-world scenarios</td>
+</tr>
+<tr>
+<td><code>GIT-INTERVIEW-QUESTIONS.md</code></td>
+<td>-</td>
+<td>Interview prep</td>
+</tr>
+<tr>
+<td><code>GIT-COMMANDS-BY-TASK.md</code></td>
+<td>-</td>
+<td>Commands by use case</td>
+</tr>
+<tr>
+<td><code>MIGRATION-GUIDE.md</code></td>
+<td>257</td>
+<td>Migrating from other VCS</td>
+</tr>
+<tr>
+<td><code>GIT-FOR-TEAMS-GUIDE.md</code></td>
+<td>294</td>
+<td>Team best practices</td>
+</tr>
+<tr>
+<td><code>LEARNING-PATH.md</code></td>
+<td>-</td>
+<td>4-week learning plan</td>
+</tr>
+<tr>
+<td><code>PRACTICE-EXERCISES.md</code></td>
+<td>-</td>
+<td>Exercise tracker</td>
+</tr>
+<tr>
+<td><code>EXERCISES.md</code></td>
+<td>-</td>
+<td>Exercise solutions and tasks</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📝 Examples (23 scripts)</h2>
+<h3>Git Basics</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>branching.sh</code></td>
+<td>Branch operations</td>
+</tr>
+<tr>
+<td><code>merge-conflict.sh</code></td>
+<td>Conflict resolution</td>
+</tr>
+<tr>
+<td><code>rebase-practice.sh</code></td>
+<td>Rebase workflow</td>
+</tr>
+<tr>
+<td><code>stash-practice.sh</code></td>
+<td>Stash operations</td>
+</tr>
+<tr>
+<td><code>undo-practice.sh</code></td>
+<td>Undo changes</td>
+</tr>
+<tr>
+<td><code>cherry-pick.sh</code></td>
+<td>Cherry picking commits</td>
+</tr>
+<tr>
+<td><code>interactive-rebase.sh</code></td>
+<td>Interactive rebase</td>
+</tr>
+</tbody></table>
+<h3>Advanced Git</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bisect.sh</code></td>
+<td>Binary search for bugs</td>
+</tr>
+<tr>
+<td><code>blame.sh</code></td>
+<td>Line history tracking</td>
+</tr>
+<tr>
+<td><code>reflog-rescue.sh</code></td>
+<td>Recover lost commits</td>
+</tr>
+<tr>
+<td><code>worktree.sh</code></td>
+<td>Multiple working trees</td>
+</tr>
+<tr>
+<td><code>submodule.sh</code></td>
+<td>Submodule management</td>
+</tr>
+<tr>
+<td><code>git-lfs.sh</code></td>
+<td>Large file storage</td>
+</tr>
+</tbody></table>
+<h3>Collaboration</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>collaboration.sh</code></td>
+<td>Team workflows</td>
+</tr>
+<tr>
+<td><code>fork-workflow.sh</code></td>
+<td>Fork &amp; PR workflow</td>
+</tr>
+<tr>
+<td><code>squash-merge.sh</code></td>
+<td>Squash merge strategy</td>
+</tr>
+<tr>
+<td><code>tagging.sh</code></td>
+<td>Version tagging</td>
+</tr>
+<tr>
+<td><code>clean.sh</code></td>
+<td>Repository cleanup</td>
+</tr>
+</tbody></table>
+<h3>Automation</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Lines</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>github-api.sh</code></td>
+<td>231</td>
+<td>GitHub CLI automation</td>
+</tr>
+<tr>
+<td><code>git-bot.sh</code></td>
+<td>325</td>
+<td>Automated operations</td>
+</tr>
+<tr>
+<td><code>webhook-server.sh</code></td>
+<td>222</td>
+<td>Webhook server (Node/Python/Bash)</td>
+</tr>
+<tr>
+<td><code>actions-templates.yml</code></td>
+<td>209</td>
+<td>GitHub Actions templates</td>
+</tr>
+<tr>
+<td><code>daily-workflow.sh</code></td>
+<td>-</td>
+<td>Daily developer workflow</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 Exercises (20 folders)</h2>
+<h3>Basic Exercises (1-10)</h3>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>01-first-commit/</code></td>
+<td>First commit</td>
+</tr>
+<tr>
+<td><code>02-branching/</code></td>
+<td>Branching</td>
+</tr>
+<tr>
+<td><code>03-merge-conflicts/</code></td>
+<td>Merge conflicts</td>
+</tr>
+<tr>
+<td><code>04-rebase/</code></td>
+<td>Rebasing</td>
+</tr>
+<tr>
+<td><code>05-stash/</code></td>
+<td>Stashing</td>
+</tr>
+<tr>
+<td><code>06-pull-requests/</code></td>
+<td>Pull requests</td>
+</tr>
+<tr>
+<td><code>07-cherry-pick/</code></td>
+<td>Cherry picking</td>
+</tr>
+<tr>
+<td><code>08-bisect/</code></td>
+<td>Git bisect</td>
+</tr>
+<tr>
+<td><code>09-worktree/</code></td>
+<td>Git worktrees</td>
+</tr>
+<tr>
+<td><code>10-reflog/</code></td>
+<td>Git reflog</td>
+</tr>
+</tbody></table>
+<h3>Intermediate Exercises (11-13)</h3>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>11-bisect/</code></td>
+<td>Git bisect (advanced)</td>
+</tr>
+<tr>
+<td><code>12-submodule/</code></td>
+<td>Git submodules</td>
+</tr>
+<tr>
+<td><code>13-real-project/</code></td>
+<td>Real project workflow</td>
+</tr>
+</tbody></table>
+<h3>Advanced Exercises (14-20)</h3>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>14-git-hooks/</code></td>
+<td>Git hooks</td>
+</tr>
+<tr>
+<td><code>15-github-actions/</code></td>
+<td>GitHub Actions</td>
+</tr>
+<tr>
+<td><code>16-git-subtree/</code></td>
+<td>Git subtree workflow</td>
+</tr>
+<tr>
+<td><code>17-custom-git-commands/</code></td>
+<td>Custom git commands</td>
+</tr>
+<tr>
+<td><code>18-hooks-automation/</code></td>
+<td>Git hooks automation</td>
+</tr>
+<tr>
+<td><code>19-monorepo-setup/</code></td>
+<td>Monorepo with Turborepo</td>
+</tr>
+<tr>
+<td><code>20-performance-optimization/</code></td>
+<td>Git performance optimization</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>✅ Completed Progress</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>completed/PROGRESS.md</code></td>
+<td>Exercise progress tracker</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔧 Scripts (6 files)</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>setup.sh</code></td>
+<td>Project setup</td>
+</tr>
+<tr>
+<td><code>release.sh</code></td>
+<td>Release automation</td>
+</tr>
+<tr>
+<td><code>validate.sh</code></td>
+<td>Validation checks</td>
+</tr>
+<tr>
+<td><code>git-aliases.sh</code></td>
+<td>Alias setup</td>
+</tr>
+<tr>
+<td><code>git-helpers.sh</code></td>
+<td>Helper functions</td>
+</tr>
+<tr>
+<td><code>git-workflow.sh</code></td>
+<td>Workflow automation</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>💻 Source Code</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src/index.js</code></td>
+<td>Main module</td>
+</tr>
+<tr>
+<td><code>src/utils.js</code></td>
+<td>Utility functions</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🧪 Tests</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tests/index.test.js</code></td>
+<td>Main tests</td>
+</tr>
+<tr>
+<td><code>tests/utils.test.js</code></td>
+<td>Utility tests</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📊 Repository Statistics</h2>
+<ul>
+<li><strong>Total Files:</strong> 115+</li>
+<li><strong>Documentation:</strong> 30 files</li>
+<li><strong>Examples:</strong> 23 scripts</li>
+<li><strong>Exercises:</strong> 20 folders</li>
+<li><strong>Completed Progress:</strong> 1 file</li>
+<li><strong>Scripts:</strong> 6 files</li>
+<li><strong>Templates:</strong> 10+ templates</li>
+</ul>
+<hr>
+<h2>🚀 Getting Started</h2>
+<pre><code class="language-bash"># 1. Clone the repository
+git clone https://github.com/your-username/Git-Github.git
+
+# 2. Install dependencies
+npm install
+
+# 3. Start learning
+# Read BEGINNERS-GUIDE.md first!
+</code></pre>
+<hr>
+<h2>📖 Learning Path</h2>
+<ol>
+<li><strong>Week 1:</strong> Basics - <code>BEGINNERS-GUIDE.md</code> + Exercises 1-5</li>
+<li><strong>Week 2:</strong> Collaboration - <code>COLLABORATION-GUIDE.md</code> + Exercises 6-10</li>
+<li><strong>Week 3:</strong> Advanced - <code>ADVANCED-GUIDE.md</code> + Exercises 11-13</li>
+<li><strong>Week 4:</strong> Automation - <code>ACTIONS-GUIDE.md</code> + Exercises 14-20</li>
+</ol>
+<hr>
+<h2>🤝 Contributing</h2>
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<hr>
+<h2>📄 License</h2>
+<p>MIT License - See <a href="LICENSE">LICENSE</a></p>
+
+      </div>
+    </main>
+  </div>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

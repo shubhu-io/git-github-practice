@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Git & GitHub Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="The most comprehensive guide to Git and GitHub. Covers everything from basics to advanced workflows, branching, collaboration, CI/CD, and best practices.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/COMPLETE-GIT-GITHUB-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Complete Git & GitHub Guide</span>
+      </nav>
+
+      <h1>Complete Git & GitHub Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          45 min read
+        </span>
+        <span class="badge badge-intermediate">Intermediate</span>
+        <span class="badge badge-info">Updated July 2026</span>
+        <div class="difficulty-bar intermediate"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git &amp; GitHub Complete Learning Guide</h1>
+<h2>TABLE OF CONTENTS</h2>
+<ol>
+<li><a href="#1-git-basics">Git Basics</a></li>
+<li><a href="#2-branching--merging">Branching &amp; Merging</a></li>
+<li><a href="#3-undoing-mistakes">Undoing Mistakes</a></li>
+<li><a href="#4-stashing-changes">Stashing Changes</a></li>
+<li><a href="#5-remote-repositories">Remote Repositories</a></li>
+<li><a href="#6-github-workflow">GitHub Workflow</a></li>
+<li><a href="#7-github-actions">GitHub Actions</a></li>
+<li><a href="#8-advanced-commands">Advanced Commands</a></li>
+</ol>
+<hr>
+<h2>1. GIT BASICS</h2>
+<h3>What is Git?</h3>
+<p>Git is a <strong>distributed version control system</strong>. It tracks changes in your code over time so you can recall specific versions later.</p>
+<h3>Setting Up (First Time Only)</h3>
+<pre><code class="language-bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;your@email.com&quot;
+git config --list              # Verify settings
+</code></pre>
+<h3>Initializing a Repository</h3>
+<pre><code class="language-bash">mkdir my-project
+cd my-project
+git init                        # Creates .git folder
+</code></pre>
+<p>After <code>git init</code>, Git starts tracking this folder.</p>
+<h3>The 3 Areas of Git</h3>
+<pre><code>Working Directory  --&gt;  Staging Area  --&gt;  Repository
+   (your files)       (git add)          (git commit)
+</code></pre>
+<ul>
+<li><strong>Working Directory</strong>: Your actual files on disk</li>
+<li><strong>Staging Area</strong>: A middle ground where you prepare changes</li>
+<li><strong>Repository (.git)</strong>: The permanent history of all commits</li>
+</ul>
+<h3>Checking Status</h3>
+<pre><code class="language-bash">git status                     # See what&#39;s modified/staged/untracked
+</code></pre>
+<h3>Staging Files</h3>
+<pre><code class="language-bash">git add file.txt               # Stage one file
+git add src/                   # Stage entire folder
+git add .                      # Stage everything
+git add *.js                   # Stage all JS files
+git reset file.txt             # Unstage a file
+</code></pre>
+<h3>Committing</h3>
+<pre><code class="language-bash">git commit -m &quot;message&quot;        # Commit staged files
+git commit -am &quot;message&quot;       # Stage ALL tracked files + commit
+</code></pre>
+<h3>Commit Message Rules</h3>
+<ul>
+<li>Use present tense: &quot;Add feature&quot; not &quot;Added feature&quot;</li>
+<li>Keep under 72 characters</li>
+<li>Be specific about WHAT changed and WHY</li>
+</ul>
+<h3>Viewing History</h3>
+<pre><code class="language-bash">git log                        # Full detailed log
+git log --oneline              # One line per commit
+git log --oneline --graph      # Visual branch graph
+git log -5                     # Last 5 commits
+git log --author=&quot;John&quot;        # Filter by author
+git log --since=&quot;2024-01-01&quot;   # Filter by date
+</code></pre>
+<h3>Viewing Changes</h3>
+<pre><code class="language-bash">git diff                       # Unstaged changes
+git diff --staged              # Staged changes
+git diff HEAD                  # All changes vs last commit
+git diff branch1..branch2      # Compare branches
+git show abc1234               # Show a specific commit
+</code></pre>
+<hr>
+<h2>2. BRANCHING &amp; MERGING</h2>
+<h3>What is a Branch?</h3>
+<p>A branch is an independent line of development. You can work on features without affecting the main code.</p>
+<h3>Branch Commands</h3>
+<pre><code class="language-bash">git branch                     # List all branches (* = current)
+git branch feature-login       # Create a new branch
+git checkout feature-login     # Switch to branch
+git switch feature-login       # Same as checkout (modern)
+git checkout -b feature-login  # Create + Switch (most common)
+git switch -c feature-login    # Same as above (modern)
+git branch -d feature-login    # Delete (safe - checks merged)
+git branch -D feature-login    # Force delete (even unmerged)
+git branch -m old-name new     # Rename branch
+</code></pre>
+<h3>Typical Workflow</h3>
+<pre><code class="language-bash"># 1. You&#39;re on main branch
+git checkout main
+
+# 2. Create feature branch
+git checkout -b feature/new-button
+
+# 3. Work on your feature
+# ... edit files ...
+
+# 4. Commit your changes
+git add .
+git commit -m &quot;feat: add new button component&quot;
+
+# 5. Push branch to GitHub
+git push -u origin feature/new-button
+
+# 6. Switch back to main
+git checkout main
+
+# 7. Pull latest changes
+git pull
+
+# 8. Merge your feature
+git merge feature/new-button
+
+# 9. Delete the feature branch
+git branch -d feature/new-button
+</code></pre>
+<h3>Merging</h3>
+<pre><code class="language-bash">git merge feature-branch       # Merge into current branch
+git merge --abort              # Cancel a merge (if conflicts)
+</code></pre>
+<h3>Merge Conflicts</h3>
+<p>When Git can&#39;t automatically merge changes, you get a conflict:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (current change)
+const color = &quot;blue&quot;;
+=======
+const color = &quot;red&quot;;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch (incoming change)
+</code></pre>
+<p><strong>How to resolve:</strong></p>
+<ol>
+<li>Open the file and find the conflict markers</li>
+<li>Choose which version to keep (or combine both)</li>
+<li>Remove the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> markers</li>
+<li>Save the file</li>
+<li>Stage and commit:</li>
+</ol>
+<pre><code class="language-bash">git add .
+git commit -m &quot;fix: resolve merge conflict in color config&quot;
+</code></pre>
+<hr>
+<h2>3. UNDOING MISTAKES</h2>
+<h3>Scenario: &quot;I want to discard working changes&quot;</h3>
+<pre><code class="language-bash">git restore file.txt            # Discard changes to one file
+git restore .                   # Discard ALL unstaged changes
+</code></pre>
+<h3>Scenario: &quot;I want to unstage a file&quot;</h3>
+<pre><code class="language-bash">git restore --staged file.txt   # Unstage but keep changes
+git restore --staged .          # Unstage everything
+</code></pre>
+<h3>Scenario: &quot;I want to undo my last commit&quot;</h3>
+<pre><code class="language-bash"># Keep changes in working directory (most common)
+git reset HEAD~1
+
+# Discard changes completely (DANGEROUS!)
+git reset --hard HEAD~1
+
+# Create a NEW commit that undoes the last one (SAFE for shared)
+git revert HEAD
+</code></pre>
+<h3>Scenario: &quot;I want to go back to a specific commit&quot;</h3>
+<pre><code class="language-bash">git log --oneline                # Find the commit hash
+git checkout abc1234             # Detach HEAD (view old code)
+git checkout main                # Return to latest
+
+# Actually reset to that commit
+git reset --hard abc1234
+</code></pre>
+<h3>Scenario: &quot;I want to amend my last commit&quot;</h3>
+<pre><code class="language-bash">git commit --amend -m &quot;new message&quot;           # Change message
+git add forgotten-file.txt
+git commit --amend --no-edit                  # Add forgotten file
+</code></pre>
+<h3>Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Command</th>
+<th>Safe?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Discard working changes</td>
+<td><code>git restore &lt;file&gt;</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Unstage a file</td>
+<td><code>git restore --staged &lt;file&gt;</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Undo commit, keep changes</td>
+<td><code>git reset HEAD~1</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Undo commit, discard changes</td>
+<td><code>git reset --hard HEAD~1</code></td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td>Undo pushed commit</td>
+<td><code>git revert &lt;hash&gt;</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Change last commit message</td>
+<td><code>git commit --amend</code></td>
+<td>Yes (local only)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. STASHING CHANGES</h2>
+<p>Stashing saves uncommitted changes temporarily so you can switch tasks.</p>
+<pre><code class="language-bash">git stash                      # Stash changes
+git stash save &quot;WIP: login&quot;    # Stash with a message
+git stash list                 # See all stashes
+git stash pop                  # Apply + remove stash
+git stash apply                # Apply but keep stash
+git stash drop                 # Delete most recent stash
+git stash clear                # Delete all stashes
+git stash pop stash@{2}        # Apply specific stash
+</code></pre>
+<h3>Common Scenario</h3>
+<pre><code class="language-bash"># You&#39;re working on feature A but need to fix a bug
+git stash save &quot;WIP: feature A&quot;
+git checkout main
+git checkout -b bugfix/issue-42
+# ... fix the bug ...
+git add . &amp;&amp; git commit -m &quot;fix: resolve issue #42&quot;
+git checkout main &amp;&amp; git merge bugfix/issue-42
+
+# Go back to your feature
+git checkout feature/new-button
+git stash pop
+</code></pre>
+<hr>
+<h2>5. REMOTE REPOSITORIES</h2>
+<h3>Connecting to GitHub</h3>
+<pre><code class="language-bash">git remote add origin https://github.com/user/repo.git
+git remote -v                   # Verify remote URLs
+</code></pre>
+<h3>Pushing to GitHub</h3>
+<pre><code class="language-bash">git push origin main            # Push main branch
+git push origin feature-branch  # Push feature branch
+git push -u origin main         # Push + set upstream (first time)
+git push                        # Push (after upstream is set)
+git push --force                # DANGEROUS: overwrites remote
+git push --force-with-lease     # Safer force push
+</code></pre>
+<h3>Pulling from GitHub</h3>
+<pre><code class="language-bash">git pull                        # Fetch + merge (git fetch + git merge)
+git pull --rebase               # Fetch + rebase (cleaner history)
+git fetch                       # Download changes without applying
+</code></pre>
+<h3>Fetch vs Pull</h3>
+<pre><code>fetch = Download changes (safe, doesn&#39;t modify your files)
+pull  = Download + apply changes (may cause merge conflicts)
+</code></pre>
+<h3>Removing Remote</h3>
+<pre><code class="language-bash">git remote remove origin        # Disconnect from remote
+</code></pre>
+<hr>
+<h2>6. GITHUB WORKFLOW</h2>
+<h3>Creating a Repository on GitHub</h3>
+<pre><code class="language-bash"># Option 1: CLI
+gh repo create my-repo --public
+
+# Option 2: Web
+# Go to github.com &gt; New Repository
+</code></pre>
+<h3>Forking a Repository</h3>
+<ol>
+<li>Click &quot;Fork&quot; on GitHub</li>
+<li>Clone YOUR fork:</li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/YOUR-USER/repo.git
+</code></pre>
+<h3>Pull Request (PR) Workflow</h3>
+<pre><code class="language-bash"># 1. Create a branch
+git checkout -b feature/my-feature
+
+# 2. Make changes and commit
+git add .
+git commit -m &quot;feat: add new feature&quot;
+
+# 3. Push to your fork
+git push -u origin feature/my-feature
+
+# 4. Create PR on GitHub (or use CLI)
+gh pr create --title &quot;Add new feature&quot; --body &quot;Description here&quot;
+
+# 5. Review feedback, make changes if needed
+# 6. Merge the PR on GitHub
+</code></pre>
+<h3>Issue Workflow</h3>
+<pre><code class="language-bash"># Create an issue
+gh issue create --title &quot;Bug: login broken&quot; --body &quot;Steps to reproduce...&quot;
+
+# List issues
+gh issue list
+
+# Close an issue (via commit message)
+git commit -m &quot;fix: resolve login issue, closes #5&quot;
+</code></pre>
+<h3>GitHub CLI Commands</h3>
+<pre><code class="language-bash">gh auth login                 # Authenticate with GitHub
+gh repo create                # Create repository
+gh pr create                  # Create pull request
+gh pr list                    # List pull requests
+gh pr merge                   # Merge a PR
+gh issue create               # Create an issue
+gh issue list                 # List issues
+gh issue close                # Close an issue
+</code></pre>
+<hr>
+<h2>7. GITHUB ACTIONS</h2>
+<h3>What are GitHub Actions?</h3>
+<p>Automation that runs when events happen on your repo (push, PR, schedule, etc.).</p>
+<h3>Workflow File Location</h3>
+<p><code>.github/workflows/&lt;name&gt;.yml</code></p>
+<h3>Basic Workflow</h3>
+<pre><code class="language-yaml">name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo &quot;Hello from GitHub Actions!&quot;
+</code></pre>
+<h3>Real-World Example: Node.js CI</h3>
+<pre><code class="language-yaml">name: Node CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+</code></pre>
+<h3>Key Concepts</h3>
+<ul>
+<li><strong>Trigger</strong>: When the workflow runs (<code>on: push, pull_request, schedule</code>)</li>
+<li><strong>Job</strong>: A group of steps that run together</li>
+<li><strong>Step</strong>: A single task (run a command or use an action)</li>
+<li><strong>Action</strong>: Reusable units (<code>uses: actions/checkout@v4</code>)</li>
+<li><strong>Secrets</strong>: Sensitive values (<code>${{ secrets.API_KEY }}</code>)</li>
+<li><strong>Matrix</strong>: Test across multiple environments</li>
+</ul>
+<hr>
+<h2>8. ADVANCED COMMANDS</h2>
+<h3>Interactive Rebase (Clean Up History)</h3>
+<pre><code class="language-bash">git rebase -i HEAD~5            # Edit last 5 commits
+# Opens editor:
+# pick   abc1234  First commit
+# squash def5678  Second commit    &lt;-- squash = combine with previous
+# reword ghi9012  Third commit     &lt;-- reword = change message
+# drop   jkl3456  Bad commit       &lt;-- drop = remove entirely
+</code></pre>
+<h3>Cherry-Pick (Grab Specific Commit)</h3>
+<pre><code class="language-bash">git cherry-pick abc1234         # Apply specific commit to current branch
+git cherry-pick abc1234..def5678 # Apply range of commits
+</code></pre>
+<h3>Tagging Releases</h3>
+<pre><code class="language-bash">git tag v1.0.0                  # Create lightweight tag
+git tag -a v1.0.0 -m &quot;Release&quot; # Create annotated tag
+git push origin v1.0.0          # Push specific tag
+git push origin --tags          # Push all tags
+git tag -d v1.0.0               # Delete local tag
+</code></pre>
+<h3>Git Bisect (Find Bug)</h3>
+<pre><code class="language-bash">git bisect start
+git bisect bad                  # Current commit is bad
+git bisect good abc1234         # This commit was good
+# Git checks out middle commit - test it
+git bisect good                 # or git bisect bad
+# Repeat until Git finds the exact commit
+git bisect reset                # Done
+</code></pre>
+<h3>Cleaning Untracked Files</h3>
+<pre><code class="language-bash">git clean -n                    # Dry run - see what would be deleted
+git clean -f                    # Force delete untracked files
+git clean -fd                   # Delete untracked files AND directories
+</code></pre>
+<h3>Aliases (Speed Up Git)</h3>
+<pre><code class="language-bash">git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.cm commit
+git config --global alias.lg &quot;log --oneline --graph --all&quot;
+</code></pre>
+<p>Now you can type <code>git st</code> instead of <code>git status</code>, etc.</p>
+<hr>
+<h2>COMMON WORKFLOW CHEAT SHEET</h2>
+<pre><code>START NEW FEATURE:
+  git checkout main
+  git pull
+  git checkout -b feature/name
+  # work, work, work
+  git add .
+  git commit -m &quot;feat: description&quot;
+  git push -u origin feature/name
+  # create PR on GitHub
+  # review &amp; merge
+  git checkout main &amp;&amp; git pull
+  git branch -d feature/name
+
+FIX A BUG:
+  git checkout main
+  git pull
+  git checkout -b bugfix/issue-name
+  # fix the bug
+  git add .
+  git commit -m &quot;fix: description&quot;
+  git push -u origin bugfix/issue-name
+  # create PR, merge, clean up
+
+EMERGENCY FIX (hotfix):
+  git checkout main
+  git checkout -b hotfix/critical-bug
+  # fix immediately
+  git add . &amp;&amp; git commit -m &quot;hotfix: critical bug&quot;
+  git push -u origin hotfix/critical-bug
+  # merge ASAP
+</code></pre>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Learning-Path.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Learning Path →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

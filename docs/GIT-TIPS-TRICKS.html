@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Tips & Tricks — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Tips & Tricks — useful tips, tricks, and shortcuts to boost your Git productivity.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-TIPS-TRICKS.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Tips & Tricks</span>
+      </nav>
+
+      <h1>Git Tips & Tricks</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Tips &amp; Tricks</h1>
+<p>Pro tips to work faster and smarter.</p>
+<h2>Shortcuts &amp; Aliases</h2>
+<h3>Essential Aliases</h3>
+<pre><code class="language-bash">git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.cm commit
+git config --global alias.lg &quot;log --oneline --graph --all&quot;
+git config --global alias.last &quot;log -1 HEAD --stat&quot;
+git config --global alias.unstage &quot;reset HEAD --&quot;
+</code></pre>
+<h3>Use Aliases</h3>
+<pre><code class="language-bash">git st      # Instead of git status
+git co main # Instead of git checkout main
+git lg      # Pretty log
+git last    # Last commit details
+</code></pre>
+<h2>Useful Commands</h2>
+<h3>See What Changed Without Staging</h3>
+<pre><code class="language-bash">git diff
+</code></pre>
+<h3>See What&#39;s Staged</h3>
+<pre><code class="language-bash">git diff --staged
+</code></pre>
+<h3>See All Changes Since Last Commit</h3>
+<pre><code class="language-bash">git diff HEAD
+</code></pre>
+<h3>See Changes in One File</h3>
+<pre><code class="language-bash">git diff -- path/to/file.txt
+</code></pre>
+<h3>See Who Changed What Line</h3>
+<pre><code class="language-bash">git blame file.txt
+</code></pre>
+<h3>See History of Changes</h3>
+<pre><code class="language-bash">git log -p file.txt
+</code></pre>
+<h3>Find a Commit That Changed Something</h3>
+<pre><code class="language-bash">git log -S &quot;function_name&quot; --oneline
+</code></pre>
+<h2>Stashing Tricks</h2>
+<h3>Stash with a Name</h3>
+<pre><code class="language-bash">git stash save &quot;Working on login page&quot;
+</code></pre>
+<h3>See Stash Contents</h3>
+<pre><code class="language-bash">git stash show -p
+</code></pre>
+<h3>Apply Specific Stash</h3>
+<pre><code class="language-bash">git stash apply stash@{2}
+</code></pre>
+<h3>Create Branch from Stash</h3>
+<pre><code class="language-bash">git stash branch new-branch
+</code></pre>
+<h2>Branch Tricks</h2>
+<h3>See All Branches (Local and Remote)</h3>
+<pre><code class="language-bash">git branch -a
+</code></pre>
+<h3>See Branches You&#39;re Ahead Of</h3>
+<pre><code class="language-bash">git branch -a --merged origin/main
+</code></pre>
+<h3>Delete Merged Branches</h3>
+<pre><code class="language-bash">git branch --merged | grep -v &quot;\*\|main\|master&quot; | xargs -n 1 git branch -d
+</code></pre>
+<h3>Rename Branch</h3>
+<pre><code class="language-bash">git branch -m old-name new-name
+</code></pre>
+<h2>Commit Tricks</h2>
+<h3>Commit Without Staging</h3>
+<pre><code class="language-bash">git commit -am &quot;message&quot;
+</code></pre>
+<h3>Amend Last Commit Message</h3>
+<pre><code class="language-bash">git commit --amend -m &quot;New message&quot;
+</code></pre>
+<h3>Add Forgotten File to Last Commit</h3>
+<pre><code class="language-bash">git add forgotten-file.txt
+git commit --amend --no-edit
+</code></pre>
+<h3>Empty Commit (No Changes)</h3>
+<pre><code class="language-bash">git commit --allow-empty -m &quot;Trigger CI&quot;
+</code></pre>
+<h2>Log Tricks</h2>
+<h3>Pretty One-Line Log</h3>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<h3>Visual Branch Graph</h3>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<h3>Show Last 5 Commits</h3>
+<pre><code class="language-bash">git log -5
+</code></pre>
+<h3>Show Commits by Author</h3>
+<pre><code class="language-bash">git log --author=&quot;John&quot;
+</code></pre>
+<h3>Show Commits in Date Range</h3>
+<pre><code class="language-bash">git log --after=&quot;2024-01-01&quot; --before=&quot;2024-12-31&quot;
+</code></pre>
+<h3>Show Commits with File Stats</h3>
+<pre><code class="language-bash">git log --stat
+</code></pre>
+<h2>Remote Tricks</h2>
+<h3>See Remote URLs</h3>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<h3>Fetch All Remotes</h3>
+<pre><code class="language-bash">git fetch --all --prune
+</code></pre>
+<h3>See Remote Branches</h3>
+<pre><code class="language-bash">git branch -r
+</code></pre>
+<h3>Delete Remote Branch</h3>
+<pre><code class="language-bash">git push origin --delete branch-name
+</code></pre>
+<h3>Set Upstream Branch</h3>
+<pre><code class="language-bash">git push -u origin branch-name
+</code></pre>
+<h2>Undo Tricks</h2>
+<h3>Undo Last Commit (Keep Changes)</h3>
+<pre><code class="language-bash">git reset HEAD~1
+</code></pre>
+<h3>Undo Last Commit (Discard Changes) - DANGEROUS</h3>
+<pre><code class="language-bash">git reset --hard HEAD~1
+</code></pre>
+<h3>Undo a File to Last Commit</h3>
+<pre><code class="language-bash">git restore filename.txt
+</code></pre>
+<h3>See Where HEAD Was Before</h3>
+<pre><code class="language-bash">git reflog
+</code></pre>
+<h3>Recover Lost Commit</h3>
+<pre><code class="language-bash">git reflog
+git cherry-pick abc1234
+</code></pre>
+<h2>Search Tricks</h2>
+<h3>Find String in Code</h3>
+<pre><code class="language-bash">git grep &quot;search term&quot;
+</code></pre>
+<h3>Find String in History</h3>
+<pre><code class="language-bash">git log -S &quot;search term&quot;
+</code></pre>
+<h3>Find String with Regex</h3>
+<pre><code class="language-bash">git log -G &quot;regex pattern&quot;
+</code></pre>
+<h2>Clean Tricks</h2>
+<h3>Preview What Would Be Deleted</h3>
+<pre><code class="language-bash">git clean -n
+</code></pre>
+<h3>Delete Untracked Files</h3>
+<pre><code class="language-bash">git clean -f
+</code></pre>
+<h3>Delete Untracked Files and Directories</h3>
+<pre><code class="language-bash">git clean -fd
+</code></pre>
+<h3>Delete Ignored Files</h3>
+<pre><code class="language-bash">git clean -Xf
+</code></pre>
+<h2>Advanced Tricks</h2>
+<h3>Cherry-Pick Without Committing</h3>
+<pre><code class="language-bash">git cherry-pick --no-commit abc1234
+</code></pre>
+<h3>Create Empty Branch</h3>
+<pre><code class="language-bash">git checkout --orphan empty-branch
+git rm -rf .
+git commit --allow-empty -m &quot;Initial empty commit&quot;
+</code></pre>
+<h3>See File at Specific Commit</h3>
+<pre><code class="language-bash">git show abc1234:file.txt
+</code></pre>
+<h3>See Diff Between Tags</h3>
+<pre><code class="language-bash">git diff v1.0.0 v2.0.0
+</code></pre>
+<h3>Interactive Add (Stage Hunks)</h3>
+<pre><code class="language-bash">git add -p
+</code></pre>
+<h3>Abort Merge</h3>
+<pre><code class="language-bash">git merge --abort
+</code></pre>
+<h3>Abort Rebase</h3>
+<pre><code class="language-bash">git rebase --abort
+</code></pre>
+<h2>Git Config Tips</h2>
+<h3>Use VS Code as Editor</h3>
+<pre><code class="language-bash">git config --global core.editor &quot;code --wait&quot;
+</code></pre>
+<h3>Use VS Code as Diff Tool</h3>
+<pre><code class="language-bash">git config --global diff.tool vscode
+git config --global difftool.vscode.cmd &#39;code --wait --diff $LOCAL $REMOTE&#39;
+</code></pre>
+<h3>Auto-Correct Typos</h3>
+<pre><code class="language-bash">git config --global help.autocorrect 1
+</code></pre>
+<h3>Colorful Output</h3>
+<pre><code class="language-bash">git config --global color.ui auto
+</code></pre>
+<h2>Productivity Tips</h2>
+<ol>
+<li><strong>Use <code>git status</code> often</strong> - Know what&#39;s happening</li>
+<li><strong>Commit often</strong> - Small commits are easier to manage</li>
+<li><strong>Write good messages</strong> - Future you will thank you</li>
+<li><strong>Use branches</strong> - Keep main clean</li>
+<li><strong>Pull before push</strong> - Avoid conflicts</li>
+<li><strong>Use stash</strong> - Quick context switching</li>
+<li><strong>Learn rebase</strong> - Clean history</li>
+<li><strong>Use aliases</strong> - Speed up commands</li>
+</ol>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://git-scm.com/doc">Git Documentation</a></li>
+<li><a href="https://education.github.com/git-cheat-sheet-education.pdf">GitHub Cheat Sheet</a></li>
+<li><a href="https://ohshitgit.com/">Oh Shit, Git!?!</a></li>
+<li><a href="https://learngitbranching.js.org/">Learn Git Branching</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

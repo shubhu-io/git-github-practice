@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Glossary — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Glossary — a comprehensive glossary of Git and GitHub terminology.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-GLOSSARY.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Glossary</span>
+      </nav>
+
+      <h1>Git Glossary</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Glossary</h1>
+<h2>A</h2>
+<p><strong>Annotated Tag</strong>: A tag that contains additional metadata including the tagger&#39;s name, email, date, and a message. Created with <code>git tag -a</code>.</p>
+<p><strong>Author</strong>: The person who originally wrote a piece of code. Different from the committer.</p>
+<p><strong>B</strong></p>
+<p><strong>Bare Repository</strong>: A repository that has no working directory. Used as a central repository. Created with <code>git init --bare</code>.</p>
+<p><strong>Blame</strong>: A command that shows who modified each line of a file and when. Used with <code>git blame</code>.</p>
+<p><strong>Blob</strong>: A Git object type that stores file contents. Each version of a file is stored as a blob.</p>
+<p><strong>Branch</strong>: A lightweight, movable pointer to a commit. The default branch is usually <code>main</code> or <code>master</code>.</p>
+<p><strong>C</strong></p>
+<p><strong>Cherry-Pick</strong>: The act of picking a commit from one branch and applying it to another.</p>
+<p><strong>Clean</strong>: A working directory is &quot;clean&quot; when it has no uncommitted changes.</p>
+<p><strong>Clone</strong>: A copy of a repository, including all history and branches. Created with <code>git clone</code>.</p>
+<p><strong>Code Review</strong>: The process of examining code changes before they are merged, typically done via Pull Requests.</p>
+<p><strong>Commit</strong>: A snapshot of changes at a specific point in time. Each commit has a unique SHA-1 hash.</p>
+<p><strong>Committer</strong>: The person who last applied a commit. May be different from the author.</p>
+<p><strong>Conflict</strong>: When Git cannot automatically merge changes, requiring manual resolution.</p>
+<p><strong>D</strong></p>
+<p><strong>Detached HEAD</strong>: When the HEAD points to a commit instead of a branch name. Happens when checking out a specific commit.</p>
+<p><strong>Diff</strong>: A formatted output showing the differences between two versions of files.</p>
+<p><strong>Distributed Version Control</strong>: A system where every developer has a complete copy of the repository.</p>
+<p><strong>E</strong></p>
+<p><strong>Epoch</strong>: The timestamp when a repository was created.</p>
+<p><strong>F</strong></p>
+<p><strong>Fast-Forward</strong>: A merge where the target branch has no new commits since the source branch diverged. Git simply moves the pointer forward.</p>
+<p><strong>Fetch</strong>: Downloading changes from a remote repository without automatically merging them.</p>
+<p><strong>Fork</strong>: A copy of someone else&#39;s repository on GitHub. Used for contributing to projects you don&#39;t have write access to.</p>
+<p><strong>G</strong></p>
+<p><strong>Git</strong>: A distributed version control system created by Linus Torvalds in 2005.</p>
+<p><strong>Gitignore</strong>: A file specifying which files and directories Git should ignore.</p>
+<p><strong>H</strong></p>
+<p><strong>HEAD</strong>: A pointer to the current branch or commit. Represents the current state of the working directory.</p>
+<p><strong>Hook</strong>: A script that runs automatically when certain Git events occur (pre-commit, post-commit, etc.).</p>
+<p><strong>I</strong></p>
+<p><strong>Index</strong>: Another name for the staging area. An intermediate area where changes are prepared before committing.</p>
+<p><strong>Interactive Rebase</strong>: A rebase that allows you to modify, reorder, squash, or drop commits.</p>
+<p><strong>J</strong></p>
+<p><strong>Junction</strong>: A Windows-specific type of symbolic link for directories.</p>
+<p><strong>L</strong></p>
+<p><strong>Lightweight Tag</strong>: A simple pointer to a commit without additional metadata. Created with <code>git tag &lt;name&gt;</code>.</p>
+<p><strong>Log</strong>: A history of commits. Viewed with <code>git log</code>.</p>
+<p><strong>M</strong></p>
+<p><strong>Main</strong>: The primary branch in a Git repository (formerly called <code>master</code>).</p>
+<p><strong>Merge</strong>: Combining changes from different branches into a single branch.</p>
+<p><strong>Merge Conflict</strong>: Occurs when Git cannot automatically merge changes from different branches.</p>
+<p><strong>N</strong></p>
+<p><strong>Newline</strong>: A character sequence indicating the end of a line. Git normalizes line endings.</p>
+<p><strong>O</strong></p>
+<p><strong>Object</strong>: A Git data structure (blob, tree, commit, tag) stored in the repository.</p>
+<p><strong>Origin</strong>: The default name for the remote repository you cloned from.</p>
+<p><strong>P</strong></p>
+<p><strong>Pack</strong>: A binary file containing compressed Git objects. Used to optimize storage and transfer.</p>
+<p><strong>Parent</strong>: A commit that precedes another commit in the history.</p>
+<p><strong>Pull</strong>: Fetching changes from a remote and merging them into the current branch.</p>
+<p><strong>Push</strong>: Uploading local commits to a remote repository.</p>
+<p><strong>R</strong></p>
+<p><strong>Rebase</strong>: Moving or combining a sequence of commits to a new base commit.</p>
+<p><strong>Reflog</strong>: A reference log that records when tips of branches and other refs were updated.</p>
+<p><strong>Remote</strong>: A version of your repository hosted elsewhere (e.g., GitHub).</p>
+<p><strong>Repository</strong>: A collection of files and their complete history, stored in a <code>.git</code> directory.</p>
+<p><strong>S</strong></p>
+<p><strong>Squash</strong>: Combining multiple commits into a single commit.</p>
+<p><strong>Stage</strong>: To prepare changes for the next commit. Done with <code>git add</code>.</p>
+<p><strong>Staging Area</strong>: An intermediate area where changes are prepared before committing.</p>
+<p><strong>Stash</strong>: Temporarily shelving changes so you can work on something else.</p>
+<p><strong>T</strong></p>
+<p><strong>Tag</strong>: A named pointer to a specific commit, typically used for releases.</p>
+<p><strong>Tree</strong>: A Git object that represents a directory. Contains pointers to blobs and other trees.</p>
+<p><strong>U</strong></p>
+<p><strong>Upstream</strong>: The remote repository that a local repository was cloned from.</p>
+<p><strong>V</strong></p>
+<p><strong>Version Control</strong>: A system that records changes to files over time, allowing you to recall specific versions.</p>
+<p><strong>W</strong></p>
+<p><strong>Working Directory</strong>: The files you are currently editing on your computer.</p>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

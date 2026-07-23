@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Security — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Security Best Practices — learn how to secure your Git repositories and workflows.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-SECURITY-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Security</span>
+      </nav>
+
+      <h1>Git Security Best Practices</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Security Best Practices</h1>
+<p>Keep your code and repositories secure.</p>
+<h2>Security Checklist</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Never commit secrets or credentials</li>
+<li><input disabled="" type="checkbox"> Use SSH keys for authentication</li>
+<li><input disabled="" type="checkbox"> Enable 2FA on GitHub</li>
+<li><input disabled="" type="checkbox"> Use branch protection rules</li>
+<li><input disabled="" type="checkbox"> Scan for vulnerabilities</li>
+<li><input disabled="" type="checkbox"> Audit dependencies regularly</li>
+<li><input disabled="" type="checkbox"> Use signed commits</li>
+<li><input disabled="" type="checkbox"> Review code before merging</li>
+</ul>
+<h2>Never Commit Secrets</h2>
+<h3>.gitignore for Secrets</h3>
+<pre><code class="language-gitignore"># Environment files
+.env
+.env.local
+.env.*.local
+
+# Credentials
+*.pem
+*.key
+*.cert
+credentials.json
+service-account.json
+
+# API Keys
+apiKey.txt
+secrets.yml
+
+# Config files with secrets
+config.json
+config.yml
+</code></pre>
+<h3>Check for Secrets Before Commit</h3>
+<pre><code class="language-bash"># Search for potential secrets
+git diff --cached | grep -i &quot;password\|secret\|key\|token&quot;
+
+# Use git-secrets (install first)
+git secrets --install
+git secrets --register-aws
+git secrets --scan
+</code></pre>
+<h3>Remove Secrets from History</h3>
+<pre><code class="language-bash"># If you accidentally committed secrets
+git filter-branch --force --index-filter \
+  &quot;git rm --cached --ignore-unmatch .env&quot; \
+  --prune-empty --tag-name-filter cat -- --all
+
+# Force push (DANGEROUS - coordinate with team)
+git push origin main --force
+
+# Consider rotating all compromised credentials
+</code></pre>
+<h2>SSH Authentication</h2>
+<h3>Generate SSH Key</h3>
+<pre><code class="language-bash"># Generate new key
+ssh-keygen -t ed25519 -C &quot;your@email.com&quot;
+
+# Or RSA
+ssh-keygen -t rsa -b 4096 -C &quot;your@email.com&quot;
+</code></pre>
+<h3>Add to SSH Agent</h3>
+<pre><code class="language-bash"># Start agent
+eval &quot;$(ssh-agent -s)&quot;
+
+# Add key
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard (macOS)
+pbcopy &lt; ~/.ssh/id_ed25519.pub
+
+# Copy public key to clipboard (Linux)
+xclip -selection clipboard &lt; ~/.ssh/id_ed25519.pub
+</code></pre>
+<h3>Use SSH for Git</h3>
+<pre><code class="language-bash"># Change remote to SSH
+git remote set-url origin git@github.com:user/repo.git
+
+# Test connection
+ssh -T git@github.com
+</code></pre>
+<h2>Branch Protection Rules</h2>
+<h3>Set Up on GitHub</h3>
+<ol>
+<li>Go to <strong>Settings</strong> &gt; <strong>Branches</strong></li>
+<li>Add rule for <code>main</code> branch:<ul>
+<li>✅ Require pull request before merging</li>
+<li>✅ Require approvals</li>
+<li>✅ Require status checks to pass</li>
+<li>✅ Require branches to be up to date</li>
+<li>✅ Require conversation resolution</li>
+<li>✅ Include administrators</li>
+</ul>
+</li>
+</ol>
+<h3>Set Up via CLI</h3>
+<pre><code class="language-bash"># Install GitHub CLI
+brew install gh
+
+# Login
+gh auth login
+
+# Set branch protection
+gh api repos/{owner}/{repo}/branches/main/protection -X PUT -f &#39;{
+  &quot;required_status_checks&quot;: {
+    &quot;strict&quot;: true,
+    &quot;contexts&quot;: [&quot;ci/build&quot;, &quot;ci/test&quot;]
+  },
+  &quot;required_pull_request_reviews&quot;: {
+    &quot;required_approving_review_count&quot;: 1
+  },
+  &quot;enforce_admins&quot;: true,
+  &quot;restrictions&quot;: null
+}&#39;
+</code></pre>
+<h2>Signed Commits</h2>
+<h3>Set Up GPG Signing</h3>
+<pre><code class="language-bash"># Generate GPG key
+gpg --full-generate-key
+
+# List keys
+gpg --list-secret-keys --keyid-format=long
+
+# Export public key
+gpg --armor --export YOUR_KEY_ID
+
+# Add to GitHub
+# Settings &gt; SSH and GPG keys &gt; New GPG key
+</code></pre>
+<h3>Configure Git</h3>
+<pre><code class="language-bash"># Set signing key
+git config --global user.signingkey YOUR_KEY_ID
+
+# Enable signing
+git config --global commit.gpgsign true
+
+# Set GPG program (if needed)
+git config --global gpg.program gpg
+</code></pre>
+<h3>Sign Commits</h3>
+<pre><code class="language-bash"># Sign commits automatically
+git config --global commit.gpgsign true
+
+# Or sign specific commits
+git commit -S -m &quot;Signed commit&quot;
+</code></pre>
+<h2>GitHub Security Features</h2>
+<h3>Enable Security Alerts</h3>
+<ol>
+<li>Go to <strong>Settings</strong> &gt; <strong>Code security and analysis</strong></li>
+<li>Enable:<ul>
+<li>Dependency graph</li>
+<li>Dependabot alerts</li>
+<li>Dependabot security updates</li>
+<li>Secret scanning</li>
+</ul>
+</li>
+</ol>
+<h3>Enable Secret Scanning</h3>
+<pre><code class="language-bash"># Push protection (blocks secrets from being pushed)
+gh api repos/{owner}/{repo}/secret-scanning/push-protection -X PUT
+</code></pre>
+<h2>Secure Git Configuration</h2>
+<h3>Add to ~/.gitconfig</h3>
+<pre><code class="language-ini">[core]
+    # Don&#39;t follow symlinks outside repo
+    symlinks = false
+    
+    # Trust file system case
+    ignoreCase = false
+
+[receive]
+    # Reject non-signed commits (optional)
+    denyNonFastForwards = true
+    denyDeletes = true
+
+[pull]
+    # Don&#39;t allow rebasing (safer)
+    rebase = false
+</code></pre>
+<h2>Dependency Security</h2>
+<h3>Use npm audit</h3>
+<pre><code class="language-bash"># Check for vulnerabilities
+npm audit
+
+# Fix vulnerabilities
+npm audit fix
+
+# Fix with breaking changes
+npm audit fix --force
+</code></pre>
+<h3>Use Snyk</h3>
+<pre><code class="language-bash"># Install Snyk
+npm install -g snyk
+
+# Test for vulnerabilities
+snyk test
+
+# Monitor project
+snyk monitor
+</code></pre>
+<h3>Dependabot Configuration</h3>
+<pre><code class="language-yaml"># .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: &quot;npm&quot;
+    directory: &quot;/&quot;
+    schedule:
+      interval: &quot;weekly&quot;
+      day: &quot;monday&quot;
+    open-pull-requests-limit: 10
+    labels:
+      - &quot;dependencies&quot;
+      - &quot;security&quot;
+</code></pre>
+<h2>Code Scanning</h2>
+<h3>GitHub Code Scanning</h3>
+<pre><code class="language-yaml"># .github/workflows/codeql.yml
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: &#39;0 6 * * 1&#39;
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - uses: github/codeql-action/autobuild@v3
+      - uses: github/codeql-action/analyze@v3
+</code></pre>
+<h2>Best Practices</h2>
+<h3>For Developers</h3>
+<ol>
+<li><strong>Never commit secrets</strong> - Use environment variables</li>
+<li><strong>Use SSH keys</strong> - More secure than passwords</li>
+<li><strong>Enable 2FA</strong> - On GitHub and SSH</li>
+<li><strong>Sign commits</strong> - Verify authorship</li>
+<li><strong>Review code</strong> - Before merging</li>
+<li><strong>Keep dependencies updated</strong> - Patch vulnerabilities</li>
+</ol>
+<h3>For Teams</h3>
+<ol>
+<li><strong>Use branch protection</strong> - Prevent direct pushes</li>
+<li><strong>Require reviews</strong> - At least one approval</li>
+<li><strong>Enable security features</strong> - Dependabot, CodeQL</li>
+<li><strong>Audit access</strong> - Regular permission reviews</li>
+<li><strong>Document secrets</strong> - Where they are stored</li>
+<li><strong>Rotate credentials</strong> - Regularly</li>
+</ol>
+<h3>For Organizations</h3>
+<ol>
+<li><strong>Enforce policies</strong> - Organization-wide</li>
+<li><strong>Use SSO</strong> - Single sign-on</li>
+<li><strong>Audit logs</strong> - Monitor activity</li>
+<li><strong>Security training</strong> - Educate team</li>
+<li><strong>Incident response</strong> - Have a plan</li>
+</ol>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://docs.github.com/en/code-security">GitHub Security Best Practices</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Tools-Security">Git Security</a></li>
+<li><a href="https://owasp.org/">OWASP Security</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

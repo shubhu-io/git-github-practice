@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Hooks Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Hooks Guide — learn how to automate workflows with Git hooks for commits, pushes, and more.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-HOOKS-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Hooks Guide</span>
+      </nav>
+
+      <h1>Git Hooks Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Hooks Guide</h1>
+<p>Complete guide to Git hooks.</p>
+<h2>What are Git Hooks?</h2>
+<p>Scripts that run automatically when certain Git events occur. They help enforce code quality and automate tasks.</p>
+<h2>Hook Locations</h2>
+<pre><code>.git/
+├── hooks/
+│   ├── pre-commit        # Runs before commit
+│   ├── prepare-commit-msg # Modifies commit message
+│   ├── commit-msg        # Validates commit message
+│   ├── post-commit       # Runs after commit
+│   ├── pre-push          # Runs before push
+│   ├── pre-rebase        # Runs before rebase
+│   ├── post-checkout     # Runs after checkout
+│   └── post-merge        # Runs after merge
+</code></pre>
+<h2>Types of Hooks</h2>
+<h3>Client-Side Hooks (Run on your computer)</h3>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>When It Runs</th>
+<th>Common Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pre-commit</code></td>
+<td>Before commit</td>
+<td>Linting, formatting</td>
+</tr>
+<tr>
+<td><code>prepare-commit-msg</code></td>
+<td>Before editor opens</td>
+<td>Template messages</td>
+</tr>
+<tr>
+<td><code>commit-msg</code></td>
+<td>After commit message</td>
+<td>Validate format</td>
+</tr>
+<tr>
+<td><code>post-commit</code></td>
+<td>After commit</td>
+<td>Notifications</td>
+</tr>
+<tr>
+<td><code>pre-push</code></td>
+<td>Before push</td>
+<td>Run tests</td>
+</tr>
+<tr>
+<td><code>post-checkout</code></td>
+<td>After checkout</td>
+<td>Clear cache</td>
+</tr>
+<tr>
+<td><code>post-merge</code></td>
+<td>After merge</td>
+<td>Install deps</td>
+</tr>
+</tbody></table>
+<h3>Server-Side Hooks (Run on server)</h3>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>When It Runs</th>
+<th>Common Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pre-receive</code></td>
+<td>Before accepting push</td>
+<td>Access control</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Per branch update</td>
+<td>Branch rules</td>
+</tr>
+<tr>
+<td><code>post-receive</code></td>
+<td>After accepting push</td>
+<td>Notifications, CI</td>
+</tr>
+</tbody></table>
+<h2>Creating a Hook</h2>
+<h3>Step 1: Create the Hook File</h3>
+<pre><code class="language-bash"># Create pre-commit hook
+cat &gt; .git/hooks/pre-commit &lt;&lt; &#39;EOF&#39;
+#!/bin/bash
+
+echo &quot;Running pre-commit checks...&quot;
+
+# Run linter
+npm run lint
+if [ $? -ne 0 ]; then
+    echo &quot;❌ Linting failed!&quot;
+    exit 1
+fi
+
+# Run tests
+npm test
+if [ $? -ne 0 ]; then
+    echo &quot;❌ Tests failed!&quot;
+    exit 1
+fi
+
+echo &quot;✅ All checks passed!&quot;
+EOF
+</code></pre>
+<h3>Step 2: Make It Executable</h3>
+<pre><code class="language-bash">chmod +x .git/hooks/pre-commit
+</code></pre>
+<h3>Step 3: Test It</h3>
+<pre><code class="language-bash">git commit -m &quot;test&quot;
+# Hook should run
+</code></pre>
+<h2>Common Hook Examples</h2>
+<h3>pre-commit: Run Linter</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/pre-commit
+
+# Run ESLint
+npx eslint --ext .js,.jsx,.ts,.tsx .
+if [ $? -ne 0 ]; then
+    echo &quot;❌ Linting failed. Fix errors before committing.&quot;
+    exit 1
+fi
+</code></pre>
+<h3>pre-commit: Run Formatter</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/pre-commit
+
+# Check formatting
+npx prettier --check &quot;src/**/*.{js,jsx,ts,tsx,json,md}&quot;
+if [ $? -ne 0 ]; then
+    echo &quot;❌ Formatting issues found. Run &#39;npm run format&#39; first.&quot;
+    exit 1
+fi
+</code></pre>
+<h3>commit-msg: Validate Conventional Commits</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/commit-msg
+
+COMMIT_MSG=$(cat &quot;$1&quot;)
+PATTERN=&quot;^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .{1,72}&quot;
+
+if ! echo &quot;$COMMIT_MSG&quot; | grep -qE &quot;$PATTERN&quot;; then
+    echo &quot;❌ Invalid commit message format!&quot;
+    echo &quot;&quot;
+    echo &quot;Expected: &lt;type&gt;(&lt;scope&gt;): &lt;description&gt;&quot;
+    echo &quot;Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert&quot;
+    echo &quot;&quot;
+    echo &quot;Example: feat(auth): add login page&quot;
+    exit 1
+fi
+</code></pre>
+<h3>pre-push: Run Tests</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/pre-push
+
+echo &quot;Running tests before push...&quot;
+
+npm test
+if [ $? -ne 0 ]; then
+    echo &quot;❌ Tests failed. Fix before pushing.&quot;
+    exit 1
+fi
+</code></pre>
+<h3>post-checkout: Clear Cache</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/post-checkout
+
+# Clear npm cache on branch switch
+npm cache clean --force 2&gt;/dev/null
+
+# Reinstall if package.json changed
+if [ &quot;$1&quot; != &quot;$2&quot; ]; then
+    echo &quot;📦 Installing dependencies...&quot;
+    npm install
+fi
+</code></pre>
+<h3>post-merge: Install Dependencies</h3>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/post-merge
+
+# Check if package.json changed
+CHANGED=$(git diff HEAD@{1} HEAD --name-only | grep package.json)
+
+if [ &quot;$CHANGED&quot; ]; then
+    echo &quot;📦 package.json changed, installing dependencies...&quot;
+    npm install
+fi
+</code></pre>
+<h2>Using Husky (Recommended)</h2>
+<p>Husky makes Git hooks easy to manage.</p>
+<h3>Setup</h3>
+<pre><code class="language-bash"># Install husky
+npm install husky --save-dev
+
+# Initialize
+npx husky init
+
+# Add hook
+npx husky add .husky/pre-commit &quot;npm run lint&quot;
+</code></pre>
+<h3>package.json Configuration</h3>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;prepare&quot;: &quot;husky&quot;
+  }
+}
+</code></pre>
+<h3>.husky Directory</h3>
+<pre><code>.husky/
+├── pre-commit      # Runs on commit
+├── commit-msg      # Validates message
+└── pre-push        # Runs before push
+</code></pre>
+<h3>Example: .husky/pre-commit</h3>
+<pre><code class="language-bash">#!/usr/bin/env sh
+. &quot;$(dirname -- &quot;$0&quot;)/_/husky.sh&quot;
+
+npx lint-staged
+</code></pre>
+<h2>Sharing Hooks</h2>
+<h3>Option 1: npm package</h3>
+<pre><code class="language-bash"># Install
+npm install --save-dev husky lint-staged
+
+# .husky/pre-commit
+npx lint-staged
+
+# package.json
+{
+  &quot;lint-staged&quot;: {
+    &quot;*.{js,ts}&quot;: [&quot;eslint --fix&quot;, &quot;prettier --write&quot;],
+    &quot;*.{json,md}&quot;: [&quot;prettier --write&quot;]
+  }
+}
+</code></pre>
+<h3>Option 2: Git Directory</h3>
+<pre><code class="language-bash"># Commit hooks (not recommended)
+git add .git/hooks
+</code></pre>
+<h3>Option 3: Core.hooksPath</h3>
+<pre><code class="language-bash"># Use custom hooks directory
+git config core.hooksPath .githooks
+
+# .githooks/pre-commit
+#!/bin/bash
+# Your hook script
+</code></pre>
+<h2>Debugging Hooks</h2>
+<h3>Add Debug Output</h3>
+<pre><code class="language-bash">#!/bin/bash
+# Add this at the top
+set -x  # Enable debug mode
+
+# Your hook code
+</code></pre>
+<h3>Check Hook Location</h3>
+<pre><code class="language-bash"># Verify hook is in right place
+ls -la .git/hooks/
+
+# Check if executable
+chmod +x .git/hooks/pre-commit
+</code></pre>
+<h3>Test Hook Manually</h3>
+<pre><code class="language-bash"># Run hook directly
+.git/hooks/pre-commit
+</code></pre>
+<h2>Best Practices</h2>
+<ol>
+<li><strong>Keep hooks fast</strong> - Don&#39;t slow down workflow</li>
+<li><strong>Provide clear messages</strong> - Tell users what went wrong</li>
+<li><strong>Allow bypass when needed</strong> - <code>git commit --no-verify</code></li>
+<li><strong>Version control shared hooks</strong> - Use .githooks or npm</li>
+<li><strong>Test hooks</strong> - Make sure they work</li>
+<li><strong>Document hooks</strong> - Explain what they do</li>
+</ol>
+<h2>Bypassing Hooks</h2>
+<pre><code class="language-bash"># Skip pre-commit hook
+git commit --no-verify -m &quot;message&quot;
+
+# Skip pre-push hook
+git push --no-verify
+</code></pre>
+<p><strong>Warning:</strong> Only bypass hooks when necessary!</p>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks Documentation</a></li>
+<li><a href="https://typicode.github.io/husky/">Husky Documentation</a></li>
+<li><a href="https://github.com/lint-staged/lint-staged">lint-staged</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Aliases Guide — Git & GitHub Learning Hub</title>
+  <meta name="description" content="Git Aliases Guide — learn how to create and use Git aliases to speed up your workflow.">
+  <meta name="theme-color" content="#0D1117">
+  <link rel="canonical" href="https://shubhu-io.github.io/git-github-practice/GIT-ALIASES-GUIDE.html">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>(function(){var t=localStorage.getItem('gh-learning-theme');var auto=localStorage.getItem('gh-learning-theme-auto');if(auto==='true'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}else if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <button class="navbar-hamburger" id="sidebar-toggle-mobile" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="./" class="navbar-brand" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Git & GitHub Hub
+    </a>
+    <nav class="navbar-links" aria-label="Main navigation">
+      <a href="./BEGINNERS-GUIDE.html" class="navbar-link">Beginner's Guide</a>
+      <a href="./Learning-Path.html" class="navbar-link">Learning Path</a>
+      <a href="./git-cheatsheet.html" class="navbar-link">Cheatsheet</a>
+      <a href="./Master-Index.html" class="navbar-link">All Guides</a>
+    </nav>
+    <div class="navbar-search">
+      <svg class="navbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search-input" placeholder="Search guides..." aria-label="Search documentation">
+      <span class="navbar-search-kbd">Ctrl+K</span>
+    </div>
+    <div class="navbar-actions">
+      <button class="navbar-btn" id="theme-toggle-btn" onclick="Theme.togglePicker()" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Documentation sidebar"></aside>
+
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid"></div>
+      </div>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd>ESC</kbd>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <main class="main" id="main-content" role="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumbs-sep"></span>
+        <a href="./">Guides</a>
+        <span class="breadcrumbs-sep"></span>
+        <span class="breadcrumbs-current">Git Aliases Guide</span>
+      </nav>
+
+      <h1>Git Aliases Guide</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guide
+        </span>
+        <span class="badge badge-info">Updated July 2026</span>
+      </div>
+
+      <div id="article-content" class="article-content">
+<h1>Git Aliases Guide</h1>
+<p>A comprehensive guide to useful Git aliases.</p>
+<h2>What are Git Aliases?</h2>
+<p>Git aliases are shortcuts for longer Git commands. They help you work faster and remember commands more easily.</p>
+<h2>Setting Up Aliases</h2>
+<h3>Global Aliases (Recommended)</h3>
+<pre><code class="language-bash">git config --global alias.&lt;alias-name&gt; &#39;&lt;command&gt;&#39;
+</code></pre>
+<h3>Repository Aliases</h3>
+<pre><code class="language-bash">git config alias.&lt;alias-name&gt; &#39;&lt;command&gt;&#39;
+</code></pre>
+<h2>Essential Aliases</h2>
+<h3>Status Aliases</h3>
+<pre><code class="language-bash">git config --global alias.st status
+git config --global alias.s status
+git config --global alias.ss &quot;status -s&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git st    # Same as git status
+git s     # Same as git status
+git ss    # Short status format
+</code></pre>
+<h3>Branch Aliases</h3>
+<pre><code class="language-bash">git config --global alias.br branch
+git config --global alias.b branch
+git config --global alias.bd &quot;branch -d&quot;
+git config --global alias.bD &quot;branch -D&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git br         # List branches
+git bd feature # Delete branch (safe)
+git bD feature # Force delete branch
+</code></pre>
+<h3>Checkout Aliases</h3>
+<pre><code class="language-bash">git config --global alias.co checkout
+git config --global alias.sw switch
+git config --global alias.cb &quot;checkout -b&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git co main        # Switch to main
+git sw main        # Switch to main (modern)
+git cb feature     # Create and switch to branch
+</code></pre>
+<h3>Commit Aliases</h3>
+<pre><code class="language-bash">git config --global alias.cm commit
+git config --global alias.ci commit
+git config --global alias.ca &quot;commit --amend&quot;
+git config --global alias.cam &quot;commit --amend --no-edit&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git cm -m &quot;message&quot;    # Commit with message
+git ci -m &quot;message&quot;    # Commit with message
+git ca -m &quot;new msg&quot;    # Amend last commit message
+git cam                # Amend last commit (keep message)
+</code></pre>
+<h3>Add Aliases</h3>
+<pre><code class="language-bash">git config --global alias.aa &quot;add --all&quot;
+git config --global alias.ap &quot;add -p&quot;
+git config --global alias.a add
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git aa        # Stage all changes
+git ap        # Interactive staging (patch mode)
+git a .       # Stage all changes
+git a file    # Stage specific file
+</code></pre>
+<h3>Diff Aliases</h3>
+<pre><code class="language-bash">git config --global alias.df diff
+git config --global alias.dfc &quot;diff --cached&quot;
+git config --global alias.dfh &quot;diff HEAD&quot;
+git config --global alias.dfw &quot;diff --word-diff&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git df        # Show unstaged changes
+git dfc       # Show staged changes
+git dfh       # Show all changes vs last commit
+git dfw       # Show word diff
+</code></pre>
+<h3>Log Aliases</h3>
+<pre><code class="language-bash">git config --global alias.lg &quot;log --oneline --graph --all --decorate&quot;
+git config --global alias.lg2 &quot;log --oneline --graph --decorate&quot;
+git config --global alias.ls &quot;log --oneline -10&quot;
+git config --global alias.ll &quot;log --pretty=format:&#39;%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]&#39; --decorate --numstat&quot;
+git config --global alias.lg1 &quot;log --oneline --graph&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git lg      # Visual log with all branches
+git lg2     # Visual log current branch
+git ls      # Last 10 commits
+git ll      # Detailed log with stats
+git lg1     # Simple graph log
+</code></pre>
+<h3>Pull Aliases</h3>
+<pre><code class="language-bash">git config --global alias.pl &quot;pull --rebase&quot;
+git config --global alias.pu &quot;push&quot;
+git config --global alias.pus &quot;push&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git pl          # Pull with rebase (cleaner history)
+git pu origin main  # Push to origin main
+</code></pre>
+<h3>Stash Aliases</h3>
+<pre><code class="language-bash">git config --global alias.stp &quot;stash pop&quot;
+git config --global alias.stl &quot;stash list&quot;
+git config --global alias.sta &quot;stash apply&quot;
+git config --global alias.stc &quot;stash clear&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git stp    # Pop most recent stash
+git stl    # List all stashes
+git sta    # Apply most recent stash
+git stc    # Clear all stashes
+</code></pre>
+<h3>Remote Aliases</h3>
+<pre><code class="language-bash">git config --global alias.rv &quot;remote -v&quot;
+git config --global alias.fet &quot;fetch --all --prune&quot;
+git config --global alias.pf &quot;push --force-with-lease&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git rv          # List remotes
+git fet         # Fetch all remotes and prune
+git pf          # Safe force push
+</code></pre>
+<h3>Cleanup Aliases</h3>
+<pre><code class="language-bash">git config --global alias.cleanup &quot;!git branch --merged | grep -v &#39;\\*\\|main\\|master&#39; | xargs -n 1 git branch -d&quot;
+git config --global alias.aliases &quot;!git config --global --list | grep alias&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git cleanup      # Delete merged branches
+git aliases      # List all aliases
+</code></pre>
+<h3>Undo Aliases</h3>
+<pre><code class="language-bash">git config --global alias.undo &quot;reset HEAD~1 --soft&quot;
+git config --global alias.undo-hard &quot;reset --hard HEAD~1&quot;
+git config --global alias.amend &quot;commit --amend --no-edit&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git undo          # Soft reset last commit
+git undo-hard     # Hard reset last commit (DANGEROUS)
+git amend         # Amend last commit message
+</code></pre>
+<h2>Advanced Aliases</h2>
+<h3>Find Large Files</h3>
+<pre><code class="language-bash">git config --global alias.large &quot;!git rev-list --objects --all | git cat-file --batch-check=&#39;%(objecttype) %(objectname) %(objectsize) %(rest)&#39; | sed -n &#39;s/^blob //p&#39; | sort -rnk2 | head -20&quot;
+</code></pre>
+<h3>Show Repository Stats</h3>
+<pre><code class="language-bash">git config --global alias.stats &quot;!echo &#39;Commits:&#39; &amp;&amp; git rev-list --all --count &amp;&amp; echo &#39;Contributors:&#39; &amp;&amp; git shortlog -sn --all | wc -l&quot;
+</code></pre>
+<h3>Quick Add and Commit</h3>
+<pre><code class="language-bash">git config --global alias.ac &quot;!git add -A &amp;&amp; git commit -m&quot;
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">git ac &quot;feat: add new feature&quot;    # Stage all and commit
+</code></pre>
+<h3>Show Files in Last Commit</h3>
+<pre><code class="language-bash">git config --global alias.lastfiles &quot;diff --name-only HEAD~1 HEAD&quot;
+</code></pre>
+<h3>Show Last Commit Details</h3>
+<pre><code class="language-bash">git config --global alias.last &quot;log -1 HEAD --stat&quot;
+</code></pre>
+<h2>Complete Alias Setup Script</h2>
+<pre><code class="language-bash">#!/bin/bash
+# Git Aliases Setup
+
+# Status
+git config --global alias.st status
+git config --global alias.s status
+git config --global alias.ss &quot;status -s&quot;
+
+# Branch
+git config --global alias.br branch
+git config --global alias.b branch
+git config --global alias.bd &quot;branch -d&quot;
+git config --global alias.bD &quot;branch -D&quot;
+
+# Checkout
+git config --global alias.co checkout
+git config --global alias.sw switch
+git config --global alias.cb &quot;checkout -b&quot;
+
+# Commit
+git config --global alias.cm commit
+git config --global alias.ci commit
+git config --global alias.ca &quot;commit --amend&quot;
+git config --global alias.cam &quot;commit --amend --no-edit&quot;
+
+# Add
+git config --global alias.aa &quot;add --all&quot;
+git config --global alias.ap &quot;add -p&quot;
+
+# Diff
+git config --global alias.df diff
+git config --global alias.dfc &quot;diff --cached&quot;
+git config --global alias.dfh &quot;diff HEAD&quot;
+
+# Log
+git config --global alias.lg &quot;log --oneline --graph --all --decorate&quot;
+git config --global alias.ls &quot;log --oneline -10&quot;
+git config --global alias.last &quot;log -1 HEAD --stat&quot;
+
+# Pull/Push
+git config --global alias.pl &quot;pull --rebase&quot;
+git config --global alias.pu push
+git config --global alias.psf &quot;push --force-with-lease&quot;
+
+# Stash
+git config --global alias.stp &quot;stash pop&quot;
+git config --global alias.stl &quot;stash list&quot;
+git config --global alias.sta &quot;stash apply&quot;
+
+# Cleanup
+git config --global alias.cleanup &quot;!git branch --merged | grep -v &#39;\\*\\|main\\|master&#39; | xargs -n 1 git branch -d&quot;
+
+# Undo
+git config --global alias.undo &quot;reset HEAD~1 --soft&quot;
+git config --global alias.undo-hard &quot;reset --hard HEAD~1&quot;
+
+echo &quot;Git aliases configured!&quot;
+</code></pre>
+<h2>Managing Aliases</h2>
+<h3>List All Aliases</h3>
+<pre><code class="language-bash">git config --global --list | grep alias
+</code></pre>
+<h3>Remove an Alias</h3>
+<pre><code class="language-bash">git config --global --unset alias.&lt;alias-name&gt;
+</code></pre>
+<h3>Remove All Aliases</h3>
+<pre><code class="language-bash">git config --global --remove-section alias
+</code></pre>
+<h2>Tips</h2>
+<ol>
+<li><strong>Start simple</strong> - Add 2-3 aliases at a time</li>
+<li><strong>Use meaningful names</strong> - Make aliases easy to remember</li>
+<li><strong>Keep them consistent</strong> - Use similar patterns</li>
+<li><strong>Document your aliases</strong> - Keep a list somewhere</li>
+<li><strong>Share with your team</strong> - Create a shared alias file</li>
+</ol>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://git-scm.com/docs/git-config">Git Documentation</a></li>
+<li><a href="https://github.com/git/git/blob/master/Documentation/GitAliases.txt">GitHub Aliases Guide</a></li>
+</ul>
+
+      </div>
+
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <div></div>
+        <a href="./Master-Index.html" class="page-nav-link next">
+          <div class="page-nav-label">Next</div>
+          <div class="page-nav-title">Master Index →</div>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Git & GitHub Hub</div>
+        <div class="footer-desc">A comprehensive, beginner-friendly guide to mastering Git and GitHub.</div>
+        <div class="footer-social">
+          <a href="https://github.com/shubhu-io/git-github-practice" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Learn</div>
+        <a href="./BEGINNERS-GUIDE.html">Beginner's Guide</a>
+        <a href="./Learning-Path.html">Learning Path</a>
+        <a href="./GIT-WORKFLOWS.html">Git Workflows</a>
+        <a href="./github-actions-guide.html">GitHub Actions</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="./git-cheatsheet.html">Cheatsheet</a>
+        <a href="./GIT-INTERVIEW-QUESTIONS.html">Interview Questions</a>
+        <a href="./Practice-Exercises.html">Exercises</a>
+        <a href="./Master-Index.html">Master Index</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="https://github.com/shubhu-io/git-github-practice/issues" target="_blank" rel="noopener">Report Issue</a>
+        <a href="./FAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Git & GitHub Learning Hub. MIT License.</span>
+      <span>Built with ❤️ for the developer community</span>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/toc.js"></script>
+  <script src="./assets/js/progress.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/router.js"></script>
+  <script src="./assets/js/animations.js"></script>
+  <script src="./assets/js/shortcuts.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('search-input')?.addEventListener('focus', function() {
+      document.getElementById('search-overlay').style.display = 'block';
+      document.getElementById('search-input-overlay')?.focus();
+    });
+    document.getElementById('search-overlay')?.addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('search-overlay').style.display = 'block';
+        setTimeout  </script>
+</body>
+</html>

@@ -58,28 +58,92 @@ Git&Github/
    git checkout -b feature/your-feature
    ```
 
-## Reference
+## Documentation Site
 
-- **[Git Commands Reference](docs/git/)** — Comprehensive Git commands organized by category:
-  - [Core Commands](docs/git/core-commands.md) — `init`, `clone`, `add`, `commit`, `status`, `log`, `diff`
-  - [Branching & Merging](docs/git/branching-merging.md) — `branch`, `merge`, `rebase`, `switch`
-  - [Remote Operations](docs/git/remote-operations.md) — `remote`, `fetch`, `push`, `pull`
-  - [Undoing Changes](docs/git/undoing-changes.md) — `reset`, `revert`, `cherry-pick`, `reflog`, `bisect`
-  - [Stashing](docs/git/stashing.md) — `stash` with all options
-  - [Collaboration](docs/git/collaboration.md) — `tag`, `submodule`, `worktree`, `blame`, `grep`
-  - [Configuration](docs/git/configuration.md) — `config`, `help`, `gc`, `fsck`
-  - [Advanced](docs/git/advanced.md) — `notes`, `replace`, `filter-branch`, `range-diff`
+Browse all guides online: **[Git & GitHub Learning Hub](https://shubhu-io.github.io/git-github-practice/)**
 
-- **[GitHub Features Reference](docs/github/)** — Comprehensive GitHub features organized by category:
-  - [Repositories](docs/github/repositories.md) — Create, manage, settings, templates
-  - [Issues & Projects](docs/github/issues-projects.md) — Issues, labels, milestones, projects
-  - [Pull Requests](docs/github/pull-requests.md) — PR workflow, reviews, merge strategies
-  - [Actions & CI/CD](docs/github/actions.md) — Workflows, runners, secrets, caching
-  - [GitHub Pages](docs/github/pages.md) — Static sites, Jekyll, custom domains
-  - [Security](docs/github/security.md) — Dependabot, secrets, code scanning
-  - [API](docs/github/api.md) — REST, GraphQL, webhooks
-  - [CLI (gh)](docs/github/cli.md) — GitHub CLI commands
-  - [Profiles & Orgs](docs/github/profiles-orgs.md) — Profile README, organizations, teams
+### Getting Started
+| Page | Description |
+|------|-------------|
+| [Beginner's Guide](docs/BEGINNERS-GUIDE.html) | Step-by-step for absolute beginners — install Git, first commit |
+| [Git Cheatsheet](docs/git-cheatsheet.html) | Quick reference of 100+ Git commands |
+| [Quick Reference](docs/QUICK-REFERENCE.html) | At-a-glance Git command reference |
+| [Git Glossary](docs/GIT-GLOSSARY.html) | Definitions of common Git terminology |
+| [FAQ](docs/FAQ.html) | Frequently asked questions |
+
+### Learning Path
+| Page | Description |
+|------|-------------|
+| [Learning Path](docs/Learning-Path.html) | Structured 4-week plan from zero to mastery |
+
+### Guides
+| Page | Description |
+|------|-------------|
+| [Complete Git & GitHub Guide](docs/COMPLETE-GIT-GITHUB-GUIDE.html) | Comprehensive deep-dive into all topics |
+| [Git Workflows](docs/GIT-WORKFLOWS.html) | Git Flow, GitHub Flow, trunk-based development |
+| [Conventional Commits](docs/CONVENTIONAL-COMMITS.html) | Standardized commit message format |
+
+### GitHub
+| Page | Description |
+|------|-------------|
+| [GitHub Actions Guide](docs/github-actions-guide.html) | Introduction to CI/CD automation |
+| [GitHub Actions Advanced](docs/GITHUB-ACTIONS-ADVANCED.html) | Advanced patterns, matrix builds, deployments |
+| [GitHub Pages](docs/GITHUB-PAGES.html) | Host static websites for free |
+| [Pull Request Guide](docs/GITHUB-PR-GUIDE.html) | Create, review, and merge PRs |
+| [GitHub Profile README](docs/GITHUB-PROFILE-README.html) | Create a standout profile README |
+| [GitHub REST API](docs/GITHUB-REST-API.html) | Interact with GitHub programmatically |
+| [Code Review Guide](docs/CODE-REVIEW-GUIDE.html) | Best practices for reviewing code |
+
+### Advanced Git
+| Page | Description |
+|------|-------------|
+| [Git Aliases](docs/GIT-ALIASES-GUIDE.html) | Speed up your workflow with custom aliases |
+| [Git Hooks](docs/GIT-HOOKS-GUIDE.html) | Automate tasks with pre-commit, pre-push hooks |
+| [Git Internals](docs/GIT-INTERNALS.html) | How Git works under the hood |
+| [Git Performance](docs/GIT-PERFORMANCE-GUIDE.html) | Optimize Git for large repositories |
+| [Git Security](docs/GIT-SECURITY-GUIDE.html) | Secure repositories and accounts |
+| [Tips & Tricks](docs/GIT-TIPS-TRICKS.html) | Useful Git tips to boost productivity |
+| [Visual Guide](docs/GIT-VISUAL-GUIDE.html) | Learn Git through visual diagrams |
+| [Troubleshooting](docs/TROUBLESHOOTING.html) | Common Git problems and solutions |
+
+### Resources
+| Page | Description |
+|------|-------------|
+| [Practice Exercises](docs/Practice-Exercises.html) | 20 hands-on exercises |
+| [Exercise Solutions](docs/EXERCISES.html) | Solutions to all exercises |
+| [Git Scenarios](docs/GIT-SCENARIOS.html) | Real-world scenarios and solutions |
+| [Interview Questions](docs/GIT-INTERVIEW-QUESTIONS.html) | 50+ curated interview Q&A |
+| [Commands by Task](docs/GIT-COMMANDS-BY-TASK.html) | Commands organized by task |
+| [Migration Guide](docs/MIGRATION-GUIDE.html) | Migrate from SVN, Mercurial to Git |
+| [Git for Teams](docs/GIT-FOR-TEAMS-GUIDE.html) | Collaborative workflows and best practices |
+| [Master Index](docs/Master-Index.html) | Complete overview of every topic |
+
+### Git Commands Reference
+| Page | Description |
+|------|-------------|
+| [Overview](docs/git/) | Git command reference overview |
+| [Core Commands](docs/git/core-commands.html) | `init`, `clone`, `add`, `commit`, `status`, `log`, `diff` |
+| [Branching & Merging](docs/git/branching-merging.html) | `branch`, `merge`, `rebase`, `switch` |
+| [Remote Operations](docs/git/remote-operations.html) | `remote`, `fetch`, `push`, `pull` |
+| [Undoing Changes](docs/git/undoing-changes.html) | `reset`, `revert`, `cherry-pick`, `reflog`, `bisect` |
+| [Stashing](docs/git/stashing.html) | `stash` with all options |
+| [Collaboration](docs/git/collaboration.html) | `tag`, `submodule`, `worktree`, `blame`, `grep` |
+| [Configuration](docs/git/configuration.html) | `config`, `help`, `gc`, `fsck` |
+| [Advanced](docs/git/advanced.html) | `notes`, `replace`, `filter-branch`, `range-diff` |
+
+### GitHub Features Reference
+| Page | Description |
+|------|-------------|
+| [Overview](docs/github/) | GitHub features reference overview |
+| [Repositories](docs/github/repositories.html) | Create, manage, settings, templates |
+| [Issues & Projects](docs/github/issues-projects.html) | Issues, labels, milestones, projects |
+| [Pull Requests](docs/github/pull-requests.html) | PR workflow, reviews, merge strategies |
+| [Actions & CI/CD](docs/github/actions.html) | Workflows, runners, secrets, caching |
+| [GitHub Pages](docs/github/pages.html) | Static sites, Jekyll, custom domains |
+| [Security](docs/github/security.html) | Dependabot, secrets, code scanning |
+| [API](docs/github/api.html) | REST, GraphQL, webhooks |
+| [CLI (gh)](docs/github/cli.html) | GitHub CLI commands |
+| [Profiles & Orgs](docs/github/profiles-orgs.html) | Profile README, organizations, teams |
 
 ## Quick Reference
 
