@@ -9,6 +9,10 @@ sidebar:
 
 A complete 4-week structured guide to mastering Git and GitHub — from your first commit to advanced automation.
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/learning-path.svg' | relative_url }}" alt="Git Learning Path" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ---
 
 ## Learning Path Overview

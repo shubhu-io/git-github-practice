@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <style>
+    .node { font-family: 'Segoe UI', sans-serif; font-size: 12px; }
+    .title { font-size: 20px; font-weight: bold; fill: #1e293b; }
+    .label { fill: #fff; font-weight: 500; font-size: 11px; }
+    .commit { fill: #1e293b; font-size: 11px; }
+  </style>
+  
+  <text x="400" y="30" text-anchor="middle" class="title">Git Branching & Merging</text>
+  
+  <!-- Main branch -->
+  <line x1="50" y1="120" x2="750" y2="120" stroke="#6366f1" stroke-width="3"/>
+  <text x="20" y="125" class="node" style="fill:#6366f1; font-weight:bold">main</text>
+  
+  <!-- Feature branch -->
+  <line x1="200" y1="120" x2="250" y2="220" stroke="#10b981" stroke-width="2"/>
+  <line x1="250" y1="220" x2="500" y2="220" stroke="#10b981" stroke-width="3"/>
+  <line x1="500" y1="220" x2="550" y2="120" stroke="#10b981" stroke-width="2"/>
+  <text x="250" y="250" class="node" style="fill:#10b981; font-weight:bold">feature/login</text>
+  
+  <!-- Hotfix branch -->
+  <line x1="400" y1="120" x2="450" y2="40" stroke="#f59e0b" stroke-width="2"/>
+  <line x1="450" y1="40" x2="550" y2="40" stroke="#f59e0b" stroke-width="3"/>
+  <line x1="550" y1="40" x2="600" y2="120" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="30" class="node" style="fill:#f59e0b; font-weight:bold">hotfix/bug</text>
+  
+  <!-- Commits on main -->
+  <circle cx="100" cy="120" r="8" fill="#6366f1"/>
+  <circle cx="200" cy="120" r="8" fill="#6366f1"/>
+  <circle cx="350" cy="120" r="8" fill="#6366f1"/>
+  <circle cx="550" cy="120" r="8" fill="#6366f1"/>
+  <circle cx="700" cy="120" r="8" fill="#6366f1"/>
+  
+  <!-- Commits on feature -->
+  <circle cx="280" cy="220" r="8" fill="#10b981"/>
+  <circle cx="380" cy="220" r="8" fill="#10b981"/>
+  <circle cx="470" cy="220" r="8" fill="#10b981"/>
+  
+  <!-- Commits on hotfix -->
+  <circle cx="480" cy="40" r="8" fill="#f59e0b"/>
+  <circle cx="520" cy="40" r="8" fill="#f59e0b"/>
+  
+  <!-- Labels -->
+  <text x="100" y="145" text-anchor="middle" class="commit">C1</text>
+  <text x="200" y="145" text-anchor="middle" class="commit">C2</text>
+  <text x="350" y="145" text-anchor="middle" class="commit">C5</text>
+  <text x="550" y="145" text-anchor="middle" class="commit">C7</text>
+  <text x="700" y="145" text-anchor="middle" class="commit">C8</text>
+  
+  <text x="280" y="245" text-anchor="middle" class="commit">C3</text>
+  <text x="380" y="245" text-anchor="middle" class="commit">C4</text>
+  <text x="470" y="245" text-anchor="middle" class="commit">C6</text>
+  
+  <text x="480" y="65" text-anchor="middle" class="commit">H1</text>
+  <text x="520" y="65" text-anchor="middle" class="commit">H2</text>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 300)">
+    <rect width="350" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="175" y="25" text-anchor="middle" class="node" style="font-weight:bold; font-size:14px">Branch Commands</text>
+    
+    <circle cx="20" cy="50" r="6" fill="#10b981"/>
+    <text x="35" y="55" class="node">git branch feature/login</text>
+    
+    <circle cx="20" cy="80" r="6" fill="#10b981"/>
+    <text x="35" y="85" class="node">git switch feature/login</text>
+    
+    <circle cx="20" cy="110" r="6" fill="#10b981"/>
+    <text x="35" y="115" class="node">git merge feature/login</text>
+    
+    <circle cx="20" cy="140" r="6" fill="#10b981"/>
+    <text x="35" y="145" class="node">git branch -d feature/login</text>
+  </g>
+  
+  <!-- Merge strategies -->
+  <g transform="translate(450, 300)">
+    <rect width="300" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="150" y="25" text-anchor="middle" class="node" style="font-weight:bold; font-size:14px">Merge Strategies</text>
+    
+    <text x="20" y="55" class="node" style="fill:#6366f1">git merge --no-ff</text>
+    <text x="20" y="75" class="node" style="fill:#64748b">Creates merge commit</text>
+    
+    <text x="20" y="100" class="node" style="fill:#10b981">git merge --squash</text>
+    <text x="20" y="120" class="node" style="fill:#64748b">Combines all commits</text>
+  </g>
+</svg>

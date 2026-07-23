@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <style>
+    .node { font-family: 'Segoe UI', sans-serif; font-size: 14px; }
+    .title { font-size: 20px; font-weight: bold; fill: #1e293b; }
+    .label { fill: #fff; font-weight: 500; }
+    .step { fill: #6366f1; }
+    .arrow { stroke: #6366f1; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  
+  <text x="400" y="35" text-anchor="middle" class="title">Git Basic Workflow</text>
+  
+  <!-- Working Directory -->
+  <rect x="50" y="80" width="140" height="60" rx="10" fill="#10b981" class="node"/>
+  <text x="120" y="115" text-anchor="middle" class="label">Working Directory</text>
+  
+  <!-- Staging Area -->
+  <rect x="250" y="80" width="140" height="60" rx="10" fill="#f59e0b" class="node"/>
+  <text x="320" y="115" text-anchor="middle" class="label">Staging Area</text>
+  
+  <!-- Local Repository -->
+  <rect x="450" y="80" width="140" height="60" rx="10" fill="#6366f1" class="node"/>
+  <text x="520" y="115" text-anchor="middle" class="label">Local Repository</text>
+  
+  <!-- Remote Repository -->
+  <rect x="650" y="80" width="140" height="60" rx="10" fill="#ec4899" class="node"/>
+  <text x="720" y="115" text-anchor="middle" class="label">Remote Repository</text>
+  
+  <!-- Arrows -->
+  <path d="M190,110 L245,110" class="arrow"/>
+  <path d="M390,110 L445,110" class="arrow"/>
+  <path d="M590,110 L645,110" class="arrow"/>
+  
+  <!-- Commands -->
+  <text x="217" y="95" text-anchor="middle" class="node step">git add</text>
+  <text x="417" y="95" text-anchor="middle" class="node step">git commit</text>
+  <text x="617" y="95" text-anchor="middle" class="node step">git push</text>
+  
+  <!-- Reverse arrows -->
+  <path d="M645,130 L590,130" class="arrow" style="stroke:#ec4899"/>
+  <path d="M445,130 L390,130" class="arrow" style="stroke:#f59e0b"/>
+  
+  <text x="617" y="150" text-anchor="middle" class="node" style="fill:#ec4899">git pull</text>
+  <text x="417" y="150" text-anchor="middle" class="node" style="fill:#f59e0b">git checkout</text>
+  
+  <!-- Workflow steps -->
+  <g transform="translate(50, 200)">
+    <rect width="700" height="180" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="350" y="30" text-anchor="middle" class="title" style="font-size:16px">Typical Daily Workflow</text>
+    
+    <text x="30" y="65" class="node step">1.</text>
+    <text x="60" y="65" class="node">git status</text>
+    <text x="200" y="65" class="node" style="fill:#64748b">Check what changed</text>
+    
+    <text x="30" y="95" class="node step">2.</text>
+    <text x="60" y="95" class="node">git add .</text>
+    <text x="200" y="95" class="node" style="fill:#64748b">Stage all changes</text>
+    
+    <text x="30" y="125" class="node step">3.</text>
+    <text x="60" y="125" class="node">git commit -m "msg"</text>
+    <text x="280" y="125" class="node" style="fill:#64748b">Commit with message</text>
+    
+    <text x="30" y="155" class="node step">4.</text>
+    <text x="60" y="155" class="node">git push</text>
+    <text x="200" y="155" class="node" style="fill:#64748b">Upload to remote</text>
+  </g>
+</svg>

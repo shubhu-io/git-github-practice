@@ -5,6 +5,10 @@ title: "Pull Requests"
 
 # Pull Requests
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/github-pr-workflow.svg' | relative_url }}" alt="GitHub PR Workflow" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## Creating Pull Requests
 
 ```bash

@@ -3,6 +3,10 @@ title: Git Cheatsheet
 ---
 # Git & GitHub Cheat Sheet
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/git-cheatsheet.svg' | relative_url }}" alt="Git Commands Cheat Sheet" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## Setup
 ```bash
 git config --global user.name "Your Name"

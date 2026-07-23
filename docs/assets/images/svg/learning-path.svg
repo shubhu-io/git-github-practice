@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <style>
+    .node { font-family: 'Segoe UI', sans-serif; font-size: 12px; }
+    .title { font-size: 18px; font-weight: bold; fill: #1e293b; }
+    .label { fill: #fff; font-weight: 500; }
+    .week { font-size: 14px; font-weight: bold; fill: #1e293b; }
+  </style>
+  <text x="400" y="25" text-anchor="middle" class="title">Git Learning Path</text>
+  <g transform="translate(20, 50)">
+    <rect width="170" height="320" rx="10" fill="#10b981"/>
+    <text x="85" y="25" text-anchor="middle" class="week">Week 1</text>
+    <text x="85" y="45" text-anchor="middle" class="label">Basics</text>
+    <text x="15" y="75" class="node" style="fill:#fff">- Install Git</text>
+    <text x="15" y="95" class="node" style="fill:#fff">- init, clone</text>
+    <text x="15" y="115" class="node" style="fill:#fff">- add, commit</text>
+    <text x="15" y="135" class="node" style="fill:#fff">- status, log</text>
+    <text x="15" y="155" class="node" style="fill:#fff">- Basic .gitignore</text>
+  </g>
+  <g transform="translate(210, 50)">
+    <rect width="170" height="320" rx="10" fill="#6366f1"/>
+    <text x="85" y="25" text-anchor="middle" class="week">Week 2</text>
+    <text x="85" y="45" text-anchor="middle" class="label">Branching</text>
+    <text x="15" y="75" class="node" style="fill:#fff">- Create branches</text>
+    <text x="15" y="95" class="node" style="fill:#fff">- Switch branches</text>
+    <text x="15" y="115" class="node" style="fill:#fff">- Merge branches</text>
+    <text x="15" y="135" class="node" style="fill:#fff">- Resolve conflicts</text>
+    <text x="15" y="155" class="node" style="fill:#fff">- Rebase basics</text>
+  </g>
+  <g transform="translate(400, 50)">
+    <rect width="170" height="320" rx="10" fill="#f59e0b"/>
+    <text x="85" y="25" text-anchor="middle" class="week">Week 3</text>
+    <text x="85" y="45" text-anchor="middle" class="label">Remote</text>
+    <text x="15" y="75" class="node" style="fill:#fff">- GitHub setup</text>
+    <text x="15" y="95" class="node" style="fill:#fff">- push/pull</text>
+    <text x="15" y="115" class="node" style="fill:#fff">- Pull Requests</text>
+    <text x="15" y="135" class="node" style="fill:#fff">- Code Review</text>
+    <text x="15" y="155" class="node" style="fill:#fff">- Fork workflow</text>
+  </g>
+  <g transform="translate(590, 50)">
+    <rect width="170" height="320" rx="10" fill="#ec4899"/>
+    <text x="85" y="25" text-anchor="middle" class="week">Week 4</text>
+    <text x="85" y="45" text-anchor="middle" class="label">Advanced</text>
+    <text x="15" y="75" class="node" style="fill:#fff">- Rebase advanced</text>
+    <text x="15" y="95" class="node" style="fill:#fff">- Cherry-pick</text>
+    <text x="15" y="115" class="node" style="fill:#fff">- Stashing</text>
+    <text x="15" y="135" class="node" style="fill:#fff">- Interactive rebase</text>
+    <text x="15" y="155" class="node" style="fill:#fff">- Git hooks</text>
+  </g>
+</svg>

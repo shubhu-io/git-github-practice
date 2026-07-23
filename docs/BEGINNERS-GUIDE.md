@@ -5,6 +5,10 @@ title: Beginners Guide
 
 A step-by-step guide for absolute beginners.
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/git-workflow.svg' | relative_url }}" alt="Git Workflow Diagram" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## What is Version Control?
 
 **Version control** tracks changes to files over time. It lets you:

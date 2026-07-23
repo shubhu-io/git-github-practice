@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <style>
+    .node { font-family: 'Segoe UI', sans-serif; font-size: 13px; }
+    .title { font-size: 20px; font-weight: bold; fill: #1e293b; }
+    .label { fill: #fff; font-weight: 500; }
+  </style>
+  <text x="400" y="30" text-anchor="middle" class="title">GitHub Pull Request Workflow</text>
+  <rect x="50" y="60" width="150" height="50" rx="8" fill="#10b981"/>
+  <text x="125" y="90" text-anchor="middle" class="label">1. Create Branch</text>
+  <rect x="250" y="60" width="150" height="50" rx="8" fill="#f59e0b"/>
+  <text x="325" y="90" text-anchor="middle" class="label">2. Make Changes</text>
+  <rect x="450" y="60" width="150" height="50" rx="8" fill="#6366f1"/>
+  <text x="525" y="90" text-anchor="middle" class="label">3. Push to Remote</text>
+  <rect x="650" y="60" width="150" height="50" rx="8" fill="#ec4899"/>
+  <text x="725" y="90" text-anchor="middle" class="label">4. Create PR</text>
+  <line x1="200" y1="85" x2="245" y2="85" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="85" x2="445" y2="85" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="600" y1="85" x2="645" y2="85" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/></marker></defs>
+  <g transform="translate(50, 150)">
+    <rect width="700" height="120" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="350" y="25" text-anchor="middle" class="node" style="font-weight:bold; font-size:15px">Review Process</text>
+    <circle cx="50" cy="70" r="20" fill="#6366f1"/>
+    <text x="50" y="75" text-anchor="middle" class="label" style="font-size:10px">Code</text>
+    <line x1="70" y1="70" x2="130" y2="70" stroke="#6366f1" stroke-width="2"/>
+    <circle cx="150" cy="70" r="20" fill="#f59e0b"/>
+    <text x="150" y="75" text-anchor="middle" class="label" style="font-size:10px">Review</text>
+    <line x1="170" y1="70" x2="230" y2="70" stroke="#6366f1" stroke-width="2"/>
+    <circle cx="250" cy="70" r="20" fill="#10b981"/>
+    <text x="250" y="75" text-anchor="middle" class="label" style="font-size:10px">Tests</text>
+    <line x1="270" y1="70" x2="330" y2="70" stroke="#6366f1" stroke-width="2"/>
+    <circle cx="350" cy="70" r="20" fill="#ec4899"/>
+    <text x="350" y="75" text-anchor="middle" class="label" style="font-size:10px">Merge</text>
+  </g>
+  <g transform="translate(50, 300)">
+    <rect width="700" height="180" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="350" y="25" text-anchor="middle" class="node" style="font-weight:bold; font-size:15px">gh CLI Commands</text>
+    <text x="30" y="55" class="node" style="fill:#6366f1">gh pr create --title "Feature" --body "Description"</text>
+    <text x="30" y="80" class="node" style="fill:#6366f1">gh pr checkout 123</text>
+    <text x="30" y="105" class="node" style="fill:#6366f1">gh pr review 123 --approve</text>
+    <text x="30" y="130" class="node" style="fill:#6366f1">gh pr merge 123 --squash</text>
+    <text x="30" y="155" class="node" style="fill:#6366f1">gh pr list --state open</text>
+  </g>
+</svg>

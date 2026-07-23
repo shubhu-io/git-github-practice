@@ -5,6 +5,10 @@ title: "Branching & Merging"
 
 # Branching & Merging
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/git-branching.svg' | relative_url }}" alt="Git Branching Diagram" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## git branch
 
 Manage branches.

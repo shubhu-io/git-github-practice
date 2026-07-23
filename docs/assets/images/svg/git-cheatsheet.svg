@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <style>
+    .node { font-family: 'Segoe UI', sans-serif; font-size: 12px; }
+    .title { font-size: 18px; font-weight: bold; fill: #1e293b; }
+    .label { fill: #fff; font-weight: 500; }
+    .cmd { fill: #6366f1; font-family: monospace; font-size: 11px; }
+  </style>
+  <text x="400" y="25" text-anchor="middle" class="title">Git Commands Cheat Sheet</text>
+  <g transform="translate(20, 50)">
+    <rect width="240" height="160" rx="8" fill="#10b981"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Setup</text>
+    <text x="15" y="50" class="cmd">git init</text>
+    <text x="15" y="70" class="cmd">git clone &lt;url&gt;</text>
+    <text x="15" y="90" class="cmd">git config --global</text>
+    <text x="15" y="110" class="cmd">git config user.name</text>
+    <text x="15" y="130" class="cmd">git config user.email</text>
+    <text x="15" y="150" class="cmd">git remote add origin</text>
+  </g>
+  <g transform="translate(280, 50)">
+    <rect width="240" height="160" rx="8" fill="#6366f1"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Daily Workflow</text>
+    <text x="15" y="50" class="cmd">git status</text>
+    <text x="15" y="70" class="cmd">git add &lt;file&gt;</text>
+    <text x="15" y="90" class="cmd">git add .</text>
+    <text x="15" y="110" class="cmd">git commit -m "msg"</text>
+    <text x="15" y="130" class="cmd">git push</text>
+    <text x="15" y="150" class="cmd">git pull</text>
+  </g>
+  <g transform="translate(540, 50)">
+    <rect width="240" height="160" rx="8" fill="#f59e0b"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Branching</text>
+    <text x="15" y="50" class="cmd">git branch &lt;name&gt;</text>
+    <text x="15" y="70" class="cmd">git switch &lt;branch&gt;</text>
+    <text x="15" y="90" class="cmd">git merge &lt;branch&gt;</text>
+    <text x="15" y="110" class="cmd">git branch -d &lt;name&gt;</text>
+    <text x="15" y="130" class="cmd">git rebase &lt;branch&gt;</text>
+    <text x="15" y="150" class="cmd">git cherry-pick &lt;sha&gt;</text>
+  </g>
+  <g transform="translate(20, 230)">
+    <rect width="240" height="150" rx="8" fill="#ec4899"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Undo</text>
+    <text x="15" y="50" class="cmd">git restore &lt;file&gt;</text>
+    <text x="15" y="70" class="cmd">git reset HEAD~1</text>
+    <text x="15" y="90" class="cmd">git revert &lt;commit&gt;</text>
+    <text x="15" y="110" class="cmd">git stash</text>
+    <text x="15" y="130" class="cmd">git stash pop</text>
+  </g>
+  <g transform="translate(280, 230)">
+    <rect width="240" height="150" rx="8" fill="#8b5cf6"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Inspect</text>
+    <text x="15" y="50" class="cmd">git log --oneline</text>
+    <text x="15" y="70" class="cmd">git log --graph</text>
+    <text x="15" y="90" class="cmd">git diff</text>
+    <text x="15" y="110" class="cmd">git show &lt;commit&gt;</text>
+    <text x="15" y="130" class="cmd">git blame &lt;file&gt;</text>
+  </g>
+  <g transform="translate(540, 230)">
+    <rect width="240" height="150" rx="8" fill="#06b6d4"/>
+    <text x="120" y="25" text-anchor="middle" class="label" style="font-size:14px">Remote</text>
+    <text x="15" y="50" class="cmd">git remote -v</text>
+    <text x="15" y="70" class="cmd">git fetch</text>
+    <text x="15" y="90" class="cmd">git push -u origin</text>
+    <text x="15" y="110" class="cmd">git pull --rebase</text>
+    <text x="15" y="130" class="cmd">git clone --depth 1</text>
+  </g>
+</svg>

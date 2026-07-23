@@ -8,6 +8,10 @@ permalink: /git/
 
 Comprehensive reference of Git commands organized by category.
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/git-workflow.svg' | relative_url }}" alt="Git Workflow Diagram" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## Categories
 
 | Category | File | Description |
@@ -45,5 +49,9 @@ git restore <file>     # Discard unstaged changes
 git reset HEAD~1       # Undo last commit (keep changes)
 git revert <commit>    # Safe undo (new commit)
 ```
+
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/git-branching.svg' | relative_url }}" alt="Git Branching Diagram" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
 
 See individual files for full command syntax, options, and examples.

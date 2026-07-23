@@ -5,6 +5,10 @@ title: "GitHub Actions"
 
 # GitHub Actions
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/github-actions.svg' | relative_url }}" alt="GitHub Actions Workflow" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## Workflow Basics
 
 YAML files in `.github/workflows/`:

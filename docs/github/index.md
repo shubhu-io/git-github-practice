@@ -8,6 +8,10 @@ permalink: /github/
 
 Comprehensive reference of GitHub features, tools, and workflows.
 
+<div class="svg-diagram">
+<img src="{{ '/assets/images/svg/github-pr-workflow.svg' | relative_url }}" alt="GitHub PR Workflow Diagram" style="max-width:100%; height:auto; margin: 20px 0;">
+</div>
+
 ## Categories
 
 | Category | File | Description |
