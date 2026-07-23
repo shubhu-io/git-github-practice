@@ -13,6 +13,7 @@ const Components = {
     this.initBackToTop();
     this.initSmoothScroll();
     this.initAnchorLinks();
+    this.initChecklists();
   },
 
   /* --- Copy Buttons --------------------------------------------------- */
@@ -222,6 +223,91 @@ const Components = {
         h.appendChild(anchor);
       }
     });
+  },
+
+  /* --- Checklists (interactive tick/untick) --------------------------- */
+  initChecklists() {
+    const content = document.getElementById('article-content') || document;
+    const items = content.querySelectorAll('li');
+    const pageId = window.location.pathname.replace(/[^a-z0-9]/gi, '_');
+    const storageKey = `checklist_${pageId}`;
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch {}
+
+    let total = 0;
+    let checked = 0;
+
+    items.forEach((li, idx) => {
+      const text = li.textContent.trim();
+      if (!text.startsWith('[ ]') && !text.startsWith('[x]') && !text.startsWith('[X]')) return;
+
+      const id = `chk_${pageId}_${idx}`;
+      const isCheck = text.startsWith('[x]') || text.startsWith('[X]');
+      const isChecked = saved[id] !== undefined ? saved[id] : isCheck;
+      total++;
+
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.className = 'checklist-checkbox';
+      cb.checked = isChecked;
+      cb.id = id;
+      if (isChecked) checked++;
+
+      const label = text.replace(/^\[[ xX]\]\s*/, '');
+      li.textContent = '';
+      li.className = 'checklist-item' + (isChecked ? ' checked' : '');
+
+      const lbl = document.createElement('label');
+      lbl.htmlFor = id;
+      lbl.textContent = label;
+
+      const icon = document.createElement('span');
+      icon.className = 'checklist-icon';
+      icon.innerHTML = isChecked
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
+        : '';
+
+      li.prepend(lbl);
+      li.prepend(icon);
+      li.prepend(cb);
+
+      cb.addEventListener('change', () => {
+        const nowChecked = cb.checked;
+        saved[id] = nowChecked;
+        localStorage.setItem(storageKey, JSON.stringify(saved));
+        li.classList.toggle('checked', nowChecked);
+        icon.innerHTML = nowChecked
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
+          : '';
+        checked += nowChecked ? 1 : -1;
+        this.updateChecklistProgress(total, checked);
+      });
+    });
+
+    if (total > 0) {
+      this.updateChecklistProgress(total, checked);
+    }
+  },
+
+  updateChecklistProgress(total, checked) {
+    let bar = document.getElementById('checklist-progress');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'checklist-progress';
+      bar.className = 'checklist-progress';
+      const content = document.getElementById('article-content');
+      if (content) content.prepend(bar);
+    }
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    bar.innerHTML = `
+      <div class="checklist-progress-header">
+        <span>Progress: ${checked}/${total} completed</span>
+        <span>${pct}%</span>
+      </div>
+      <div class="checklist-progress-bar">
+        <div class="checklist-progress-fill" style="width:${pct}%"></div>
+      </div>
+    `;
   }
 };
 

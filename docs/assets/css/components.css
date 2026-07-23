@@ -982,3 +982,87 @@
 .mb-0 { margin-bottom: 0; }
 .text-center { text-align: center; }
 .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* --- Checklist (interactive tick/untick) ------------------------------ */
+.checklist-progress {
+  background: var(--clr-card-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.checklist-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+  margin-bottom: var(--space-2);
+}
+.checklist-progress-bar {
+  height: 8px;
+  background: var(--clr-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.checklist-progress-fill {
+  height: 100%;
+  background: var(--clr-primary);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.checklist-item {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.checklist-item.checked {
+  color: var(--clr-text-muted);
+}
+.checklist-item.checked label {
+  text-decoration: line-through;
+  color: var(--clr-text-muted);
+}
+.checklist-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--clr-border-focus);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+.checklist-checkbox:checked {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+.checklist-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  color: var(--clr-primary);
+}
+.checklist-icon svg {
+  width: 16px;
+  height: 16px;
+}
+.checklist-item label {
+  cursor: pointer;
+  font-size: var(--fs-base);
+  color: var(--clr-text);
+  transition: color 0.2s ease;
+}
+.checklist-item:hover label {
+  color: var(--clr-primary);
+}

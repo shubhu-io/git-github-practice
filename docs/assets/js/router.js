@@ -80,7 +80,8 @@ const Router = {
   },
 
   async fetchMarkdown(path) {
-    const mdPath = path.replace('.html', '.md');
+    let mdPath = path.replace('.html', '.md');
+    if (mdPath.endsWith('/')) mdPath += 'index.md';
     try {
       let res = await fetch(`${this.base}${mdPath}`);
       if (!res.ok) throw new Error('Not found');
