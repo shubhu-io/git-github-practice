@@ -13,7 +13,6 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,json,md}\"",
     "validate": "npm run lint && npm run test && npm run format:check",
-    "build:html": "node scripts/embed-content.js",
     "prepare": "husky"
   },
   "repository": {
@@ -37,11 +36,10 @@
   "homepage": "https://github.com/shubhu-io/git-github-practice#readme",
   "devDependencies": {
     "eslint": "^8.50.0",
-    "husky": "^9.0.0",
     "jest": "^29.7.0",
-    "lint-staged": "^15.0.2",
-    "marked": "18.0.7",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.2"
   },
   "lint-staged": {
     "*.{js,json,md}": [
