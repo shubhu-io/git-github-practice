@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Cheatsheet
 ---
 # Git & GitHub Cheat Sheet

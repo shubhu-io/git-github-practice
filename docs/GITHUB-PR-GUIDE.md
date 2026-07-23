@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Pull Request Guide
 ---
 # GitHub Pull Request Guide

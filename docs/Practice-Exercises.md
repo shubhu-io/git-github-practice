@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Practice Exercises
 ---
 # Practice Exercises

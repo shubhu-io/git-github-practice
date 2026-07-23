@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Troubleshooting
 ---
 # Git Troubleshooting Guide

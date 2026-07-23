@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Security
 ---
 # Git Security Best Practices

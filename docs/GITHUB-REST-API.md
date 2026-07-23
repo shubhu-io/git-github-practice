@@ -1,4 +1,5 @@
 ---
+layout: single
 title: GitHub REST API
 ---
 # GitHub REST API Guide

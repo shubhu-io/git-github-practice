@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Exercise Solutions
 ---
 # Git Exercises

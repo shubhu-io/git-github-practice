@@ -1,4 +1,5 @@
 ---
+layout: single
 title: GitHub Actions Advanced
 ---
 # Advanced GitHub Actions Guide

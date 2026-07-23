@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Glossary
 ---
 # Git Glossary

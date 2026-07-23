@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Internals
 ---
 # Git Internals

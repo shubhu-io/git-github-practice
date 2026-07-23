@@ -1,5 +1,6 @@
 ---
-title: Git Aliases
+layout: single
+title: Git Aliases Guide
 ---
 # Git Aliases Guide
 

@@ -1,4 +1,5 @@
 ---
+layout: single
 title: GitHub Profile README
 ---
 # GitHub Profile README Guide

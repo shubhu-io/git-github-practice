@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Complete Git & GitHub Guide
 ---
 # Git & GitHub Complete Learning Guide

@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git for Teams
 ---
 # Git for Teams Guide

@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Interview Questions
 ---
 # Git Interview Questions

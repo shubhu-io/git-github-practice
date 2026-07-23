@@ -1,4 +1,5 @@
 ---
+layout: single
 title: GitHub Pages
 ---
 # GitHub Pages Guide

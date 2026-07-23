@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Quick Reference
 ---
 # Git Quick Reference Card

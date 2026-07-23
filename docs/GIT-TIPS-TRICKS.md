@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Tips & Tricks
 ---
 # Git Tips & Tricks

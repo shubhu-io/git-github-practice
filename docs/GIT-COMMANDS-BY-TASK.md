@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Commands by Task
 ---
 # Git Commands by Task

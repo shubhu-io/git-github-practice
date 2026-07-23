@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Beginners Guide
 ---
 # Complete Beginner's Guide to Git & GitHub

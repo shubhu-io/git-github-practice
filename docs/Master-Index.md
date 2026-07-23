@@ -1,7 +1,8 @@
 ---
+layout: single
 title: Master Index
 ---
-# 📚 Git & GitHub Complete Repository
+# Git & GitHub Complete Repository
 
 > A comprehensive learning repository with 110+ files covering Git, GitHub, automation, and best practices.
 

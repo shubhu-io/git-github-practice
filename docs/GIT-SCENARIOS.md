@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Scenarios
 ---
 # Common Git Scenarios

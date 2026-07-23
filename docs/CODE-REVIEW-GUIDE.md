@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Code Review Guide
 ---
 # Code Review Guide

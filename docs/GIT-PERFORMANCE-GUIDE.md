@@ -1,5 +1,6 @@
 ---
-title: Git Performance
+layout: single
+title: Git Performance Guide
 ---
 # Git Performance Guide
 

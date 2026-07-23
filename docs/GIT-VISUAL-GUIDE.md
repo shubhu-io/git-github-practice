@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Git Visual Guide
 ---
 # Git Visual Guide

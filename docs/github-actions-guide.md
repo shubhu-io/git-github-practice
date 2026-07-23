@@ -1,4 +1,5 @@
 ---
+layout: single
 title: GitHub Actions Guide
 ---
 # GitHub Actions Quick Guide

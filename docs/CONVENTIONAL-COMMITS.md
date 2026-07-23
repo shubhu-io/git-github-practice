@@ -1,4 +1,5 @@
 ---
+layout: single
 title: Conventional Commits
 ---
 # Conventional Commits Guide
