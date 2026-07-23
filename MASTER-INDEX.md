@@ -153,43 +153,6 @@ Git&Github/
 
 ---
 
-## 📖 Git Commands Reference (`docs/git/`)
-
-Categorized Git command documentation.
-
-| File | Description |
-|------|-------------|
-| `README.md` | Overview & quick reference |
-| `core-commands.md` | `init`, `clone`, `add`, `commit`, `status`, `log`, `diff` |
-| `branching-merging.md` | `branch`, `merge`, `rebase`, `switch`, `restore` |
-| `remote-operations.md` | `remote`, `fetch`, `push`, `pull`, `ls-remote` |
-| `undoing-changes.md` | `reset`, `revert`, `cherry-pick`, `reflog`, `bisect` |
-| `stashing.md` | `stash` with all options |
-| `collaboration.md` | `tag`, `submodule`, `worktree`, `blame`, `grep`, `archive` |
-| `configuration.md` | `config`, `help`, `gc`, `fsck`, `maintenance` |
-| `advanced.md` | `notes`, `replace`, `filter-branch`, `range-diff` |
-
----
-
-## 🐙 GitHub Features Reference (`docs/github/`)
-
-Categorized GitHub feature documentation.
-
-| File | Description |
-|------|-------------|
-| `README.md` | Overview & quick reference |
-| `repositories.md` | Create, manage, settings, templates, environments |
-| `issues-projects.md` | Issues, labels, milestones, projects, discussions |
-| `pull-requests.md` | PR workflow, reviews, merge strategies, code owners |
-| `actions.md` | Workflows, events, runners, caching, secrets |
-| `pages.md` | Static sites, Jekyll, custom domains, builds |
-| `security.md` | Dependabot, secrets, code scanning, branch protection |
-| `api.md` | REST API, GraphQL, webhooks, authentication |
-| `cli.md` | gh CLI commands & configuration |
-| `profiles-orgs.md` | Profile README, organizations, teams, permissions |
-
----
-
 ## 📝 Examples (23 scripts)
 
 ### Git Basics
@@ -310,10 +273,8 @@ Categorized GitHub feature documentation.
 
 ## 📊 Repository Statistics
 
-- **Total Files:** 130+
-- **Documentation:** 30 files + 19 reference files
-- **Git Commands:** 8 categorized reference files
-- **GitHub Features:** 10 categorized reference files
+- **Total Files:** 115+
+- **Documentation:** 30 files
 - **Examples:** 23 scripts
 - **Exercises:** 20 folders
 - **Completed Progress:** 1 file
