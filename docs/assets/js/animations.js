@@ -36,5 +36,4 @@ const Animations = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Animations.init());
 window.Animations = Animations;

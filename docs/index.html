@@ -88,23 +88,23 @@
     </aside>
 
     <!-- ===== THEME PICKER ===== -->
-    <div id="theme-picker" style="position:fixed;bottom:1rem;right:1rem;z-index:999;">
-      <div id="theme-panel" class="glass" style="display:none;padding:0.75rem;border-radius:var(--radius-lg);margin-bottom:0.5rem;min-width:180px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;">
+    <div id="theme-picker" class="theme-picker-container">
+      <div id="theme-panel" class="theme-panel glass">
+        <div class="theme-panel-grid">
           <!-- Populated by theme.js -->
         </div>
       </div>
     </div>
 
     <!-- ===== SEARCH OVERLAY ===== -->
-    <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:var(--clr-overlay);padding:2rem;">
-      <div style="max-width:640px;margin:2rem auto;background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
-        <div style="display:flex;align-items:center;padding:1rem;border-bottom:1px solid var(--clr-border-light);">
-          <svg style="width:20px;height:20px;color:var(--clr-text-tertiary);margin-right:0.75rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="search" id="search-input-overlay" placeholder="Search guides..." style="flex:1;border:none;background:transparent;font-size:1.125rem;color:var(--clr-text);outline:none;" autofocus>
-          <kbd style="margin-left:0.5rem;">ESC</kbd>
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-modal">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input-overlay" class="search-modal-input" placeholder="Search guides...">
+          <kbd class="search-modal-esc">ESC</kbd>
         </div>
-        <div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem;"></div>
+        <div id="search-results" class="search-results"></div>
       </div>
     </div>
 
@@ -112,7 +112,7 @@
     <main class="main main-full" id="main-content" role="main">
 
       <!-- ===== HERO SECTION ===== -->
-      <section class="hero fade-up">
+      <section class="hero">
         <div class="hero-content">
           <div class="hero-badge">v2.0 — Complete Redesign</div>
           <h1 class="hero-title">
@@ -157,7 +157,7 @@
       <div class="content-narrow">
 
       <!-- ===== STATS ROW ===== -->
-      <section class="stats fade-up" style="margin-top:var(--space-8);">
+      <section class="stats fade-up section-sm">
         <div class="stat-card fade-up fade-up-delay-1">
           <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
           <div class="stat-value" data-count="25" data-suffix="+">0</div>
@@ -191,9 +191,9 @@
       </section>
 
       <!-- ===== LEARNING ROADMAP ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">Learning Roadmap</h2>
-        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Follow this structured path from absolute beginner to Git master.</p>
+        <p class="fade-up section-desc">Follow this structured path from absolute beginner to Git master.</p>
 
         <div class="timeline fade-up">
           <div class="timeline-item fade-up fade-up-delay-1">
@@ -238,7 +238,7 @@
           </div>
         </div>
 
-        <div class="fade-up" style="text-align:center;margin-top:var(--space-6);">
+        <div class="fade-up text-center" style="margin-top:var(--space-6);">
           <a href="./Learning-Path.html" class="btn btn-primary btn-lg">
             View Full Learning Path
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -247,16 +247,16 @@
       </section>
 
       <!-- ===== FEATURED GUIDES ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">Featured Guides</h2>
-        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Dive into our most popular learning resources.</p>
+        <p class="fade-up section-desc">Dive into our most popular learning resources.</p>
 
         <div class="card-grid card-grid-2 fade-up">
           <a href="./BEGINNERS-GUIDE.html" class="card card-hover" style="text-decoration:none;">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
             <div class="card-title">Beginner's Guide</div>
             <div class="card-text">Start here! Install Git, make your first commit, and push to GitHub. No prior experience needed.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-beginner">Beginner</span>
               <span class="badge badge-info">15 min</span>
             </div>
@@ -266,7 +266,7 @@
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
             <div class="card-title">Git Workflows</div>
             <div class="card-text">Understand Git Flow, GitHub Flow, trunk-based development, and choose the right workflow for your team.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-intermediate">Intermediate</span>
               <span class="badge badge-info">25 min</span>
             </div>
@@ -276,7 +276,7 @@
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
             <div class="card-title">GitHub Actions</div>
             <div class="card-text">Automate your workflows with CI/CD pipelines. Build, test, and deploy directly from GitHub.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-intermediate">Intermediate</span>
               <span class="badge badge-info">20 min</span>
             </div>
@@ -286,7 +286,7 @@
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
             <div class="card-title">Interview Questions</div>
             <div class="card-text">Ace your next technical interview with 50+ curated Git and GitHub questions and detailed answers.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-intermediate">Intermediate</span>
               <span class="badge badge-info">30 min</span>
             </div>
@@ -296,7 +296,7 @@
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
             <div class="card-title">GitHub Pages</div>
             <div class="card-text">Host static websites for free with GitHub Pages. Deploy documentation, portfolios, and project sites.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-beginner">Beginner</span>
               <span class="badge badge-info">20 min</span>
             </div>
@@ -306,7 +306,7 @@
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
             <div class="card-title">Git Cheatsheet</div>
             <div class="card-text">Quick reference for 100+ Git commands organized by task. Print it, bookmark it, master it.</div>
-            <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <div class="timeline-tags">
               <span class="badge badge-beginner">Beginner</span>
               <span class="badge badge-info">10 min</span>
             </div>
@@ -315,11 +315,11 @@
       </section>
 
       <!-- ===== VISUAL DIAGRAM ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">How Git Works</h2>
-        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Visualize the Git workflow from working directory to remote repository.</p>
+        <p class="fade-up section-desc">Visualize the Git workflow from working directory to remote repository.</p>
 
-        <div class="img-container fade-up" style="padding:var(--space-6);background:var(--clr-card-bg);">
+        <div class="img-container fade-up" style="padding:var(--space-6);">
           <svg viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
             <!-- Working Directory -->
             <rect x="30" y="40" width="160" height="120" rx="12" stroke="var(--clr-primary)" stroke-width="2" fill="var(--clr-primary-subtle)"/>
@@ -374,42 +374,38 @@
       </section>
 
       <!-- ===== TESTIMONIALS ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">What Learners Say</h2>
-        <p class="fade-up" style="color:var(--clr-text-secondary);font-size:var(--fs-lg);max-width:600px;">Join thousands of developers who've mastered Git with this guide.</p>
+        <p class="fade-up section-desc">Join thousands of developers who've mastered Git with this guide.</p>
 
         <div class="card-grid card-grid-2 fade-up" style="margin-top:var(--space-6);">
-          <div class="card glass">
-            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
-              <div style="width:44px;height:44px;border-radius:var(--radius-full);background:var(--clr-primary-subtle);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-weight:var(--fw-bold);font-family:var(--ff-display);">AK</div>
+          <div class="card glass testimonial">
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:var(--clr-primary-subtle);color:var(--clr-primary);">AK</div>
               <div>
-                <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Alex K.</div>
-                <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);">Frontend Developer</div>
+                <div class="testimonial-name">Alex K.</div>
+                <div class="testimonial-role">Frontend Developer</div>
               </div>
             </div>
-            <p style="color:var(--clr-text-secondary);font-style:italic;margin-bottom:0;">"I went from 'git add' to deploying CI/CD pipelines in 4 weeks. The visual diagrams and exercises made everything click. This should be the official Git curriculum."</p>
-            <div style="margin-top:var(--space-3);display:flex;gap:2px;">
-              <span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span>
-            </div>
+            <p class="testimonial-text">"I went from 'git add' to deploying CI/CD pipelines in 4 weeks. The visual diagrams and exercises made everything click. This should be the official Git curriculum."</p>
+            <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           </div>
-          <div class="card glass">
-            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
-              <div style="width:44px;height:44px;border-radius:var(--radius-full);background:var(--clr-success-bg);display:flex;align-items:center;justify-content:center;color:var(--clr-success);font-weight:var(--fw-bold);font-family:var(--ff-display);">SM</div>
+          <div class="card glass testimonial">
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:var(--clr-success-bg);color:var(--clr-success);">SM</div>
               <div>
-                <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Sarah M.</div>
-                <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);">Computer Science Student</div>
+                <div class="testimonial-name">Sarah M.</div>
+                <div class="testimonial-role">Computer Science Student</div>
               </div>
             </div>
-            <p style="color:var(--clr-text-secondary);font-style:italic;margin-bottom:0;">"Our university course used Git but never explained WHY. This guide fills that gap perfectly. The branching diagram alone is worth the read."</p>
-            <div style="margin-top:var(--space-3);display:flex;gap:2px;">
-              <span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span><span style="color:var(--clr-warning);">★</span>
-            </div>
+            <p class="testimonial-text">"Our university course used Git but never explained WHY. This guide fills that gap perfectly. The branching diagram alone is worth the read."</p>
+            <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           </div>
         </div>
       </section>
 
       <!-- ===== FAQ ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">Frequently Asked Questions</h2>
 
         <div class="accordion fade-up">
@@ -452,37 +448,36 @@
       </section>
 
       <!-- ===== LATEST UPDATES ===== -->
-      <section style="margin:var(--space-16) 0;">
+      <section class="section">
         <h2 class="fade-up">Latest Updates</h2>
-        <div class="card fade-up" style="display:flex;align-items:flex-start;gap:var(--space-4);">
-          <div style="width:12px;height:12px;border-radius:var(--radius-full);background:var(--clr-success);margin-top:6px;flex-shrink:0;"></div>
+        <div class="card fade-up update-item">
+          <div class="update-dot" style="background:var(--clr-success);"></div>
           <div>
-            <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);margin-bottom:var(--space-1);">July 2026</div>
-            <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">Complete Platform Redesign</div>
-            <p style="font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:0;">New modern UI with dark/light themes, interactive search, collapsible sidebar, reading progress, quizzes, and visual diagrams.</p>
+            <div class="update-date">July 2026</div>
+            <div class="update-title">Complete Platform Redesign</div>
+            <p class="update-text">New modern UI with dark/light themes, interactive search, collapsible sidebar, reading progress, quizzes, and visual diagrams.</p>
           </div>
         </div>
-        <div class="card fade-up" style="display:flex;align-items:flex-start;gap:var(--space-4);margin-top:var(--space-3);">
-          <div style="width:12px;height:12px;border-radius:var(--radius-full);background:var(--clr-primary);margin-top:6px;flex-shrink:0;"></div>
+        <div class="card fade-up update-item" style="margin-top:var(--space-3);">
+          <div class="update-dot" style="background:var(--clr-primary);"></div>
           <div>
-            <div style="font-size:var(--fs-sm);color:var(--clr-text-tertiary);margin-bottom:var(--space-1);">June 2026</div>
-            <div style="font-weight:var(--fw-semibold);color:var(--clr-text);">20 Practice Exercises Added</div>
-            <p style="font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:0;">New progressive exercise set covering everything from first commit to performance optimization.</p>
+            <div class="update-date">June 2026</div>
+            <div class="update-title">20 Practice Exercises Added</div>
+            <p class="update-text">New progressive exercise set covering everything from first commit to performance optimization.</p>
           </div>
         </div>
       </section>
 
       <!-- ===== NEWSLETTER ===== -->
-      <section style="margin:var(--space-16) 0;text-align:center;" class="fade-up">
-        <div class="card glass" style="max-width:500px;margin:0 auto;padding:var(--space-8);">
-          <h3 style="margin-top:0;">Stay Updated</h3>
-          <p style="color:var(--clr-text-secondary);margin-bottom:var(--space-4);">Get notified when new lessons, exercises, and features are added.</p>
-          <form style="display:flex;gap:var(--space-2);" onsubmit="event.preventDefault();alert('Thanks for subscribing! (Demo)');">
-            <input type="email" placeholder="Enter your email" required
-                   style="flex:1;padding:var(--space-3) var(--space-4);background:var(--clr-bg-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);font-size:var(--fs-sm);outline:none;color:var(--clr-text);">
+      <section class="section text-center fade-up">
+        <div class="card glass newsletter-card">
+          <h3 class="mt-0">Stay Updated</h3>
+          <p>Get notified when new lessons, exercises, and features are added.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();alert('Thanks for subscribing! (Demo)');">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
-          <p style="font-size:var(--fs-xs);color:var(--clr-text-tertiary);margin-top:var(--space-3);margin-bottom:0;">No spam. Unsubscribe anytime.</p>
+          <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
         </div>
       </section>
 

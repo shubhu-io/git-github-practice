@@ -86,5 +86,4 @@ const TOC = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => TOC.init());
 window.TOC = TOC;

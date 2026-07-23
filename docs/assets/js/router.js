@@ -7,8 +7,10 @@
 const Router = {
   app: null,
   contentIndex: null,
+  base: '',
 
   async init() {
+    this.base = window.location.pathname.replace(/\/[^/]*$/, '');
     this.app = document.getElementById('app');
     if (!this.app) return;
 
@@ -29,7 +31,7 @@ const Router = {
 
   async loadContentIndex() {
     try {
-      let res = await fetch('/git-github-practice/assets/data/content-index.json');
+      let res = await fetch(this.base + '/assets/data/content-index.json');
       this.contentIndex = await res.json();
     } catch {
       try {
@@ -42,7 +44,7 @@ const Router = {
   },
 
   async handleNavigation() {
-    const path = window.location.pathname.replace('/git-github-practice', '').replace(/\/$/, '');
+    const path = window.location.pathname.replace(this.base, '').replace(/\/$/, '');
     const page = this.findPage(path);
 
     if (page) {
@@ -80,7 +82,7 @@ const Router = {
   async fetchMarkdown(path) {
     const mdPath = path.replace('.html', '.md');
     try {
-      let res = await fetch(`/git-github-practice${mdPath}`);
+      let res = await fetch(`${this.base}${mdPath}`);
       if (!res.ok) throw new Error('Not found');
       return await res.text();
     } catch {
@@ -97,9 +99,9 @@ const Router = {
   renderArticle(html, page) {
     this.app.innerHTML = `
       <div class="breadcrumbs">
-        <a href="/git-github-practice/">Home</a>
+        <a href="${this.base || '/'}">Home</a>
         <span class="breadcrumbs-sep"></span>
-        <a href="/git-github-practice/">${page.section || 'Guides'}</a>
+        <a href="${this.base || '/'}">${page.section || 'Guides'}</a>
         <span class="breadcrumbs-sep"></span>
         <span class="breadcrumbs-current">${page.title}</span>
       </div>
@@ -137,5 +139,4 @@ const Router = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Router.init());
 window.Router = Router;

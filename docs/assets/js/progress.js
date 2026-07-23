@@ -24,5 +24,4 @@ const ProgressBar = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => ProgressBar.init());
 window.ProgressBar = ProgressBar;

@@ -225,5 +225,4 @@ const Components = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Components.init());
 window.Components = Components;

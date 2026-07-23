@@ -6,8 +6,10 @@
 const Sidebar = {
   data: null,
   state: {},
+  base: '',
 
   async init() {
+    this.base = window.location.pathname.replace(/\/[^/]*$/, '');
     this.state = this.loadState();
     await this.loadContentIndex();
     this.render();
@@ -18,7 +20,7 @@ const Sidebar = {
 
   async loadContentIndex() {
     try {
-      const res = await fetch('/git-github-practice/assets/data/content-index.json');
+      const res = await fetch(this.base + '/assets/data/content-index.json');
       this.data = await res.json();
     } catch {
       try {
@@ -60,7 +62,7 @@ const Sidebar = {
                   const isActive = currentPath.endsWith(page.path);
                   return `
                     <a class="sidebar-item ${isActive ? 'active' : ''}"
-                       href="${page.path}"
+                       href="${this.base}${page.path}"
                        data-page="${page.id || ''}">
                       ${page.icon ? this.iconFor(page.icon) : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>'}
                       ${page.title}
@@ -166,5 +168,4 @@ const Sidebar = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Sidebar.init());
 window.Sidebar = Sidebar;

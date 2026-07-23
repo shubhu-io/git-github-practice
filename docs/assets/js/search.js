@@ -11,6 +11,7 @@ const Search = {
   allPages: [],
 
   async init() {
+    this.base = window.location.pathname.replace(/\/[^/]*$/, '');
     this.input = document.getElementById('search-input');
     this.overlay = document.getElementById('search-overlay');
     this.results = document.getElementById('search-results');
@@ -23,7 +24,7 @@ const Search = {
 
   async loadIndex() {
     try {
-      let res = await fetch('/git-github-practice/assets/data/content-index.json');
+      let res = await fetch(this.base + '/assets/data/content-index.json');
       this.data = await res.json();
     } catch {
       try {
@@ -157,5 +158,4 @@ const Search = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Search.init());
 window.Search = Search;

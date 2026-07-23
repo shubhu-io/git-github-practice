@@ -80,8 +80,10 @@ const Theme = {
   },
 
   renderPicker() {
-    const container = document.getElementById('theme-picker');
-    if (!container) return;
+    const panel = document.getElementById('theme-panel');
+    if (!panel) return;
+    const grid = panel.querySelector('.theme-panel-grid');
+    if (!grid) return;
 
     const current = this.isAuto() ? 'auto' : this.getCurrent();
     const themes = [
@@ -94,7 +96,7 @@ const Theme = {
       { id: 'ocean', label: 'Ocean', icon: '🌊' },
     ];
 
-    container.innerHTML = themes.map(t => `
+    grid.innerHTML = themes.map(t => `
       <button class="theme-btn ${t.id === current ? 'active' : ''}"
               data-theme="${t.id}"
               aria-label="${t.label} theme"
@@ -105,7 +107,7 @@ const Theme = {
       </button>
     `).join('');
 
-    container.querySelectorAll('.theme-btn').forEach(btn => {
+    grid.querySelectorAll('.theme-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         if (btn.dataset.theme === 'auto') this.setAuto();
         else this.set(btn.dataset.theme);
@@ -135,7 +137,6 @@ const Theme = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Theme.init());
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
   if (Theme.isAuto()) Theme.setAuto();
 });

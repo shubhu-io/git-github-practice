@@ -86,5 +86,4 @@ const Shortcuts = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => Shortcuts.init());
 window.Shortcuts = Shortcuts;
